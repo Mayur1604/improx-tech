@@ -1,0 +1,240 @@
+:root {
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-hover: 180ms;
+  --duration-reveal: 600ms;
+  --stagger-delay: 60ms;
+}
+
+/* ==========================================================================
+   Interactive Component Motion: Buttons, Cards, Links
+   ========================================================================== */
+
+/* Button Hover & Active States */
+.btn-interactive {
+  transition: transform var(--duration-hover) var(--ease),
+              background-color var(--duration-hover) var(--ease),
+              box-shadow var(--duration-hover) var(--ease),
+              border-color var(--duration-hover) var(--ease);
+}
+
+.btn-interactive:active {
+  transform: scale(0.98);
+}
+
+.btn-interactive:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+.btn-arrow {
+  transition: transform var(--duration-hover) var(--ease);
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Card Hover Lift & Border Transition */
+.card-interactive {
+  transition: transform var(--duration-hover) var(--ease),
+              box-shadow var(--duration-hover) var(--ease),
+              border-color var(--duration-hover) var(--ease);
+  will-change: transform, box-shadow;
+}
+
+.card-interactive:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 51, 0.08), 0 8px 10px -6px rgba(0, 0, 51, 0.04);
+  border-color: #0033a0;
+}
+
+/* Card Image Scale on Hover */
+.card-image-wrap {
+  overflow: hidden;
+}
+
+.card-image-wrap img {
+  transition: transform 500ms var(--ease);
+  will-change: transform;
+}
+
+.card-interactive:hover .card-image-wrap img {
+  transform: scale(1.04);
+}
+
+/* Text Links: Animated Underline */
+.link-animated {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: currentColor;
+  transition: width var(--duration-hover) var(--ease);
+}
+
+.link-animated:hover::after {
+  width: 100%;
+}
+
+/* Desktop Nav Underline growing from the left */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #0033a0;
+  transition: width var(--duration-hover) var(--ease);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Nav Dropdown Slide + Fade */
+.nav-dropdown {
+  animation: dropdownFadeSlide 200ms var(--ease) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes dropdownFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Background Initial Slow Scale (1.04 to 1 over 1.2s) */
+.hero-bg-scale {
+  animation: heroBgScale 1.2s var(--ease) forwards;
+  will-change: transform;
+}
+
+@keyframes heroBgScale {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* ==========================================================================
+   Continuous Running Tech Carousel / Marquee
+   ========================================================================== */
+@keyframes techMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-tech-marquee {
+  display: flex;
+  width: max-content;
+  animation: techMarquee 32s linear infinite;
+  will-change: transform;
+}
+
+.animate-tech-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Subtle pulse dot */
+.pulse-dot {
+  animation: pulseDot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* ==========================================================================
+   Reveal Animations via IntersectionObserver
+   ========================================================================== */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--duration-reveal) var(--ease),
+              transform var(--duration-reveal) var(--ease);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Delay Utility */
+.stagger-1 { transition-delay: calc(var(--stagger-delay) * 1); }
+.stagger-2 { transition-delay: calc(var(--stagger-delay) * 2); }
+.stagger-3 { transition-delay: calc(var(--stagger-delay) * 3); }
+.stagger-4 { transition-delay: calc(var(--stagger-delay) * 4); }
+.stagger-5 { transition-delay: calc(var(--stagger-delay) * 5); }
+
+/* ==========================================================================
+   prefers-reduced-motion: Full Accessibility Override
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-bg-scale {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .card-interactive:hover {
+    transform: none !important;
+  }
+
+  .card-interactive:hover .card-image-wrap img {
+    transform: none !important;
+  }
+
+  .btn-interactive:active {
+    transform: none !important;
+  }
+
+  .btn-interactive:hover .btn-arrow {
+    transform: none !important;
+  }
+
+  .animate-tech-marquee {
+    animation: none !important;
+  }
+}

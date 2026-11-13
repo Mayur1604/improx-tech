@@ -1,0 +1,45 @@
+import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import { findServiceBySlug, aiBiList } from '../../data/servicesData';
+import ServiceDetailView from '../../Components/ServiceDetailView';
+
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  return aiBiList.map((service) => ({
+    slug: service.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const service = findServiceBySlug(slug);
+
+  if (!service) {
+    return {
+      title: 'Service Not Found | Improx Tech',
+    };
+  }
+
+  return {
+    title: `${service.title} | AI & Business Intelligence | Improx Tech`,
+    description: service.tagline,
+  };
+}
+
+export default async function AiBiSubpage({ params }: PageProps) {
+  const { slug } = await params;
+  const service = findServiceBySlug(slug);
+
+  if (!service) {
+    notFound();
+  }
+
+  const siblings = aiBiList
+    .filter((s) => s.slug !== service.slug)
+    .map((s) => ({ title: s.title, href: `/ai-bi/${s.slug}` }));
+
+  return <ServiceDetailView service={service} siblingServices={siblings} />;
+}

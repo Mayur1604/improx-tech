@@ -1,0 +1,147 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight, Clock, Calendar } from 'lucide-react';
+import { blogPosts } from '@/app/data/blogData';
+
+export default function InsightsSection() {
+  const featuredArticle = blogPosts[0];
+  const recentArticles = blogPosts.slice(1, 3);
+
+  return (
+    <section className="py-20 lg:py-28 bg-white/95 backdrop-blur-xs border-b border-slate-200/90">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+          <div className="max-w-2xl">
+            <p className="text-xs uppercase tracking-wider text-[#0033a0] hover:text-[#00287a] font-semibold mb-2 transition-colors duration-200 cursor-default inline-block">
+              Engineering Insights
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-tight mb-4">
+              Technical articles &amp; architecture notes.
+            </h2>
+            <p className="text-base text-slate-600 leading-relaxed">
+              Perspectives from our engineering team on building scalable applications, cloud infrastructure, and data systems.
+            </p>
+          </div>
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#0033a0] hover:text-[#00287a] group transition-colors self-start md:self-auto shrink-0"
+          >
+            <span>View All Insights</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
+
+        {/* Editorial Layout: 1 Featured Lead Story + 2 Recent Articles */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          {/* Featured Article (Horizontal Split) */}
+          {featuredArticle && (
+            <div className="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-[6px] overflow-hidden card-hover flex flex-col justify-between">
+              <div className="relative h-64 sm:h-72 w-full bg-slate-900 overflow-hidden">
+                <Image
+                  src={featuredArticle.image}
+                  alt={featuredArticle.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 55vw"
+                  className="object-cover card-image-zoom"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                <div className="absolute top-4 left-4">
+                  <span className="px-2.5 py-1 bg-[#000033] text-[#00a3e0] text-xs font-semibold uppercase tracking-wider rounded-[6px] border border-white/20">
+                    Featured
+                  </span>
+                </div>
+                <div className="absolute bottom-4 left-4 right-4 text-white text-xs flex items-center justify-between">
+                  <span className="text-[#00a3e0] font-semibold uppercase tracking-wider">
+                    {featuredArticle.category}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-slate-300">
+                    <Clock className="w-3.5 h-3.5" />
+                    {featuredArticle.readTime}
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-4">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 text-xs text-slate-500">
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span>{featuredArticle.date}</span>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug hover:text-[#0033a0] transition-colors">
+                    <Link href={`/blog/${featuredArticle.slug}`}>
+                      {featuredArticle.title}
+                    </Link>
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+                    {featuredArticle.summary}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-slate-200/60 flex items-center justify-between text-xs">
+                  <span className="text-slate-500 font-medium">By {featuredArticle.author}</span>
+                  <Link
+                    href={`/blog/${featuredArticle.slug}`}
+                    className="font-semibold text-[#0033a0] inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
+                  >
+                    <span>Read Article</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* 2 Recent Articles */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            {recentArticles.map((article) => (
+              <div
+                key={article.slug}
+                className="bg-white border border-slate-200 rounded-[6px] p-6 card-hover flex-1 flex flex-col justify-between space-y-4"
+              >
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-xs text-slate-500">
+                    <span className="font-semibold text-[#0033a0]">
+                      {article.category}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5" />
+                      {article.readTime}
+                    </span>
+                  </div>
+
+                  <h4 className="text-base sm:text-lg font-bold text-slate-900 leading-snug hover:text-[#0033a0] transition-colors">
+                    <Link href={`/blog/${article.slug}`}>
+                      {article.title}
+                    </Link>
+                  </h4>
+
+                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
+                    {article.summary}
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                  <span>{article.date}</span>
+                  <Link
+                    href={`/blog/${article.slug}`}
+                    className="font-semibold text-[#0033a0] inline-flex items-center gap-1"
+                  >
+                    <span>Read Analysis</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  );
+}
