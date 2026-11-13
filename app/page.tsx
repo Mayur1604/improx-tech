@@ -3,6 +3,7 @@ import Reveal from './Components/Reveal';
 import HeroSection from './Components/home/HeroSection';
 import TrustOverviewSection from './Components/home/TrustOverviewSection';
 import CapabilitiesSection from './Components/home/CapabilitiesSection';
+import EngineeringCarouselSection from './Components/home/EngineeringCarouselSection';
 import ArchitecturePodsSection from './Components/home/ArchitecturePodsSection';
 import EngineeringProcessSection from './Components/home/EngineeringProcessSection';
 import ProjectShowcaseSection from './Components/home/ProjectShowcaseSection';
@@ -45,52 +46,57 @@ export default function Home() {
           <CapabilitiesSection />
         </Reveal>
 
-        {/* 4. Architecture & Specialized Engineering */}
+        {/* 4. Visual Engineering Showcase Carousel */}
+        <Reveal delayMs={40}>
+          <EngineeringCarouselSection />
+        </Reveal>
+
+        {/* 5. Architecture & Specialized Engineering */}
         <Reveal delayMs={40}>
           <ArchitecturePodsSection />
         </Reveal>
 
-        {/* 5. Engineering Process */}
+        {/* 6. Engineering Process */}
         <Reveal delayMs={40}>
           <EngineeringProcessSection />
         </Reveal>
 
-        {/* 6. Selected Projects / Case Studies Showcase */}
+        {/* 7. Selected Projects / Case Studies Showcase */}
         <Reveal delayMs={40}>
           <ProjectShowcaseSection />
         </Reveal>
 
-        {/* 7. Industries We Serve */}
+        {/* 8. Industries We Serve */}
         <Reveal delayMs={40}>
           <IndustriesSection />
         </Reveal>
 
-        {/* 8. Delivery Model and Governance */}
+        {/* 9. Delivery Model and Governance */}
         <Reveal delayMs={40}>
           <DeliveryGovernanceSection />
         </Reveal>
 
-        {/* 9. Why Choose Improx Tech / Security Approach */}
+        {/* 10. Why Choose Improx Tech / Security Approach */}
         <Reveal delayMs={40}>
           <WhyChooseSection />
         </Reveal>
 
-        {/* 10. Engineering Commitments & Quality Standards */}
+        {/* 11. Engineering Commitments & Quality Standards */}
         <Reveal delayMs={40}>
           <EngineeringStandardsSection />
         </Reveal>
 
-        {/* 11. Engineering Insights & Blogs */}
+        {/* 12. Engineering Insights & Blogs */}
         <Reveal delayMs={40}>
           <InsightsSection />
         </Reveal>
 
-        {/* 12. Frequently Asked Questions (FAQ) */}
+        {/* 13. Frequently Asked Questions (FAQ) */}
         <Reveal delayMs={40}>
           <FaqSection />
         </Reveal>
 
-        {/* 13. Final CTA */}
+        {/* 14. Final CTA */}
         <Reveal delayMs={40}>
           <FinalCtaSection />
         </Reveal>

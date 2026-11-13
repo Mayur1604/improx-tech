@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -129,6 +129,54 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [isCooldownActive, setIsCooldownActive] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
+  // Close all menus immediately and apply a short cooldown so re-hovering during page transition won't re-trigger
+  const closeAllMenus = useCallback(() => {
+    setHoveredCategory(null);
+    setIsMobileMenuOpen(false);
+    setActiveMobileDropdown(null);
+    if (typeof document !== 'undefined' && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+    // Set cooldown so re-hover doesn't immediately open menu during transition
+    setIsCooldownActive(true);
+    setTimeout(() => {
+      setIsCooldownActive(false);
+    }, 350);
+  }, []);
+
+  // Automatically reset menu state if pathname changes (React recommended pattern for state adjustment)
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setHoveredCategory(null);
+    setIsMobileMenuOpen(false);
+    setActiveMobileDropdown(null);
+  }
+
+  // Close on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeAllMenus();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [closeAllMenus]);
+
+  // Close desktop dropdown on click outside header
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setHoveredCategory(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -150,7 +198,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 transition-all duration-300">
+    <header ref={headerRef} className="sticky top-0 z-50 transition-all duration-300">
       
       {/* Top Contact & Location Bar with live dual-hub status */}
       <div className="bg-[#000033] text-white text-xs py-2 px-6 border-b border-white/10 select-none">
@@ -200,7 +248,12 @@ export default function Header() {
           
           {/* Logo with clean hover opacity */}
           <div className="shrink-0">
-            <Link href="/" className="flex items-center group" aria-label="Improx Tech Home">
+            <Link
+              href="/"
+              onClick={closeAllMenus}
+              className="flex items-center group"
+              aria-label="Improx Tech Home"
+            >
               <Image
                 src="/images/improx-logo.png"
                 alt="Improx Tech"
@@ -223,11 +276,20 @@ export default function Header() {
                   <li
                     key={item.title}
                     className="relative py-2 flex items-center"
-                    onMouseEnter={() => hasDropdown && setHoveredCategory(item.title)}
-                    onMouseLeave={() => hasDropdown && setHoveredCategory(null)}
+                    onMouseEnter={() => {
+                      if (!isCooldownActive && hasDropdown) {
+                        setHoveredCategory(item.title);
+                      }
+                    }}
+                    onMouseLeave={() => {
+                      if (hasDropdown) {
+                        setHoveredCategory(null);
+                      }
+                    }}
                   >
                     <Link
                       href={item.href}
+                      onClick={closeAllMenus}
                       className={`relative flex items-center gap-1.5 py-1 transition-colors ${
                         active
                           ? 'text-[#0033a0] font-semibold'
@@ -271,6 +333,7 @@ export default function Header() {
                                 <Link
                                   key={sub.name}
                                   href={sub.href}
+                                  onClick={closeAllMenus}
                                   className={`group/sub flex items-start gap-3 p-2.5 rounded-[6px] transition-all duration-150 border ${
                                     isSubActive
                                       ? 'bg-blue-50/80 border-blue-200 shadow-2xs'
@@ -322,6 +385,7 @@ export default function Header() {
                             <div className="pt-3 border-t border-slate-200 space-y-2">
                               <Link
                                 href={item.href}
+                                onClick={closeAllMenus}
                                 className="inline-flex items-center justify-between w-full text-xs font-semibold text-[#0033a0] hover:text-[#00287a] group/cta"
                               >
                                 <span>Explore Overview</span>
@@ -329,6 +393,7 @@ export default function Header() {
                               </Link>
                               <Link
                                 href="/contact"
+                                onClick={closeAllMenus}
                                 className="inline-flex items-center justify-center w-full bg-[#0033a0] hover:bg-[#00287a] text-white text-[11px] font-semibold py-2 px-3 rounded-[4px] transition-colors"
                               >
                                 Talk to an Architect
@@ -346,6 +411,7 @@ export default function Header() {
             {/* Direct CTA Button */}
             <Link
               href="/contact"
+              onClick={closeAllMenus}
               className="btn-interactive inline-flex items-center gap-2 bg-[#0033a0] hover:bg-[#00287a] text-white text-xs font-semibold px-5 py-2.5 rounded-[6px] shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all"
             >
               <span>Get in Touch</span>
@@ -382,7 +448,7 @@ export default function Header() {
                           className={`font-medium text-sm py-1 transition-colors ${
                             active ? 'text-[#0033a0] font-bold' : 'text-slate-900 hover:text-[#0033a0]'
                           }`}
-                          onClick={() => setIsMobileMenuOpen(false)}
+                          onClick={closeAllMenus}
                         >
                           {item.title}
                         </Link>
@@ -411,7 +477,7 @@ export default function Header() {
                                 <Link
                                   href={sub.href}
                                   className="flex items-center gap-2 text-xs text-slate-600 hover:text-[#0033a0] py-1.5 px-2 rounded-[4px] hover:bg-slate-50 transition-colors"
-                                  onClick={() => setIsMobileMenuOpen(false)}
+                                  onClick={closeAllMenus}
                                 >
                                   <SubIcon className="w-3.5 h-3.5 text-[#00a3e0]" />
                                   <span>{sub.name}</span>
@@ -430,7 +496,7 @@ export default function Header() {
                 <Link
                   href="/contact"
                   className="btn-interactive flex items-center justify-center w-full bg-[#0033a0] hover:bg-[#00287a] text-white font-semibold px-4 py-3 rounded-[6px] text-xs transition-colors shadow-xs"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={closeAllMenus}
                 >
                   <span>Start an Architectural Consultation</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1.5 btn-arrow" />
