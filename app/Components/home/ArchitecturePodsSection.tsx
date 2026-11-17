@@ -62,10 +62,10 @@ export default function ArchitecturePodsSection() {
         </div>
 
         {/* Editorial Layout: Interactive Capability Groups + Dynamic Visual */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           
           {/* Left Column: Interactive Pod Cards */}
-          <div className="lg:col-span-7 space-y-5">
+          <div className="lg:col-span-7 flex flex-col justify-between gap-5">
             {CAPABILITY_GROUPS.map((group, idx) => {
               const Icon = group.icon;
               const isActive = activePod === idx;
@@ -75,46 +75,48 @@ export default function ArchitecturePodsSection() {
                   key={group.title}
                   onClick={() => setActivePod(idx)}
                   onMouseEnter={() => setActivePod(idx)}
-                  className={`group bg-white p-6 sm:p-7 rounded-[6px] border transition-all duration-300 cursor-pointer space-y-3 relative ${
+                  className={`group bg-white p-6 sm:p-7 rounded-[6px] border transition-all duration-300 cursor-pointer space-y-3 relative flex-1 flex flex-col justify-between ${
                     isActive
                       ? 'border-[#0033a0] shadow-md ring-1 ring-[#0033a0]/20 -translate-y-0.5'
                       : 'border-slate-200 hover:border-[#0033a0]/60 hover:shadow-sm hover:-translate-y-0.5'
                   }`}
                 >
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`w-9 h-9 rounded-[6px] border flex items-center justify-center transition-all duration-300 ${
-                          isActive
-                            ? 'bg-[#0033a0] text-white border-[#0033a0]'
-                            : 'bg-slate-50 border-slate-200 text-[#0033a0] group-hover:bg-[#0033a0] group-hover:text-white group-hover:border-[#0033a0]'
-                        }`}
-                      >
-                        <Icon className="w-5 h-5 transition-transform group-hover:scale-110" />
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`w-9 h-9 rounded-[6px] border flex items-center justify-center transition-all duration-300 ${
+                            isActive
+                              ? 'bg-[#0033a0] text-white border-[#0033a0]'
+                              : 'bg-slate-50 border-slate-200 text-[#0033a0] group-hover:bg-[#0033a0] group-hover:text-white group-hover:border-[#0033a0]'
+                          }`}
+                        >
+                          <Icon className="w-5 h-5 transition-transform group-hover:scale-110" />
+                        </div>
+                        <h3
+                          className={`text-base sm:text-lg font-bold transition-colors ${
+                            isActive ? 'text-[#0033a0]' : 'text-slate-900 group-hover:text-[#0033a0]'
+                          }`}
+                        >
+                          {group.title}
+                        </h3>
                       </div>
-                      <h3
-                        className={`text-base sm:text-lg font-bold transition-colors ${
-                          isActive ? 'text-[#0033a0]' : 'text-slate-900 group-hover:text-[#0033a0]'
+
+                      <span
+                        className={`text-[11px] font-mono font-medium px-2 py-0.5 rounded-[4px] border transition-colors shrink-0 ${
+                          isActive
+                            ? 'bg-blue-50 text-[#0033a0] border-blue-200'
+                            : 'bg-slate-50 text-slate-500 border-slate-200 group-hover:border-blue-200 group-hover:text-[#0033a0]'
                         }`}
                       >
-                        {group.title}
-                      </h3>
+                        {group.focusBadge}
+                      </span>
                     </div>
 
-                    <span
-                      className={`text-[11px] font-mono font-medium px-2 py-0.5 rounded-[4px] border transition-colors shrink-0 ${
-                        isActive
-                          ? 'bg-blue-50 text-[#0033a0] border-blue-200'
-                          : 'bg-slate-50 text-slate-500 border-slate-200 group-hover:border-blue-200 group-hover:text-[#0033a0]'
-                      }`}
-                    >
-                      {group.focusBadge}
-                    </span>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      {group.description}
+                    </p>
                   </div>
-
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {group.description}
-                  </p>
 
                   <ul className="pt-2 border-t border-slate-100 space-y-1.5 text-xs text-slate-700">
                     {group.details.map((detail) => (
@@ -135,11 +137,11 @@ export default function ArchitecturePodsSection() {
             })}
           </div>
 
-          {/* Right Column: Interactive Image Box + Direct Communication Card */}
-          <div className="lg:col-span-5 space-y-6">
+          {/* Right Column: Interactive Image Box + Direct Communication Card (Flush bottom alignment) */}
+          <div className="lg:col-span-5 flex flex-col justify-between gap-5 h-full">
             
-            {/* Clean Visual Box with Hover Zoom & Atmosphere (AI text overlay removed) */}
-            <div className="group relative h-[320px] sm:h-[380px] w-full rounded-[6px] overflow-hidden border border-slate-200 hover:border-[#0033a0] shadow-sm hover:shadow-lg transition-all duration-500 cursor-pointer">
+            {/* Clean Visual Box with Hover Zoom & Atmosphere */}
+            <div className="group relative flex-1 min-h-[300px] w-full rounded-[6px] overflow-hidden border border-slate-200 hover:border-[#0033a0] shadow-sm hover:shadow-lg transition-all duration-500 cursor-pointer">
               <Image
                 src="/images/services/cloud-infrastructure.webp"
                 alt="Cloud architecture, network topology, and server pods"
@@ -158,8 +160,8 @@ export default function ArchitecturePodsSection() {
               </div>
             </div>
 
-            {/* Bottom Card with Hover Lift & Link Slide */}
-            <div className="group p-6 bg-white rounded-[6px] border border-slate-200 hover:border-[#0033a0] hover:shadow-md hover:-translate-y-1 transition-all duration-300 space-y-3">
+            {/* Bottom Card with Hover Lift & Link Slide — Aligned perfectly with card 3 on the left */}
+            <div className="group p-6 sm:p-7 bg-white rounded-[6px] border border-slate-200 hover:border-[#0033a0] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 space-y-3">
               <h4 className="text-sm font-bold text-slate-900 group-hover:text-[#0033a0] transition-colors">
                 Direct Engineer-to-Engineer Communication
               </h4>

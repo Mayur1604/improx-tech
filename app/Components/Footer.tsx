@@ -54,7 +54,14 @@ export default function Footer() {
                 <MapPin className="w-3.5 h-3.5 text-[#00a3e0] shrink-0 mt-0.5" />
                 <span className="text-xs leading-relaxed text-slate-300">
                   <strong className="text-white block font-semibold">{company.addresses.us.label}:</strong>
-                  {company.addresses.us.fullAddress}
+                  <a
+                    href={company.addresses.us.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white hover:underline transition-colors"
+                  >
+                    {company.addresses.us.fullAddress}
+                  </a>
                 </span>
               </div>
 
@@ -62,7 +69,14 @@ export default function Footer() {
                 <MapPin className="w-3.5 h-3.5 text-[#00a3e0] shrink-0 mt-0.5" />
                 <span className="text-xs leading-relaxed text-slate-300">
                   <strong className="text-white block font-semibold">{company.addresses.india.label}:</strong>
-                  {company.addresses.india.fullAddress}
+                  <a
+                    href={company.addresses.india.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white hover:underline transition-colors"
+                  >
+                    {company.addresses.india.fullAddress}
+                  </a>
                 </span>
               </div>
             </div>

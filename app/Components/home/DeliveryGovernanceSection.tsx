@@ -59,7 +59,14 @@ export default function DeliveryGovernanceSection() {
                 Delaware Headquarters
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                {company.addresses.us.fullAddress}
+                <a
+                  href={company.addresses.us.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#0033a0] hover:underline transition-colors"
+                >
+                  {company.addresses.us.fullAddress}
+                </a>
               </p>
               <div className="text-xs text-slate-500 pt-2 border-t border-slate-100 flex flex-wrap gap-4">
                 <span>Direct Phone: <strong className="text-slate-800">{company.formattedPhone}</strong></span>
@@ -79,7 +86,14 @@ export default function DeliveryGovernanceSection() {
                 Pune Technology Center
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                {company.addresses.india.fullAddress}
+                <a
+                  href={company.addresses.india.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#0033a0] hover:underline transition-colors"
+                >
+                  {company.addresses.india.fullAddress}
+                </a>
               </p>
               <div className="text-xs text-slate-500 pt-2 border-t border-slate-100 flex flex-wrap gap-4">
                 <span>Email: <strong className="text-slate-800">{company.email}</strong></span>

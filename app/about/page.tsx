@@ -290,8 +290,15 @@ export default function AboutPage() {
               <div className="p-6 space-y-3">
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                   <strong>{company.name}</strong><br />
-                  {company.addresses.us.street}<br />
-                  {company.addresses.us.city}, {company.addresses.us.region} {company.addresses.us.postalCode}, {company.addresses.us.country}
+                  <a
+                    href={company.addresses.us.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#0033a0] hover:underline transition-colors block"
+                  >
+                    {company.addresses.us.street}<br />
+                    {company.addresses.us.city}, {company.addresses.us.region} {company.addresses.us.postalCode}, {company.addresses.us.country}
+                  </a>
                 </p>
                 <div className="pt-3 border-t border-slate-100 text-xs text-slate-600 flex flex-wrap gap-4">
                   {company.formattedPhone && <div>Phone: <strong className="text-slate-900">{company.formattedPhone}</strong></div>}
@@ -336,8 +343,15 @@ export default function AboutPage() {
               <div className="p-6 space-y-3">
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                   <strong>{company.name} Delivery Center</strong><br />
-                  {company.addresses.india.street}<br />
-                  {company.addresses.india.city}, {company.addresses.india.region} {company.addresses.india.postalCode}, {company.addresses.india.country}
+                  <a
+                    href={company.addresses.india.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#0033a0] hover:underline transition-colors block"
+                  >
+                    {company.addresses.india.street}<br />
+                    {company.addresses.india.city}, {company.addresses.india.region} {company.addresses.india.postalCode}, {company.addresses.india.country}
+                  </a>
                 </p>
                 <div className="pt-3 border-t border-slate-100 text-xs text-slate-600 flex flex-wrap gap-4">
                   {company.email && <div>Inquiries: <strong className="text-slate-900">{company.email}</strong></div>}

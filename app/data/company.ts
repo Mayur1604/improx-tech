@@ -13,6 +13,7 @@ export interface OfficeAddress {
   postalCode: string;
   country: string;
   fullAddress: string;
+  mapsUrl?: string;
 }
 
 export interface CompanyInformation {
@@ -63,15 +64,17 @@ export const company: CompanyInformation = {
       postalCode: '19958',
       country: 'United States',
       fullAddress: '16192 Coastal Highway, Lewes, DE 19958, United States',
+      mapsUrl: 'https://maps.google.com/?q=16192+Coastal+Highway,+Lewes,+DE+19958,+United+States',
     },
     india: {
       label: 'India Delivery Center',
-      street: 'S.No. 44/5, Anand Park, B-8',
+      street: 'Maruti Millennium Tower, Baner Annex, Baner',
       city: 'Pune',
       region: 'Maharashtra',
-      postalCode: '411061',
+      postalCode: '411045',
       country: 'India',
-      fullAddress: 'S.No. 44/5, Anand Park, B-8, Pimple Gurav, Pune, Maharashtra 411061, India',
+      fullAddress: 'Maruti Millennium Tower, Baner Annex, Baner, Pune, Maharashtra 411045, India',
+      mapsUrl: 'https://maps.google.com/?q=Maruti+Millennium+Tower,+Baner+Annex,+Baner,+Pune,+Maharashtra+411045',
     },
   },
   // Unverified data strictly set to null

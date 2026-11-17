@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import TechCarousel from './TechCarousel';
 
 export default function HeroSection() {
@@ -55,22 +55,6 @@ export default function HeroSection() {
             >
               Explore Our Services
             </Link>
-          </div>
-
-          {/* Verified Engineering Indicators */}
-          <div className="pt-6 border-t border-white/15 flex flex-wrap items-center gap-6 text-xs text-slate-300">
-            <div className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Dual-Hub Delivery (US &amp; India)</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>100% Client Code &amp; IP Ownership</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Zero Vendor Lock-In</span>
-            </div>
           </div>
 
         </div>
