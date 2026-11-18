@@ -38,18 +38,18 @@ export default function InsightsSection() {
           
           {/* Featured Article (Horizontal Split) */}
           {featuredArticle && (
-            <div className="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-[6px] overflow-hidden card-hover flex flex-col justify-between">
+            <div className="group lg:col-span-7 bg-slate-50 border border-slate-200 rounded-[6px] overflow-hidden card-hover flex flex-col justify-between">
               <div className="relative h-64 sm:h-72 w-full bg-slate-900 overflow-hidden">
                 <Image
                   src={featuredArticle.image}
                   alt={featuredArticle.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 55vw"
-                  className="object-cover card-image-zoom"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
                 <div className="absolute top-4 left-4">
-                  <span className="px-2.5 py-1 bg-[#000033] text-[#00a3e0] text-xs font-semibold uppercase tracking-wider rounded-[6px] border border-white/20">
+                  <span className="text-[#00a3e0] text-xs font-semibold uppercase tracking-wider drop-shadow-md">
                     Featured
                   </span>
                 </div>

@@ -16,18 +16,26 @@ const fontSans = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://improxtech.com'),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default: `${company.name} | Enterprise Software & Cloud Engineering`,
     template: `%s | ${company.name}`,
   },
   description:
-    'Improx Tech designs and builds custom software, cloud infrastructure, and data platforms for growing and established businesses.',
+    'Improx Tech engineers custom software, scalable cloud architecture, and data platforms for growing and established businesses. Delaware governance with engineering velocity in Pune.',
   keywords: [
     'Custom Software Development',
-    'Cloud Migration',
-    'Product Engineering',
-    'Data Platforms',
-    'Enterprise Applications',
+    'Enterprise Software Engineering',
+    'Cloud Migration & DevSecOps',
+    'Kubernetes Consulting',
+    'Full-Stack Web Development',
+    'Product Engineering Services',
+    'TypeScript & Go Development',
+    'Data Engineering & RAG Pipelines',
+    'Software Consulting Delaware',
+    'Software Development Company Pune',
     'Improx Tech',
   ],
   authors: [{ name: company.name }],
@@ -40,7 +48,22 @@ export const metadata: Metadata = {
     siteName: company.name,
     title: `${company.name} | Enterprise Software & Cloud Engineering`,
     description:
-      'Improx Tech designs and builds custom software, cloud infrastructure, and data platforms for growing and established businesses.',
+      'Improx Tech engineers custom software, scalable cloud architecture, and data platforms for growing and established businesses. Delaware governance with engineering velocity in Pune.',
+    images: [
+      {
+        url: '/images/hero/hero-software-engineering.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Improx Tech Enterprise Software & Cloud Engineering',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${company.name} | Enterprise Software & Cloud Engineering`,
+    description:
+      'Custom software engineering, cloud architecture, and modern data platforms with full client source code ownership.',
+    images: ['/images/hero/hero-software-engineering.webp'],
   },
   robots: {
     index: true,
@@ -66,12 +89,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const verifiedSocials = Object.values(company.socialLinks).filter(
+    (url): url is string => Boolean(url)
+  );
+
   // Organization JSON-LD generated strictly from verified company data
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Corporation',
     name: company.name,
     legalName: company.legalName,
+    url: 'https://improxtech.com',
+    logo: 'https://improxtech.com/images/hero/hero-software-engineering.webp',
+    sameAs: verifiedSocials,
+    knowsAbout: [
+      'Custom Software Development',
+      'Cloud Architecture',
+      'Kubernetes & Docker Containerization',
+      'Microservices Architecture',
+      'TypeScript & Go Systems',
+      'PostgreSQL & Distributed Databases',
+      'Data Engineering & ETL Pipelines',
+      'Agentic AI & Retrieval-Augmented Generation',
+    ],
     parentOrganization: {
       '@type': 'Organization',
       name: company.parentGroup,

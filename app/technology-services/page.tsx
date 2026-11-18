@@ -95,21 +95,21 @@ export default function TechnologyServicesPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative h-64 sm:h-80 w-full rounded-[6px] overflow-hidden shadow-sm border border-slate-300 bg-slate-900">
+            <div className="group lg:col-span-5 relative h-64 sm:h-80 w-full rounded-[6px] overflow-hidden shadow-sm hover:shadow-md border border-slate-300 hover:border-[#0033a0] bg-slate-900 transition-all duration-300">
               <Image
                 src="/images/services/cloud-infrastructure.webp"
                 alt="Technology Services"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#000033]/90 via-[#000033]/20 to-transparent" />
               <div className="absolute bottom-4 left-6 right-6">
-                <span className="px-2.5 py-1 rounded-[6px] bg-[#000033]/90 text-[11px] font-bold text-[#00a3e0] border border-white/20 uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#00a3e0] uppercase tracking-wider drop-shadow-md block">
                   CLOUD &amp; DEVSECOPS
                 </span>
-                <div className="text-sm font-bold text-white mt-1">Multi-Region Kubernetes, Terraform IaC &amp; FinOps</div>
+                <div className="text-sm font-bold text-white mt-1 drop-shadow-md">Multi-Region Kubernetes, Terraform IaC &amp; FinOps</div>
               </div>
             </div>
           </div>
@@ -215,28 +215,28 @@ export default function TechnologyServicesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="p-6 rounded-[6px] border border-slate-300 bg-[#f8fafd] space-y-2 hover:border-[#0033a0] transition-colors">
-              <div className="text-xs font-mono text-[#0033a0] font-bold">01 / AUDIT &amp; FINOPS</div>
-              <h4 className="text-sm font-bold text-gray-900">Workload Profiling</h4>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="border-t-2 border-[#0033a0] pt-5 space-y-2 group">
+              <span className="text-xs font-mono text-[#0033a0] font-bold block">01 / AUDIT &amp; FINOPS</span>
+              <h4 className="text-sm font-bold text-gray-900 group-hover:text-[#0033a0] transition-colors">Workload Profiling</h4>
               <p className="text-xs text-gray-600 leading-relaxed">Inventorying dependencies, network throughput, and establishing TCO cost models.</p>
             </div>
 
-            <div className="p-6 rounded-[6px] border border-slate-300 bg-[#f8fafd] space-y-2 hover:border-[#0033a0] transition-colors">
-              <div className="text-xs font-mono text-[#0033a0] font-bold">02 / FOUNDATION</div>
-              <h4 className="text-sm font-bold text-gray-900">Landing Zone Setup</h4>
+            <div className="border-t-2 border-[#0033a0] pt-5 space-y-2 group">
+              <span className="text-xs font-mono text-[#0033a0] font-bold block">02 / FOUNDATION</span>
+              <h4 className="text-sm font-bold text-gray-900 group-hover:text-[#0033a0] transition-colors">Landing Zone Setup</h4>
               <p className="text-xs text-gray-600 leading-relaxed">Terraform IaC deployment of VPCs, IAM boundary policies, transit gateways, and KMS keys.</p>
             </div>
 
-            <div className="p-6 rounded-[6px] border border-slate-300 bg-[#f8fafd] space-y-2 hover:border-[#0033a0] transition-colors">
-              <div className="text-xs font-mono text-[#0033a0] font-bold">03 / DUAL-WRITE</div>
-              <h4 className="text-sm font-bold text-gray-900">Replication &amp; Cutover</h4>
+            <div className="border-t-2 border-[#0033a0] pt-5 space-y-2 group">
+              <span className="text-xs font-mono text-[#0033a0] font-bold block">03 / DUAL-WRITE</span>
+              <h4 className="text-sm font-bold text-gray-900 group-hover:text-[#0033a0] transition-colors">Replication &amp; Cutover</h4>
               <p className="text-xs text-gray-600 leading-relaxed">Continuous CDC database synchronization, canary traffic shifting, and verified cutover.</p>
             </div>
 
-            <div className="p-6 rounded-[6px] border border-slate-300 bg-[#f8fafd] space-y-2 hover:border-[#0033a0] transition-colors">
-              <div className="text-xs font-mono text-[#0033a0] font-bold">04 / OPTIMIZATION</div>
-              <h4 className="text-sm font-bold text-gray-900">24/7 Managed SRE</h4>
+            <div className="border-t-2 border-[#0033a0] pt-5 space-y-2 group">
+              <span className="text-xs font-mono text-[#0033a0] font-bold block">04 / OPTIMIZATION</span>
+              <h4 className="text-sm font-bold text-gray-900 group-hover:text-[#0033a0] transition-colors">24/7 Managed SRE</h4>
               <p className="text-xs text-gray-600 leading-relaxed">Datadog/Prometheus monitoring, automated cluster autoscaling, and quarterly FinOps audits.</p>
             </div>
           </div>

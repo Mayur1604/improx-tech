@@ -5,6 +5,9 @@ import { ChevronRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Privacy Policy | Improx Tech',
   description: 'Privacy policy and data governance practices of Improx Tech.',
+  alternates: {
+    canonical: 'https://improxtech.com/privacy-policy',
+  },
 };
 
 export default function PrivacyPolicyPage() {

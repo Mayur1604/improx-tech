@@ -79,18 +79,18 @@ export default function CapabilitiesSection() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative h-[260px] sm:h-[300px] w-full rounded-[6px] overflow-hidden border border-slate-200 bg-slate-100 shadow-sm">
+            <div className="group relative h-[260px] sm:h-[300px] w-full rounded-[6px] overflow-hidden border border-slate-200 hover:border-[#0033a0] bg-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
               <Image
                 src="/images/services/custom-software.webp"
                 alt="Software engineering and application architecture"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-[6px] bg-black/40 backdrop-blur-xs text-xs font-mono text-[#00a3e0] border border-white/20">
-                  <Code2 className="w-3.5 h-3.5" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[#00a3e0] drop-shadow-md">
+                  <Code2 className="w-3.5 h-3.5 text-[#00a3e0]" />
                   <span>Production Code &amp; Clean Architecture</span>
                 </div>
               </div>

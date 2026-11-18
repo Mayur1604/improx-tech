@@ -166,12 +166,12 @@ export default function ServiceDetailView({ service, siblingServices }: ServiceD
           <div className="lg:col-span-8 space-y-14">
             
             {/* Discipline Hero Visual (Sharp-Edged) */}
-            <div className="relative h-64 sm:h-80 w-full rounded-[6px] overflow-hidden shadow-sm bg-slate-900 border border-slate-300">
+            <div className="group relative h-64 sm:h-80 w-full rounded-[6px] overflow-hidden shadow-sm hover:shadow-md bg-slate-900 border border-slate-300 hover:border-[#0033a0] transition-all duration-300">
               <Image
                 src={categoryImageMap[service.category] || '/images/services/custom-software.webp'}
                 alt={service.title}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-104"
                 sizes="(max-width: 1024px) 100vw, 65vw"
                 priority
               />
@@ -183,7 +183,7 @@ export default function ServiceDetailView({ service, siblingServices }: ServiceD
                   </span>
                   <div className="text-xl font-bold text-white mt-0.5">{service.title} Engineering</div>
                 </div>
-                <span className="px-3 py-1 bg-white/10 text-white text-xs border border-white/20 font-mono">
+                <span className="text-slate-200 text-xs font-mono drop-shadow-md">
                   Delaware &amp; Pune Delivery
                 </span>
               </div>
@@ -204,131 +204,169 @@ export default function ServiceDetailView({ service, siblingServices }: ServiceD
               </div>
             </div>
 
-            {/* Key Capabilities Grid (Sharp Cards) */}
-            <div className="space-y-6">
-              <div className="border-b border-slate-200 pb-3">
-                <h3 className="text-xl sm:text-2xl font-bold text-[#000033]">
-                  Core Technical Capabilities &amp; System Deliverables
+            {/* Key Capabilities (Clean Open Architectural List — No Box Fatigue) */}
+            <div className="space-y-6 pt-4 border-t border-slate-200">
+              <div>
+                <span className="text-xs font-bold tracking-wider uppercase text-[#0033a0] block mb-1">
+                  Core Capabilities
+                </span>
+                <h3 className="text-2xl font-bold text-[#000033]">
+                  Technical Specifications &amp; Deliverables
                 </h3>
               </div>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {service.keyCapabilities.map((cap) => (
-                  <div 
-                    key={cap.title}
-                    className="p-6 rounded-[6px] bg-[#f8fafd] border border-slate-300 hover:border-[#0033a0] transition-colors space-y-2"
-                  >
-                    <div className="w-2 h-2 bg-[#0033a0] mb-2" />
-                    <h4 className="text-base font-bold text-gray-900">{cap.title}</h4>
-                    <p className="text-xs text-gray-600 leading-relaxed">{cap.description}</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7 pt-2">
+                {service.keyCapabilities.map((cap, i) => (
+                  <div key={cap.title} className="space-y-2 group">
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs font-mono font-bold text-[#0033a0] bg-blue-50/80 border border-blue-200/60 px-2 py-0.5 rounded-[4px] shrink-0">
+                        0{i + 1}
+                      </span>
+                      <h4 className="text-base font-bold text-gray-900 group-hover:text-[#0033a0] transition-colors">
+                        {cap.title}
+                      </h4>
+                    </div>
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed pl-10">
+                      {cap.description}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Execution Lifecycle (Horizontal Steps) */}
-            <div className="space-y-6">
-              <div className="border-b border-slate-200 pb-3">
-                <span className="text-xs font-bold tracking-wider uppercase text-[#0033a0]">Execution Framework</span>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#000033] mt-1">
+            {/* Execution Lifecycle (Horizontal Connected Stepper — No Box Cards) */}
+            <div className="space-y-6 pt-6 border-t border-slate-200">
+              <div>
+                <span className="text-xs font-bold tracking-wider uppercase text-[#0033a0] block mb-1">
+                  Execution Framework
+                </span>
+                <h3 className="text-2xl font-bold text-[#000033]">
                   Sprint Cadence &amp; Quality Milestones
                 </h3>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {service.workflow.map((item) => (
-                  <div key={item.step} className="p-6 rounded-[6px] bg-[#f8fafd] border border-slate-300 flex gap-4">
-                    <span className="text-3xl font-extrabold text-[#0033a0] shrink-0 font-mono">{item.step}</span>
-                    <div className="space-y-1">
-                      <h5 className="font-bold text-gray-900 text-sm">{item.title}</h5>
-                      <p className="text-xs text-gray-600 leading-relaxed">{item.description}</p>
+              <div className="relative pt-4">
+                {/* Desktop Connecting Flow Line */}
+                <div className="hidden md:block absolute top-10 left-6 right-6 h-0.5 bg-slate-200 z-0" />
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 relative z-10">
+                  {service.workflow.map((item) => (
+                    <div key={item.step} className="space-y-3 group">
+                      <div className="w-12 h-12 rounded-[6px] bg-[#000033] text-[#00a3e0] flex items-center justify-center font-mono font-bold text-base shadow-xs group-hover:bg-[#0033a0] group-hover:text-white transition-colors">
+                        {item.step}
+                      </div>
+                      <div className="space-y-1">
+                        <h5 className="font-bold text-gray-900 text-sm group-hover:text-[#0033a0] transition-colors">
+                          {item.title}
+                        </h5>
+                        <p className="text-xs text-gray-600 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* TANGIBLE DELIVERABLES & CODE ARTIFACTS MATRIX */}
-            <div className="space-y-6">
-              <div className="border-b border-slate-200 pb-3">
-                <span className="text-xs font-bold tracking-wider uppercase text-[#0033a0]">Tangible Outputs</span>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#000033] mt-1">
+            {/* TANGIBLE DELIVERABLES (Clean Divided Spec Matrix — No Floating Boxes) */}
+            <div className="space-y-6 pt-6 border-t border-slate-200">
+              <div>
+                <span className="text-xs font-bold tracking-wider uppercase text-[#0033a0] block mb-1">
+                  Tangible Outputs
+                </span>
+                <h3 className="text-2xl font-bold text-[#000033]">
                   Client Handovers &amp; Production Code Artifacts
                 </h3>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-5 border border-slate-300 rounded-[6px] bg-white space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-[#0033a0]">
+              <div className="divide-y divide-slate-200 border-y border-slate-200">
+                <div className="py-4 flex flex-col sm:flex-row sm:items-start gap-4 group hover:bg-slate-50/70 transition-colors px-3 rounded-[4px]">
+                  <div className="w-9 h-9 rounded-[6px] bg-blue-50 text-[#0033a0] flex items-center justify-center shrink-0">
                     <FileCode className="w-4 h-4" />
-                    <span>Full Source Code &amp; CI/CD Pipelines</span>
                   </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    Clean TypeScript / Go / Python codebases with automated GitHub Actions/GitLab CI pipelines, unit test suites, and 100% IP assignment.
-                  </p>
+                  <div className="space-y-1 flex-1">
+                    <div className="text-sm font-bold text-gray-900 group-hover:text-[#0033a0] transition-colors">
+                      Full Source Code &amp; CI/CD Pipelines
+                    </div>
+                    <p className="text-xs text-gray-600 leading-relaxed">
+                      Clean TypeScript / Go / Python codebases with automated GitHub Actions/GitLab CI pipelines, unit test suites, and 100% IP assignment.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="p-5 border border-slate-300 rounded-[6px] bg-white space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-[#0033a0]">
+                <div className="py-4 flex flex-col sm:flex-row sm:items-start gap-4 group hover:bg-slate-50/70 transition-colors px-3 rounded-[4px]">
+                  <div className="w-9 h-9 rounded-[6px] bg-blue-50 text-[#0033a0] flex items-center justify-center shrink-0">
                     <Server className="w-4 h-4" />
-                    <span>Infrastructure as Code (IaC)</span>
                   </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    Reproducible Terraform modules, Kubernetes manifests, and Helm charts configured for multi-region failover on AWS, Azure, or GCP.
-                  </p>
+                  <div className="space-y-1 flex-1">
+                    <div className="text-sm font-bold text-gray-900 group-hover:text-[#0033a0] transition-colors">
+                      Infrastructure as Code (IaC)
+                    </div>
+                    <p className="text-xs text-gray-600 leading-relaxed">
+                      Reproducible Terraform modules, Kubernetes manifests, and Helm charts configured for multi-region failover on AWS, Azure, or GCP.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="p-5 border border-slate-300 rounded-[6px] bg-white space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-[#0033a0]">
+                <div className="py-4 flex flex-col sm:flex-row sm:items-start gap-4 group hover:bg-slate-50/70 transition-colors px-3 rounded-[4px]">
+                  <div className="w-9 h-9 rounded-[6px] bg-blue-50 text-[#0033a0] flex items-center justify-center shrink-0">
                     <ShieldCheck className="w-4 h-4" />
-                    <span>Security Audit &amp; SBOM Reports</span>
                   </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    Comprehensive static analysis (SAST/DAST) reports, third-party dependency Software Bill of Materials (SBOM), and SOC 2 audit readiness evidence.
-                  </p>
+                  <div className="space-y-1 flex-1">
+                    <div className="text-sm font-bold text-gray-900 group-hover:text-[#0033a0] transition-colors">
+                      Security Audit &amp; SBOM Reports
+                    </div>
+                    <p className="text-xs text-gray-600 leading-relaxed">
+                      Comprehensive static analysis (SAST/DAST) reports, third-party dependency Software Bill of Materials (SBOM), and SOC 2 audit readiness evidence.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="p-5 border border-slate-300 rounded-[6px] bg-white space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-[#0033a0]">
+                <div className="py-4 flex flex-col sm:flex-row sm:items-start gap-4 group hover:bg-slate-50/70 transition-colors px-3 rounded-[4px]">
+                  <div className="w-9 h-9 rounded-[6px] bg-blue-50 text-[#0033a0] flex items-center justify-center shrink-0">
                     <Lock className="w-4 h-4" />
-                    <span>SRE Runbooks &amp; Architecture Decision Records</span>
                   </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    Exhaustive operational incident runbooks, disaster recovery playbooks, and Architecture Decision Records (ADRs) documenting every design choice.
-                  </p>
+                  <div className="space-y-1 flex-1">
+                    <div className="text-sm font-bold text-gray-900 group-hover:text-[#0033a0] transition-colors">
+                      SRE Runbooks &amp; Architecture Decision Records
+                    </div>
+                    <p className="text-xs text-gray-600 leading-relaxed">
+                      Exhaustive operational incident runbooks, disaster recovery playbooks, and Architecture Decision Records (ADRs) documenting every design choice.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* FREQUENTLY ASKED TECHNICAL QUESTIONS */}
-            <div className="space-y-6 pt-4">
-              <div className="border-b border-slate-200 pb-3">
-                <span className="text-xs font-bold tracking-wider uppercase text-[#0033a0]">Architecture FAQ</span>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#000033] mt-1">
+            {/* FREQUENTLY ASKED TECHNICAL QUESTIONS (Clean Seamless Accordion) */}
+            <div className="space-y-6 pt-6 border-t border-slate-200">
+              <div>
+                <span className="text-xs font-bold tracking-wider uppercase text-[#0033a0] block mb-1">
+                  Architecture FAQ
+                </span>
+                <h3 className="text-2xl font-bold text-[#000033]">
                   Frequently Asked Technical Questions
                 </h3>
               </div>
 
-              <div className="space-y-3">
+              <div className="divide-y divide-slate-200 border-y border-slate-200">
                 {faqs.map((faq, idx) => {
                   const isOpen = openFaq === idx;
                   return (
-                    <div 
-                      key={idx}
-                      className="border border-slate-300 rounded-[6px] bg-[#f8fafd] overflow-hidden"
-                    >
+                    <div key={idx} className="py-3">
                       <button
                         onClick={() => setOpenFaq(isOpen ? null : idx)}
-                        className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm text-[#000033] hover:text-[#0033a0] transition-colors"
+                        className="w-full py-2 text-left flex items-center justify-between gap-4 font-bold text-sm text-[#000033] hover:text-[#0033a0] transition-colors"
                       >
-                        <span className="flex items-center gap-2">
+                        <span className="flex items-center gap-2.5">
                           <HelpCircle className="w-4 h-4 text-[#0033a0] shrink-0" />
                           <span>{faq.q}</span>
                         </span>
-                        <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${isOpen ? 'rotate-180 text-[#0033a0]' : ''}`} />
                       </button>
                       {isOpen && (
-                        <div className="p-5 pt-0 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-slate-200 bg-white">
+                        <div className="pt-2 pb-3 pl-6 text-xs sm:text-sm text-gray-600 leading-relaxed">
                           {faq.a}
                         </div>
                       )}
@@ -340,84 +378,86 @@ export default function ServiceDetailView({ service, siblingServices }: ServiceD
 
           </div>
 
-          {/* Right Sidebar (Sharp Rectangular Cards) */}
-          <div className="lg:col-span-4 space-y-8">
+          {/* Right Sidebar (Streamlined Cohesive Console) */}
+          <div className="lg:col-span-4 space-y-6">
             
-            {/* Tech Stack Card */}
-            <div className="p-7 rounded-[6px] bg-[#f8fafd] border border-slate-300 space-y-4 shadow-xs">
-              <h4 className="font-bold text-gray-900 text-xs tracking-wider uppercase text-[#0033a0]">
-                Technologies &amp; Frameworks
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {service.technologies.map((tech) => (
-                  <span 
-                    key={tech} 
-                    className="px-3 py-1 rounded-[6px] bg-white border border-slate-300 text-gray-800 text-xs font-semibold shadow-xs font-mono"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Measurable Benefits Card */}
-            <div className="p-7 rounded-[6px] bg-[#f8fafd] border border-slate-300 space-y-4 shadow-xs">
-              <h4 className="font-bold text-gray-900 text-xs tracking-wider uppercase text-[#0033a0]">
-                Measurable Business Outcomes
-              </h4>
-              <ul className="space-y-3">
-                {service.benefits.map((b, i) => (
-                  <li key={i} className="flex items-start gap-3 text-xs sm:text-sm text-gray-700">
-                    <CheckCircle2 className="w-4 h-4 text-[#0033a0] shrink-0 mt-0.5" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Sibling Services Navigation */}
-            <div className="p-7 rounded-[6px] bg-[#f8fafd] border border-slate-300 space-y-4 shadow-xs">
-              <h4 className="font-bold text-gray-900 text-xs tracking-wider uppercase text-gray-500">
-                Related {service.category} Disciplines
-              </h4>
-              <ul className="space-y-2.5">
-                {siblingServices.map((sibling) => (
-                  <li key={sibling.title}>
-                    <Link
-                      href={sibling.href}
-                      className="flex items-center justify-between text-xs sm:text-sm text-gray-700 hover:text-[#0033a0] py-1.5 border-b border-slate-200 last:border-b-0 transition-colors group"
+            {/* Unified Architectural Console Panel */}
+            <div className="rounded-[6px] border border-slate-200 bg-white p-6 space-y-6 shadow-xs divide-y divide-slate-100">
+              
+              {/* Tech Stack */}
+              <div className="space-y-3">
+                <h4 className="font-bold text-xs tracking-wider uppercase text-[#0033a0]">
+                  Technologies &amp; Frameworks
+                </h4>
+                <div className="flex flex-wrap gap-1.5">
+                  {service.technologies.map((tech) => (
+                    <span 
+                      key={tech} 
+                      className="px-2.5 py-1 rounded-[4px] bg-slate-100 text-slate-800 text-xs font-mono font-medium"
                     >
-                      <span className="truncate">{sibling.title}</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0033a0] group-hover:translate-x-0.5 transition-all" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Measurable Benefits */}
+              <div className="space-y-3 pt-6">
+                <h4 className="font-bold text-xs tracking-wider uppercase text-[#0033a0]">
+                  Measurable Business Outcomes
+                </h4>
+                <ul className="space-y-2.5">
+                  {service.benefits.map((b, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-xs text-slate-700">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#0033a0] shrink-0 mt-0.5" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Sibling Services Navigation */}
+              <div className="space-y-3 pt-6">
+                <h4 className="font-bold text-xs tracking-wider uppercase text-slate-500">
+                  Related {service.category} Disciplines
+                </h4>
+                <ul className="space-y-2">
+                  {siblingServices.map((sibling) => (
+                    <li key={sibling.title}>
+                      <Link
+                        href={sibling.href}
+                        className="flex items-center justify-between text-xs text-slate-700 hover:text-[#0033a0] py-1 transition-colors group"
+                      >
+                        <span className="truncate">{sibling.title}</span>
+                        <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#0033a0] group-hover:translate-x-0.5 transition-all" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Contractual Guarantee */}
+              <div className="pt-6 space-y-2">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900">
+                  <ShieldCheck className="w-4 h-4 text-[#0033a0]" />
+                  <span>Delaware Corporate Governance</span>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  US MSA governance, Delaware legal protection, and 100% intellectual property ownership assignment.
+                </p>
+              </div>
+
             </div>
 
-            {/* Contractual Guarantee Box */}
-            <div className="p-7 rounded-[6px] bg-slate-50 border border-slate-300 space-y-3">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-900">
-                <ShieldCheck className="w-4 h-4 text-[#0033a0]" />
-                <span>Delaware Contractual Guarantee</span>
-              </div>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                Backed by our US corporate headquarters in Lewes, Delaware. Full MSA legal protection, defensible security controls, and zero IP risks.
-              </p>
-              <div className="pt-2 text-[11px] font-mono text-gray-500">
-                US Direct: +1 (407) 900-0208
-              </div>
-            </div>
-
-            {/* Contact Support Box */}
-            <div className="p-8 rounded-[6px] bg-[#000033] text-white space-y-4">
-              <h4 className="text-lg font-bold text-white">Need Architectural Scoping?</h4>
+            {/* Direct Action Card */}
+            <div className="p-7 rounded-[6px] bg-[#000033] text-white space-y-3">
+              <h4 className="text-base font-bold text-white">Need Architectural Scoping?</h4>
               <p className="text-xs text-slate-300 leading-relaxed">
-                Connect with our senior engineering directors to review your architectural requirements and receive a milestone delivery proposal.
+                Connect with our senior technical leads to review your requirements and receive a structured delivery roadmap.
               </p>
               <Link
                 href="/contact"
-                className="block text-center w-full bg-[#0033a0] hover:bg-[#00287a] text-white font-semibold py-3.5 rounded-[6px] text-xs transition-colors shadow-sm"
+                className="block text-center w-full bg-[#0033a0] hover:bg-[#00287a] text-white font-semibold py-3 rounded-[6px] text-xs transition-colors shadow-sm"
               >
                 Schedule Architecture Call
               </Link>

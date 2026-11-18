@@ -31,9 +31,37 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const postUrl = `https://improxtech.com/blog/${slug}`;
+
   return {
     title: `${post.title} | Improx Tech Research`,
     description: post.summary,
+    alternates: {
+      canonical: postUrl,
+    },
+    openGraph: {
+      type: 'article',
+      url: postUrl,
+      title: post.title,
+      description: post.summary,
+      publishedTime: post.date,
+      authors: [post.author],
+      tags: post.tags,
+      images: [
+        {
+          url: post.image,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.summary,
+      images: [post.image],
+    },
   };
 }
 
@@ -45,12 +73,75 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
+  const postUrl = `https://improxtech.com/blog/${slug}`;
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: post.title,
+    description: post.summary,
+    image: post.image.startsWith('http') ? post.image : `https://improxtech.com${post.image}`,
+    datePublished: post.date,
+    author: {
+      '@type': 'Organization',
+      name: post.author,
+      url: 'https://improxtech.com',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Improx Tech',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://improxtech.com/images/hero/hero-software-engineering.webp',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl,
+    },
+    keywords: post.tags.join(', '),
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://improxtech.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Insights & Research',
+        item: 'https://improxtech.com/blog',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: postUrl,
+      },
+    ],
+  };
+
   const relatedPosts = blogPosts
     .filter((p) => p.slug !== post.slug)
     .slice(0, 3);
 
   return (
     <div className="bg-white text-gray-900 min-h-screen selection:bg-[#0033a0] selection:text-white">
+      {/* Search Engine Rich Snippet Schemas */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       
       {/* ================= LIGHT EDITORIAL SUBPAGE HEADER ================= */}
       <section className="bg-slate-50 border-b border-slate-200 py-10 lg:py-14">
@@ -109,12 +200,12 @@ export default async function BlogPostPage({ params }: PageProps) {
           <article className="lg:col-span-8 space-y-10">
             
             {/* Article Local Hero Image */}
-            <div className="relative h-64 sm:h-80 lg:h-96 w-full rounded-[6px] overflow-hidden shadow-sm bg-slate-900 border border-slate-300">
+            <div className="group relative h-64 sm:h-80 lg:h-96 w-full rounded-[6px] overflow-hidden shadow-sm hover:shadow-md bg-slate-900 border border-slate-300 hover:border-[#0033a0] transition-all duration-300">
               <Image
                 src={post.image}
                 alt={post.title}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-103"
                 sizes="(max-width: 1024px) 100vw, 65vw"
                 priority
               />

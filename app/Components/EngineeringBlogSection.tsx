@@ -110,7 +110,7 @@ export default function EngineeringBlogSection({
 
         {/* Featured Story */}
         {featuredPost && (
-          <div className="bg-white border border-slate-200 rounded-[6px] shadow-sm hover:border-slate-300 transition-colors grid grid-cols-1 lg:grid-cols-12 overflow-hidden card-hover">
+          <div className="group bg-white border border-slate-200 rounded-[6px] shadow-sm hover:border-slate-300 transition-colors grid grid-cols-1 lg:grid-cols-12 overflow-hidden card-hover">
             
             {/* Left Image Viewport */}
             <div className="lg:col-span-6 relative min-h-[280px] sm:min-h-[340px] bg-slate-900 overflow-hidden">
@@ -118,12 +118,12 @@ export default function EngineeringBlogSection({
                 src={featuredPost.image}
                 alt={featuredPost.title}
                 fill
-                className="object-cover card-image-zoom"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#000033]/85 via-transparent to-transparent" />
               <div className="absolute top-4 left-4">
-                <span className="px-2.5 py-1 bg-[#000033] text-[#00a3e0] text-xs font-semibold uppercase tracking-wider rounded-[6px] border border-white/20">
+                <span className="text-[#00a3e0] text-xs font-semibold uppercase tracking-wider drop-shadow-md">
                   Featured
                 </span>
               </div>
@@ -201,7 +201,7 @@ export default function EngineeringBlogSection({
           {gridPosts.map((post) => (
             <div 
               key={post.slug}
-              className="bg-white border border-slate-200 rounded-[6px] overflow-hidden shadow-xs hover:border-slate-300 transition-all flex flex-col justify-between card-hover"
+              className="group bg-white border border-slate-200 rounded-[6px] overflow-hidden shadow-xs hover:border-slate-300 transition-all flex flex-col justify-between card-hover"
             >
               <div>
                 <div className="relative h-44 w-full bg-slate-900 overflow-hidden">
@@ -209,12 +209,12 @@ export default function EngineeringBlogSection({
                     src={post.image}
                     alt={post.title}
                     fill
-                    className="object-cover card-image-zoom"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-3">
-                    <span className="px-2 py-0.5 bg-[#000033] text-[#00a3e0] text-[10px] font-semibold uppercase tracking-wider rounded-[6px] border border-white/20">
+                    <span className="text-[#00a3e0] text-xs font-semibold uppercase tracking-wider drop-shadow-md">
                       {post.category}
                     </span>
                   </div>

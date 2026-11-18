@@ -6,8 +6,6 @@ import Link from 'next/link';
 import { 
   ChevronLeft, 
   ChevronRight, 
-  Pause, 
-  Play, 
   ArrowRight, 
   Layers, 
   Cloud, 
@@ -202,63 +200,18 @@ export default function EngineeringCarouselSection() {
     >
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Section Header with Carousel Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="max-w-2xl">
-            {/* Section Kicker: Plain text with hover effect */}
-            <p className="text-xs uppercase tracking-wider font-semibold text-[#0033a0] hover:text-[#00287a] transition-colors duration-200 cursor-default mb-2 inline-block">
-              Engineering in Practice
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-tight mb-3">
-              Architecting modern software across mission-critical domains.
-            </h2>
-            <p className="text-base text-slate-600 leading-relaxed">
-              Explore the production architectures, cloud infrastructure, and data platforms engineered by our dual-hub technical teams.
-            </p>
-          </div>
-
-          {/* Interactive Navigation Controls (Desktop & Mobile) */}
-          <div className="flex items-center gap-3 shrink-0 self-start md:self-auto">
-            {/* Slide Counter */}
-            <div className="px-3 py-1.5 rounded-[6px] bg-slate-100 border border-slate-200 text-xs font-mono font-medium text-slate-700">
-              <span className="text-[#0033a0] font-bold">0{currentIndex + 1}</span>
-              <span className="text-slate-400 mx-1">/</span>
-              <span>0{totalSlides}</span>
-            </div>
-
-            {/* Play/Pause Button */}
-            <button
-              type="button"
-              onClick={() => setIsPaused(!isPaused)}
-              className="w-10 h-10 rounded-[6px] border border-slate-200 bg-white hover:border-[#0033a0] hover:text-[#0033a0] transition-colors flex items-center justify-center text-slate-600 cursor-pointer shadow-xs"
-              title={isPaused ? 'Resume autoplay' : 'Pause autoplay'}
-              aria-label={isPaused ? 'Resume autoplay' : 'Pause autoplay'}
-            >
-              {isPaused ? <Play className="w-4 h-4 ml-0.5" /> : <Pause className="w-4 h-4" />}
-            </button>
-
-            {/* Previous Button */}
-            <button
-              type="button"
-              onClick={prevSlide}
-              className="w-10 h-10 rounded-[6px] border border-slate-200 bg-white hover:border-[#0033a0] hover:bg-[#0033a0] hover:text-white transition-all flex items-center justify-center text-slate-700 cursor-pointer shadow-xs group"
-              title="Previous slide"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-0.5" />
-            </button>
-
-            {/* Next Button */}
-            <button
-              type="button"
-              onClick={nextSlide}
-              className="w-10 h-10 rounded-[6px] border border-slate-200 bg-white hover:border-[#0033a0] hover:bg-[#0033a0] hover:text-white transition-all flex items-center justify-center text-slate-700 cursor-pointer shadow-xs group"
-              title="Next slide"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
-            </button>
-          </div>
+        {/* Section Header */}
+        <div className="max-w-3xl mb-12">
+          {/* Section Kicker: Plain text with hover effect */}
+          <p className="text-xs uppercase tracking-wider font-semibold text-[#0033a0] hover:text-[#00287a] transition-colors duration-200 cursor-default mb-2 inline-block">
+            Engineering in Practice
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-tight mb-3">
+            Architecting modern software across mission-critical domains.
+          </h2>
+          <p className="text-base text-slate-600 leading-relaxed">
+            Explore the production architectures, cloud infrastructure, and data platforms engineered by our dual-hub technical teams.
+          </p>
         </div>
 
         {/* Main Carousel Viewport */}
@@ -295,7 +248,7 @@ export default function EngineeringCarouselSection() {
                     fill
                     priority={idx === 0}
                     sizes="(max-width: 1280px) 100vw, 1280px"
-                    className="object-cover object-center transition-transform duration-1000 ease-out scale-100 group-hover/carousel:scale-102"
+                    className="object-cover object-center transition-all duration-700 ease-out scale-100 group-hover/carousel:scale-105 group-hover/carousel:brightness-105"
                   />
                   {/* Rich Gradient Overlays for High-Contrast Readability */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#000028]/95 via-[#000028]/60 to-transparent sm:bg-gradient-to-r sm:from-[#000028]/95 sm:via-[#000028]/70 sm:to-transparent" />
@@ -308,8 +261,8 @@ export default function EngineeringCarouselSection() {
             <div className="absolute inset-0 z-20 p-6 sm:p-10 lg:p-14 flex flex-col justify-end sm:justify-center max-w-2xl text-white">
               <div className="space-y-4 animate-fadeIn">
                 
-                {/* Domain & Capability Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-[#000033]/80 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-[#00a3e0]">
+                {/* Domain & Capability Text */}
+                <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#00a3e0] drop-shadow-md">
                   <IconComponent className="w-3.5 h-3.5 text-[#00a3e0]" />
                   <span>{activeSlide.category}</span>
                 </div>
@@ -412,7 +365,7 @@ export default function EngineeringCarouselSection() {
                 key={`thumb-${slide.id}`}
                 type="button"
                 onClick={() => goToSlide(idx)}
-                className={`p-3 rounded-[6px] border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between space-y-2 bg-white shadow-xs ${
+                className={`group p-3 rounded-[6px] border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between space-y-2 bg-white shadow-xs ${
                   isActive
                     ? 'border-[#0033a0] ring-2 ring-[#0033a0]/30 -translate-y-0.5'
                     : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'
@@ -426,13 +379,13 @@ export default function EngineeringCarouselSection() {
                     alt={slide.title}
                     fill
                     sizes="180px"
-                    className={`object-cover transition-transform duration-300 ${
-                      isActive ? 'scale-105 opacity-100' : 'opacity-80 hover:opacity-100'
+                    className={`object-cover transition-transform duration-300 ease-out ${
+                      isActive ? 'scale-105 opacity-100' : 'opacity-80 group-hover:opacity-100 group-hover:scale-108'
                     }`}
                   />
-                  <div className="absolute top-1 right-1">
-                    <span className={`text-[9px] font-mono font-bold px-1 py-0.5 rounded-[2px] ${
-                      isActive ? 'bg-[#0033a0] text-white' : 'bg-black/60 text-white'
+                  <div className="absolute top-1.5 right-1.5">
+                    <span className={`text-[10px] font-mono font-bold drop-shadow-md ${
+                      isActive ? 'text-[#00a3e0]' : 'text-white/80'
                     }`}>
                       0{idx + 1}
                     </span>

@@ -20,7 +20,7 @@ export const applicationServicesList: ServiceDetail[] = [
     title: 'Custom Software Development',
     category: 'Application Services',
     categoryHref: '/application-services',
-    tagline: 'Bespoke software engineered to solve your exact business complexities.',
+    tagline: 'Custom software engineered around your specific operational workflows.',
     description: 'We architect and build tailored software solutions from the ground up, delivering scalable architectures, clean code, and robust security designed specifically around your operational workflows and growth goals.',
     iconName: 'Code2',
     stats: [
@@ -48,7 +48,7 @@ export const applicationServicesList: ServiceDetail[] = [
       },
       {
         title: 'Cross-Platform Interoperability',
-        description: 'Seamless integration with existing enterprise ecosystems, databases, legacy infrastructure, and modern cloud platforms.'
+        description: 'Direct integration with existing enterprise systems, databases, on-prem infrastructure, and modern cloud providers.'
       }
     ],
     technologies: ['TypeScript', 'Node.js', 'Python', 'Go', 'React', 'Next.js', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes'],
@@ -81,7 +81,7 @@ export const applicationServicesList: ServiceDetail[] = [
     ],
     overview: [
       'Enterprises require software that withstands scale, compliance audits, and multi-departmental coordination. We engineer scalable enterprise platforms that streamline operations and eliminate data silos.',
-      'Our solutions seamlessly connect ERPs, CRMs, data warehouses, and custom operational hubs into unified digital command centers.'
+      'Our solutions connect ERPs, CRMs, data warehouses, and custom operational hubs into unified digital command centers with automated sync triggers.'
     ],
     keyCapabilities: [
       {
@@ -230,8 +230,8 @@ export const applicationServicesList: ServiceDetail[] = [
       { label: 'Security', value: 'OWASP Compliant' }
     ],
     overview: [
-      'The modern web demands lightning speed, intuitive interactivity, and seamless responsiveness across any screen size. We build web applications that deliver instant loads and desktop-app fluidity in the browser.',
-      'Leveraging modern architectures like React 19, Next.js, and edge networks, our web apps rank high on Core Web Vitals and drive measurable user conversion.'
+      'Modern web apps require fast load times, reliable interactivity, and cross-browser consistency. We build web applications that deliver sub-second initial paints and predictable state management.',
+      'Leveraging modern architectures like React 19, Next.js, and edge networks, our web apps score high on Core Web Vitals and scale predictably under concurrent user traffic.'
     ],
     keyCapabilities: [
       {
@@ -321,7 +321,7 @@ export const applicationServicesList: ServiceDetail[] = [
     category: 'Application Services',
     categoryHref: '/application-services',
     tagline: 'Secure, high-speed RESTful and GraphQL APIs powering modern digital ecosystems.',
-    description: 'We design and implement robust, versioned, and documented APIs that allow web, mobile, and third-party partners to communicate seamlessly with enterprise security.',
+    description: 'We design and implement robust, versioned, and documented APIs that allow web, mobile, and third-party partners to communicate reliably with strict authentication, rate limiting, and schema validation.',
     iconName: 'Cpu',
     stats: [
       { label: 'P99 Latency', value: '<50ms' },
@@ -773,8 +773,8 @@ export const productEngineeringList: ServiceDetail[] = [
     title: 'Opensource Engineering',
     category: 'Product Engineering',
     categoryHref: '/product-engineering',
-    tagline: 'Harness the power of open source to build enterprise-grade, lock-in-free technology.',
-    description: 'We help enterprises integrate, customize, and contribute to cutting-edge open-source software, avoiding expensive vendor lock-in while ensuring strict governance and security.',
+    tagline: 'Adopt and extend battle-tested open source to eliminate proprietary vendor lock-in.',
+    description: 'We help enterprises evaluate, customize, and integrate production-grade open-source software with strict license compliance and security governance.',
     iconName: 'Terminal',
     stats: [
       { label: 'Vendor Lock-In', value: '0%' },
@@ -876,7 +876,7 @@ export const technologyServicesList: ServiceDetail[] = [
     title: 'DevSecOps',
     category: 'Technology Services',
     categoryHref: '/technology-services',
-    tagline: 'Embed security seamlessly into every phase of your software delivery pipeline.',
+    tagline: 'Automate security checks directly into every stage of your CI/CD delivery pipeline.',
     description: 'Shift security left by integrating automated vulnerability scanning, container security, secret management, and compliance guardrails directly into your CI/CD pipelines.',
     iconName: 'ShieldCheck',
     stats: [
@@ -1330,7 +1330,7 @@ export const aiBiList: ServiceDetail[] = [
     category: 'AI & Business Intelligence',
     categoryHref: '/ai-bi',
     tagline: 'Custom interactive charts, geospatial maps, and web-based telemetry graphics.',
-    description: 'Transform complex numerical data into intuitive, interactive visual stories. We develop bespoke web-based charts, real-time telemetry graphs, and geospatial mapping platforms.',
+    description: 'Transform complex numerical datasets into clear, interactive visualizations. We build custom web-based charts, real-time telemetry graphs, and geospatial mapping platforms.',
     iconName: 'Palette',
     stats: [
       { label: 'Rendering Engine', value: 'WebGL / SVG' },
@@ -1339,13 +1339,13 @@ export const aiBiList: ServiceDetail[] = [
       { label: 'Responsiveness', value: 'Desktop & Mobile' }
     ],
     overview: [
-      'Standard charting libraries often choke when handling millions of data points or complex geospatial graphs. We engineer custom web-based data visualization experiences that render fast and look stunning.',
-      'Using D3.js, WebGL, and modern Canvas rendering, our engineering team brings deep data stories to life inside your software products.'
+      'Standard charting libraries often struggle when handling millions of data points or complex geospatial graphs. We engineer custom web-based data visualization experiences that render fast and scale cleanly.',
+      'Using D3.js, WebGL, and modern Canvas rendering, our engineering team builds high-performance telemetry and analytics modules directly inside your software products.'
     ],
     keyCapabilities: [
       {
-        title: 'Bespoke D3.js & WebGL Visualizations',
-        description: 'Custom interactive charts, network relationship graphs, and high-density financial heatmaps.'
+        title: 'Custom D3.js & WebGL Visualizations',
+        description: 'Interactive hierarchical charts, network relationship graphs, and high-density financial heatmaps.'
       },
       {
         title: 'Geospatial & Map-Based Telemetry',
@@ -1357,7 +1357,7 @@ export const aiBiList: ServiceDetail[] = [
       },
       {
         title: 'Embedded Analytics for SaaS Products',
-        description: 'White-labeled customer-facing dashboards integrated seamlessly into your existing web applications.'
+        description: 'Customer-facing analytics dashboards embedded directly into your existing web applications.'
       }
     ],
     technologies: ['D3.js', 'Deck.gl', 'Mapbox', 'Chart.js', 'Recharts', 'Three.js / WebGL', 'React', 'TypeScript'],

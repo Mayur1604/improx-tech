@@ -146,10 +146,21 @@ export async function POST(request: NextRequest) {
 
         const resendErr = await resendResponse.text();
         console.error('[contact-api] Resend API error response:', resendErr);
+        
+        let errorMessage = 'Email delivery failed through the provider. Please send directly using your email client.';
+        try {
+          const parsed = JSON.parse(resendErr);
+          if (parsed?.message) {
+            errorMessage = parsed.message;
+          }
+        } catch {
+          // keep fallback message
+        }
+
         return NextResponse.json(
           {
             success: false,
-            error: 'Email delivery failed through the provider. Please send directly using your email client.',
+            error: errorMessage,
             fallbackMailto,
             mailtoFallback: fallbackMailto,
           },

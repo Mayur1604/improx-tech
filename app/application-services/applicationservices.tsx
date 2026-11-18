@@ -105,21 +105,21 @@ export default function ApplicationServices() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative h-64 sm:h-80 w-full rounded-[6px] overflow-hidden shadow-sm border border-slate-300 bg-slate-900">
+            <div className="group lg:col-span-5 relative h-64 sm:h-80 w-full rounded-[6px] overflow-hidden shadow-sm hover:shadow-md border border-slate-300 hover:border-[#0033a0] bg-slate-900 transition-all duration-300">
               <Image
                 src="/images/services/custom-software.webp"
                 alt="Application Services"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#000033]/90 via-[#000033]/20 to-transparent" />
               <div className="absolute bottom-4 left-6 right-6">
-                <span className="px-2.5 py-1 rounded-[6px] bg-[#000033]/90 text-[11px] font-bold text-[#00a3e0] border border-white/20 uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#00a3e0] uppercase tracking-wider drop-shadow-md block">
                   PRODUCTION CAPABILITY
                 </span>
-                <div className="text-sm font-bold text-white mt-1">Multi-Tenant Cloud SaaS &amp; High-Concurrency APIs</div>
+                <div className="text-sm font-bold text-white mt-1 drop-shadow-md">Multi-Tenant Cloud SaaS &amp; High-Concurrency APIs</div>
               </div>
             </div>
           </div>
@@ -163,43 +163,51 @@ export default function ApplicationServices() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-7 border border-slate-300 rounded-[6px] bg-[#f8fafd] hover:border-[#0033a0] transition-colors space-y-3">
-              <div className="w-10 h-10 bg-[#000033] text-[#00a3e0] flex items-center justify-center font-mono font-bold text-sm">
-                01
-              </div>
-              <h3 className="text-lg font-bold text-gray-900">Domain-Driven Design (DDD)</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="border-t-2 border-[#0033a0] pt-6 space-y-3 group">
+              <span className="text-xs font-mono font-bold text-[#0033a0] tracking-wider block">
+                PILLAR 01
+              </span>
+              <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#0033a0] transition-colors">
+                Domain-Driven Design (DDD)
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                 Clean separation of core business logic from infrastructural dependencies. Bounded contexts ensure modular microservices that scale independently.
               </p>
             </div>
 
-            <div className="p-7 border border-slate-300 rounded-[6px] bg-[#f8fafd] hover:border-[#0033a0] transition-colors space-y-3">
-              <div className="w-10 h-10 bg-[#000033] text-[#00a3e0] flex items-center justify-center font-mono font-bold text-sm">
-                02
-              </div>
-              <h3 className="text-lg font-bold text-gray-900">Event-Driven Streaming</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
+            <div className="border-t-2 border-[#0033a0] pt-6 space-y-3 group">
+              <span className="text-xs font-mono font-bold text-[#0033a0] tracking-wider block">
+                PILLAR 02
+              </span>
+              <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#0033a0] transition-colors">
+                Event-Driven Streaming
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                 Asynchronous event processing using Apache Kafka and Redis. Eliminates point-to-point HTTP bottlenecks and supports scalable transaction throughput.
               </p>
             </div>
 
-            <div className="p-7 border border-slate-300 rounded-[6px] bg-[#f8fafd] hover:border-[#0033a0] transition-colors space-y-3">
-              <div className="w-10 h-10 bg-[#000033] text-[#00a3e0] flex items-center justify-center font-mono font-bold text-sm">
-                03
-              </div>
-              <h3 className="text-lg font-bold text-gray-900">Zero-Trust Security</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
+            <div className="border-t-2 border-[#0033a0] pt-6 space-y-3 group">
+              <span className="text-xs font-mono font-bold text-[#0033a0] tracking-wider block">
+                PILLAR 03
+              </span>
+              <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#0033a0] transition-colors">
+                Zero-Trust Security
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                 Role-based access control (RBAC), end-to-end KMS envelope encryption, mutual TLS between internal services, and continuous SAST/DAST pipeline gates.
               </p>
             </div>
 
-            <div className="p-7 border border-slate-300 rounded-[6px] bg-[#f8fafd] hover:border-[#0033a0] transition-colors space-y-3">
-              <div className="w-10 h-10 bg-[#000033] text-[#00a3e0] flex items-center justify-center font-mono font-bold text-sm">
-                04
-              </div>
-              <h3 className="text-lg font-bold text-gray-900">Automated SRE Observability</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
+            <div className="border-t-2 border-[#0033a0] pt-6 space-y-3 group">
+              <span className="text-xs font-mono font-bold text-[#0033a0] tracking-wider block">
+                PILLAR 04
+              </span>
+              <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#0033a0] transition-colors">
+                Automated SRE Observability
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                 OpenTelemetry instrumentation with distributed tracing, automated anomaly alerts, Prometheus metrics, and 24/7 Site Reliability monitoring.
               </p>
             </div>

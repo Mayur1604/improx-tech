@@ -8,7 +8,6 @@ import {
   ChevronDown,
   Menu,
   X,
-  Phone,
   Mail,
   ArrowRight,
   Code2,
@@ -204,16 +203,6 @@ export default function Header() {
       <div className="bg-[#000033] text-white text-xs py-2 px-6 border-b border-white/10 select-none">
         <div className="max-w-[1440px] mx-auto flex items-center justify-between flex-wrap gap-4">
           <div className="flex items-center gap-6 text-xs text-slate-300">
-            {company.phone && (
-              <a
-                href={`tel:${company.phone}`}
-                className="flex items-center gap-1.5 hover:text-white transition-colors group"
-                title="Direct Corporate Line"
-              >
-                <Phone className="w-3.5 h-3.5 text-[#00a3e0] group-hover:scale-110 transition-transform" />
-                <span className="font-mono">{company.formattedPhone}</span>
-              </a>
-            )}
             {company.email && (
               <a
                 href={`mailto:${company.email}`}
@@ -227,10 +216,6 @@ export default function Header() {
           </div>
 
           <div className="hidden sm:flex items-center gap-3 text-[11px] text-slate-300">
-            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[4px] bg-white/10 border border-white/10 text-slate-200">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Dual-Hub Active</span>
-            </span>
             <span>Delaware, USA &bull; Pune, India</span>
           </div>
         </div>

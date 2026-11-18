@@ -83,11 +83,6 @@ export default function ProjectShowcaseSection() {
                     className="object-cover card-image-zoom opacity-90"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-2.5 py-1 rounded-[6px] bg-[#000033] text-[#00a3e0] text-xs font-semibold uppercase tracking-wider border border-white/20">
-                      Capability Blueprint
-                    </span>
-                  </div>
                 </div>
 
                 {/* Editorial Content Column */}

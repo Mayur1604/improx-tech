@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ShieldCheck, MapPin, CheckCircle2 } from 'lucide-react';
 import { company } from '@/app/data/company';
 
@@ -47,54 +48,82 @@ export default function DeliveryGovernanceSection() {
           {/* Right Column: Visual Hub Cards */}
           <div className="lg:col-span-6 space-y-5">
             
-            <div className="p-6 sm:p-7 bg-white rounded-[6px] border border-slate-200 shadow-xs hover:-translate-y-1 hover:border-[#0033a0]/60 hover:shadow-md transition-all duration-200 space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0033a0]">
-                  <MapPin className="w-4 h-4" />
-                  <span>United States Corporate Office</span>
+            <div className="group p-6 sm:p-7 bg-white rounded-[6px] border border-slate-200 shadow-xs hover:-translate-y-1 hover:border-[#0033a0]/60 hover:shadow-md transition-all duration-300 space-y-4 overflow-hidden">
+              <div className="flex flex-col sm:flex-row gap-5 items-start">
+                <div className="relative w-full sm:w-36 h-28 shrink-0 rounded-[4px] overflow-hidden bg-slate-900 border border-slate-200">
+                  <Image
+                    src="/images/about/delaware-hq.webp"
+                    alt="Delaware Corporate Headquarters"
+                    fill
+                    sizes="150px"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-108"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
                 </div>
-                <span className="text-xs font-mono text-slate-500">Legal &amp; Governance</span>
+                <div className="space-y-2 flex-1">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0033a0]">
+                      <MapPin className="w-4 h-4" />
+                      <span>United States Corporate Office</span>
+                    </div>
+                    <span className="text-xs font-mono text-slate-500">Legal &amp; Governance</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#0033a0] transition-colors">
+                    Delaware Headquarters
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <a
+                      href={company.addresses.us.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#0033a0] hover:underline transition-colors"
+                    >
+                      {company.addresses.us.fullAddress}
+                    </a>
+                  </p>
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-slate-900">
-                Delaware Headquarters
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                <a
-                  href={company.addresses.us.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#0033a0] hover:underline transition-colors"
-                >
-                  {company.addresses.us.fullAddress}
-                </a>
-              </p>
               <div className="text-xs text-slate-500 pt-2 border-t border-slate-100 flex flex-wrap gap-4">
                 <span>Direct Phone: <strong className="text-slate-800">{company.formattedPhone}</strong></span>
                 <span>Jurisdiction: <strong className="text-slate-800">Delaware, USA</strong></span>
               </div>
             </div>
 
-            <div className="p-6 sm:p-7 bg-white rounded-[6px] border border-slate-200 shadow-xs hover:-translate-y-1 hover:border-[#0033a0]/60 hover:shadow-md transition-all duration-200 space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0033a0]">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>India Delivery Center</span>
+            <div className="group p-6 sm:p-7 bg-white rounded-[6px] border border-slate-200 shadow-xs hover:-translate-y-1 hover:border-[#0033a0]/60 hover:shadow-md transition-all duration-300 space-y-4 overflow-hidden">
+              <div className="flex flex-col sm:flex-row gap-5 items-start">
+                <div className="relative w-full sm:w-36 h-28 shrink-0 rounded-[4px] overflow-hidden bg-slate-900 border border-slate-200">
+                  <Image
+                    src="/images/about/pune-techcenter.webp"
+                    alt="Pune Technology Center"
+                    fill
+                    sizes="150px"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-108"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
                 </div>
-                <span className="text-xs font-mono text-slate-500">Engineering &amp; R&amp;D</span>
+                <div className="space-y-2 flex-1">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0033a0]">
+                      <ShieldCheck className="w-4 h-4" />
+                      <span>India Delivery Center</span>
+                    </div>
+                    <span className="text-xs font-mono text-slate-500">Engineering &amp; R&amp;D</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#0033a0] transition-colors">
+                    Pune Technology Center
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <a
+                      href={company.addresses.india.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#0033a0] hover:underline transition-colors"
+                    >
+                      {company.addresses.india.fullAddress}
+                    </a>
+                  </p>
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-slate-900">
-                Pune Technology Center
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                <a
-                  href={company.addresses.india.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#0033a0] hover:underline transition-colors"
-                >
-                  {company.addresses.india.fullAddress}
-                </a>
-              </p>
               <div className="text-xs text-slate-500 pt-2 border-t border-slate-100 flex flex-wrap gap-4">
                 <span>Email: <strong className="text-slate-800">{company.email}</strong></span>
                 <span>Delivery: <strong className="text-slate-800">Sprint Cadences &amp; CI/CD</strong></span>

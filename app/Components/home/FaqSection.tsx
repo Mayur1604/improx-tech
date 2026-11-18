@@ -7,12 +7,12 @@ const FAQS = [
   {
     question: 'What services does Improx Tech provide?',
     answer:
-      'Improx Tech provides end-to-end custom software engineering across four primary practices: Application Services (bespoke web platforms, enterprise systems, SaaS), Product Engineering (from MVP architecture to scalable production systems), Cloud & Technology Services (cloud migration, Kubernetes DevOps, Infrastructure as Code), and AI & Business Intelligence (retrieval-augmented generation, data warehousing, and analytics pipelines).',
+      'Improx Tech provides custom software engineering across four primary practices: Application Services (custom web platforms, high-throughput enterprise systems, SaaS), Product Engineering (from MVP architecture to scalable production systems), Cloud & Technology Services (cloud migration, Kubernetes DevOps, Infrastructure as Code), and AI & Business Intelligence (retrieval-augmented generation, data warehousing, and analytics pipelines).',
   },
   {
     question: 'What types of software can your team develop?',
     answer:
-      'We develop custom corporate platforms, multi-tenant SaaS products, internal operations tools, high-throughput financial and clinical transaction gateways, REST/GraphQL APIs, and enterprise cloud infrastructure. Every system is built bespoke according to your domain requirements and technology constraints.',
+      'We develop custom corporate platforms, multi-tenant SaaS products, internal operations tools, high-throughput financial and clinical transaction gateways, REST/GraphQL APIs, and enterprise cloud infrastructure. Every system is engineered from the ground up according to your domain requirements and technology constraints.',
   },
   {
     question: 'Which technologies do you work with?',

@@ -42,7 +42,8 @@ export interface CompanyInformation {
   socialLinks: {
     linkedin: string | null;
     github: string | null;
-    twitter: string | null;
+    instagram?: string | null;
+    twitter?: string | null;
   };
 }
 
@@ -88,8 +89,9 @@ export const company: CompanyInformation = {
   partnerships: null,
   verifiedOutcomes: null,
   socialLinks: {
-    linkedin: null,
-    github: null,
+    linkedin: 'https://www.linkedin.com/company/improxtechinc/home/',
+    github: 'https://github.com/improx-tech',
+    instagram: 'https://www.instagram.com/improxtech',
     twitter: null,
   },
 };

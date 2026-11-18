@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   MapPin, 
   Users, 
@@ -15,13 +16,62 @@ import EngineeringBlogSection from '../Components/EngineeringBlogSection';
 import { company } from '../data/company';
 
 export const metadata: Metadata = {
-  title: 'About Us | Improx Tech',
-  description: 'Learn about Improx Tech: our founding, engineering practices, dual-hub delivery in Delaware, USA and Pune, India, and focus on software craft.',
+  title: 'About Us | Custom Software & Cloud Consultancy | Improx Tech',
+  description:
+    'Learn about Improx Tech: our founding, engineering practices, dual-hub delivery in Delaware, USA and Pune, India, and focus on software craft.',
+  alternates: {
+    canonical: 'https://improxtech.com/about',
+  },
+  openGraph: {
+    title: 'About Improx Tech | Engineering Craft & Dual-Hub Delivery',
+    description:
+      'Founded in 2015. Software engineering firm delivering custom cloud architectures, enterprise platforms, and 100% client source code ownership.',
+    url: 'https://improxtech.com/about',
+    type: 'website',
+    images: [
+      {
+        url: '/images/about/delaware-hq.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Improx Tech Dual-Hub Offices',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Improx Tech',
+    description:
+      'Delaware corporate governance with Pune engineering velocity. 100% IP ownership from day one.',
+    images: ['/images/about/delaware-hq.webp'],
+  },
 };
 
 export default function AboutPage() {
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://improxtech.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'About Us',
+        item: 'https://improxtech.com/about',
+      },
+    ],
+  };
+
   return (
     <div className="bg-white text-slate-900 min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       
       {/* Editorial Subpage Header */}
       <section className="bg-slate-50 border-b border-slate-200 py-16">
@@ -255,34 +305,24 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Delaware Hub */}
-            <div className="rounded-[6px] bg-white border border-slate-200 overflow-hidden card-hover flex flex-col justify-between">
-              {/* Neutral Abstract Map SVG Graphic */}
-              <div className="relative h-48 w-full bg-[#000033] flex items-center justify-center p-6 text-white overflow-hidden">
-                <svg
-                  className="absolute inset-0 w-full h-full opacity-20"
-                  viewBox="0 0 400 200"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Abstract grid map graphic representing the United States location"
-                >
-                  <defs>
-                    <pattern id="grid-delaware" width="20" height="20" patternUnits="userSpaceOnUse">
-                      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeWidth="0.5" />
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#grid-delaware)" />
-                  <circle cx="280" cy="110" r="6" fill="#00a3e0" />
-                  <circle cx="280" cy="110" r="18" stroke="#00a3e0" strokeWidth="1" strokeDasharray="2 2" />
-                  <path d="M 50 140 Q 180 80 280 110" stroke="#00a3e0" strokeWidth="1.5" strokeDasharray="4 4" />
-                </svg>
+            <div className="group rounded-[6px] bg-white border border-slate-200 overflow-hidden card-hover flex flex-col justify-between">
+              {/* Image & Gradient Header */}
+              <div className="relative h-52 w-full bg-[#000033] flex items-center justify-center p-6 text-white overflow-hidden">
+                <Image
+                  src="/images/about/delaware-hq.webp"
+                  alt="Delaware Corporate Headquarters"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover opacity-60 transition-transform duration-700 ease-out group-hover:scale-108 group-hover:opacity-75"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#000033] via-[#000033]/60 to-transparent" />
 
                 <div className="relative z-10 text-center">
-                  <p className="inline-flex items-center gap-1.5 text-xs font-mono text-[#00a3e0] hover:text-white transition-colors duration-200 cursor-default mb-2">
+                  <p className="inline-flex items-center gap-1.5 text-xs font-mono text-[#00a3e0] mb-2">
                     <MapPin className="w-3.5 h-3.5" />
                     <span>38.7745° N, 75.1393° W</span>
                   </p>
-                  <h3 className="text-lg font-bold text-white">Delaware, United States</h3>
+                  <h3 className="text-lg font-bold text-white group-hover:text-[#00a3e0] transition-colors">Delaware, United States</h3>
                   <p className="text-xs text-slate-300">Corporate &amp; Account Governance</p>
                 </div>
               </div>
@@ -308,34 +348,24 @@ export default function AboutPage() {
             </div>
 
             {/* Pune Hub */}
-            <div className="rounded-[6px] bg-white border border-slate-200 overflow-hidden card-hover flex flex-col justify-between">
-              {/* Neutral Abstract Map SVG Graphic */}
-              <div className="relative h-48 w-full bg-[#000033] flex items-center justify-center p-6 text-white overflow-hidden">
-                <svg
-                  className="absolute inset-0 w-full h-full opacity-20"
-                  viewBox="0 0 400 200"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Abstract grid map graphic representing the India delivery hub location"
-                >
-                  <defs>
-                    <pattern id="grid-pune" width="20" height="20" patternUnits="userSpaceOnUse">
-                      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeWidth="0.5" />
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#grid-pune)" />
-                  <circle cx="210" cy="120" r="6" fill="#00a3e0" />
-                  <circle cx="210" cy="120" r="18" stroke="#00a3e0" strokeWidth="1" strokeDasharray="2 2" />
-                  <path d="M 120 70 Q 160 130 210 120" stroke="#00a3e0" strokeWidth="1.5" strokeDasharray="4 4" />
-                </svg>
+            <div className="group rounded-[6px] bg-white border border-slate-200 overflow-hidden card-hover flex flex-col justify-between">
+              {/* Image & Gradient Header */}
+              <div className="relative h-52 w-full bg-[#000033] flex items-center justify-center p-6 text-white overflow-hidden">
+                <Image
+                  src="/images/about/pune-techcenter.webp"
+                  alt="Pune Technology Center"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover opacity-60 transition-transform duration-700 ease-out group-hover:scale-108 group-hover:opacity-75"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#000033] via-[#000033]/60 to-transparent" />
 
                 <div className="relative z-10 text-center">
-                  <p className="inline-flex items-center gap-1.5 text-xs font-mono text-[#00a3e0] hover:text-white transition-colors duration-200 cursor-default mb-2">
+                  <p className="inline-flex items-center gap-1.5 text-xs font-mono text-[#00a3e0] mb-2">
                     <MapPin className="w-3.5 h-3.5" />
-                    <span>18.5204° N, 73.8567° W</span>
+                    <span>18.5590° N, 73.7868° E</span>
                   </p>
-                  <h3 className="text-lg font-bold text-white">Pune, India</h3>
+                  <h3 className="text-lg font-bold text-white group-hover:text-[#00a3e0] transition-colors">Pune, India</h3>
                   <p className="text-xs text-slate-300">Engineering &amp; Technology Delivery</p>
                 </div>
               </div>

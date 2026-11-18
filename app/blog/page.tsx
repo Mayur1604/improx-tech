@@ -97,7 +97,7 @@ export default function BlogPage() {
       {featuredPost && (
         <section className="py-12 bg-white border-b border-slate-200">
           <div className="max-w-[1440px] mx-auto px-6">
-            <div className="bg-[#000033] text-white rounded-[6px] overflow-hidden border border-slate-800 grid grid-cols-1 lg:grid-cols-12 shadow-lg">
+            <div className="group bg-[#000033] text-white rounded-[6px] overflow-hidden border border-slate-800 grid grid-cols-1 lg:grid-cols-12 shadow-lg">
               
               <div className="lg:col-span-7 p-8 lg:p-12 flex flex-col justify-between space-y-6">
                 <div>
@@ -164,7 +164,7 @@ export default function BlogPage() {
                   src={featuredPost.image}
                   alt={featuredPost.title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 42vw"
                   priority
                 />
@@ -226,7 +226,7 @@ export default function BlogPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-3">
-                    <span className="px-2 py-0.5 bg-[#000033] text-[#00a3e0] text-[10px] font-bold uppercase tracking-wider border border-white/20">
+                    <span className="text-[#00a3e0] text-xs font-bold uppercase tracking-wider drop-shadow-md">
                       {article.category}
                     </span>
                   </div>

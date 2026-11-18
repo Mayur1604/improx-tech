@@ -5,7 +5,7 @@ import TechCarousel from './TechCarousel';
 
 export default function HeroSection() {
   return (
-    <section className="relative bg-[#000033] text-white overflow-hidden border-b border-white/10">
+    <section className="group/hero relative bg-[#000033] text-white overflow-hidden border-b border-white/10">
       
       {/* Full-Bleed Appealing Background Image covering the entire section and behind the text */}
       <div className="absolute inset-0 z-0 select-none">
@@ -15,7 +15,7 @@ export default function HeroSection() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center sm:object-right-top brightness-90 contrast-110 opacity-75"
+          className="object-cover object-center sm:object-right-top brightness-90 contrast-110 opacity-75 transition-transform duration-1000 ease-out group-hover/hero:scale-[1.02]"
         />
         {/* Cinematic Gradient Overlays ensuring text readability while letting the visual shine */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#000028]/95 via-[#000033]/75 to-transparent" />
@@ -34,11 +34,11 @@ export default function HeroSection() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
-            Software Engineering for Real Business Challenges.
+            Software Engineering Built for Production Realities.
           </h1>
 
           <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl font-normal">
-            Improx Tech helps businesses design, build and modernize software solutions through custom engineering, enterprise applications and cloud technologies.
+            We build custom web platforms, modernize cloud architectures, and engineer high-throughput data systems. Work directly with senior engineers in your GitHub repositories with two-week sprint demos and complete source code ownership from day one.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-4">

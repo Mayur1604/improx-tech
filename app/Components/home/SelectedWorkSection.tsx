@@ -28,7 +28,7 @@ export default function SelectedWorkSection() {
           {selectedProjects.map((project: Project) => (
             <div
               key={project.slug}
-              className="border border-slate-200 rounded-[6px] overflow-hidden card-hover flex flex-col justify-between bg-white"
+              className="group border border-slate-200 rounded-[6px] overflow-hidden card-hover flex flex-col justify-between bg-white"
             >
               {project.image && (
                 <div className="relative h-56 w-full overflow-hidden bg-slate-100">
@@ -37,7 +37,7 @@ export default function SelectedWorkSection() {
                     alt={project.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover card-image-zoom"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                 </div>
               )}

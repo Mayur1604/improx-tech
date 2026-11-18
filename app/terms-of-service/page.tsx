@@ -5,6 +5,9 @@ import { ChevronRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Terms of Service | Improx Tech',
   description: 'Terms of service and commercial agreement standards for Improx Tech.',
+  alternates: {
+    canonical: 'https://improxtech.com/terms-of-service',
+  },
 };
 
 export default function TermsOfServicePage() {

@@ -97,21 +97,21 @@ export default function AiBiPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative h-64 sm:h-80 w-full rounded-[6px] overflow-hidden shadow-sm border border-slate-300 bg-slate-900">
+            <div className="group lg:col-span-5 relative h-64 sm:h-80 w-full rounded-[6px] overflow-hidden shadow-sm hover:shadow-md border border-slate-300 hover:border-[#0033a0] bg-slate-900 transition-all duration-300">
               <Image
                 src="/images/services/ai-intelligence.webp"
                 alt="AI & Business Intelligence"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#000033]/90 via-[#000033]/20 to-transparent" />
               <div className="absolute bottom-4 left-6 right-6">
-                <span className="px-2.5 py-1 rounded-[6px] bg-[#000033]/90 text-[11px] font-bold text-[#00a3e0] border border-white/20 uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#00a3e0] uppercase tracking-wider drop-shadow-md block">
                   ENTERPRISE INTELLIGENCE
                 </span>
-                <div className="text-sm font-bold text-white mt-1">Grounded RAG Pipelines &amp; Snowflake Streaming Telemetry</div>
+                <div className="text-sm font-bold text-white mt-1 drop-shadow-md">Grounded RAG Pipelines &amp; Snowflake Streaming Telemetry</div>
               </div>
             </div>
           </div>

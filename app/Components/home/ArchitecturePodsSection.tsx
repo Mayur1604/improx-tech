@@ -151,9 +151,9 @@ export default function ArchitecturePodsSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent group-hover:opacity-80 transition-opacity" />
               
-              {/* Interactive Indicator Pill */}
+              {/* Interactive Indicator Text */}
               <div className="absolute top-4 right-4">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] bg-black/60 backdrop-blur-xs text-[11px] font-mono text-[#00a3e0] border border-white/20">
+                <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#00a3e0] drop-shadow-md">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#00a3e0]" />
                   <span>Pod {activePod + 1} Selected</span>
                 </div>

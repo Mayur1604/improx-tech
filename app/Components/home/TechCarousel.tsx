@@ -40,7 +40,7 @@ export default function TechCarousel() {
             {TECHNOLOGIES.map((tech) => (
               <div
                 key={`tech-1-${tech.name}`}
-                className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-[6px] bg-white/5 border border-white/10 hover:border-[#00a3e0]/60 hover:bg-white/10 transition-all shrink-0 cursor-default"
+                className="group inline-flex items-center gap-2.5 px-3 py-1.5 rounded-[6px] bg-white/5 border border-white/10 hover:border-[#00a3e0]/60 hover:bg-white/10 transition-all shrink-0 cursor-default"
               >
                 <div className="relative w-4 h-4 shrink-0 flex items-center justify-center">
                   <Image
@@ -48,10 +48,10 @@ export default function TechCarousel() {
                     alt={tech.name}
                     width={16}
                     height={16}
-                    className="w-4 h-4 object-contain"
+                    className="w-4 h-4 object-contain transition-transform duration-300 ease-out group-hover:scale-125"
                   />
                 </div>
-                <span className="text-xs text-slate-200 font-medium whitespace-nowrap">
+                <span className="text-xs text-slate-200 font-medium whitespace-nowrap group-hover:text-white transition-colors">
                   {tech.name}
                 </span>
               </div>
@@ -61,7 +61,7 @@ export default function TechCarousel() {
             {TECHNOLOGIES.map((tech) => (
               <div
                 key={`tech-2-${tech.name}`}
-                className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-[6px] bg-white/5 border border-white/10 hover:border-[#00a3e0]/60 hover:bg-white/10 transition-all shrink-0 cursor-default"
+                className="group inline-flex items-center gap-2.5 px-3 py-1.5 rounded-[6px] bg-white/5 border border-white/10 hover:border-[#00a3e0]/60 hover:bg-white/10 transition-all shrink-0 cursor-default"
               >
                 <div className="relative w-4 h-4 shrink-0 flex items-center justify-center">
                   <Image
@@ -69,10 +69,10 @@ export default function TechCarousel() {
                     alt={tech.name}
                     width={16}
                     height={16}
-                    className="w-4 h-4 object-contain"
+                    className="w-4 h-4 object-contain transition-transform duration-300 ease-out group-hover:scale-125"
                   />
                 </div>
-                <span className="text-xs text-slate-200 font-medium whitespace-nowrap">
+                <span className="text-xs text-slate-200 font-medium whitespace-nowrap group-hover:text-white transition-colors">
                   {tech.name}
                 </span>
               </div>
