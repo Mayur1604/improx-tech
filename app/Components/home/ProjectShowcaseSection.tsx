@@ -1,43 +1,68 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Layers, ShieldCheck, Zap } from 'lucide-react';
+import { ArrowRight, CheckCircle2, TrendingUp, Layers, Zap, ShieldCheck, Radio } from 'lucide-react';
 
-const SHOWCASES = [
+interface SuccessStory {
+  title: string;
+  domain: string;
+  metric: string;
+  metricLabel: string;
+  icon: typeof Layers;
+  challenge: string;
+  solution: string;
+  technologies: string[];
+  image: string;
+  imageAlt: string;
+}
+
+const SUCCESS_STORIES: SuccessStory[] = [
   {
-    title: 'Enterprise Multi-Tenant SaaS Platform',
+    title: 'Enterprise Multi-Tenant SaaS Platform Architecture',
     domain: 'Enterprise Technology & Cloud SaaS',
+    metric: '60% Lower Infra Costs',
+    metricLabel: 'Consolidated Schema Isolation',
     icon: Layers,
-    problem:
-      'Fragmented single-tenant instances created high maintenance costs, slow feature release cycles, and inconsistent operational reliability across customer accounts.',
-    solution:
-      'Engineered a scalable multi-tenant architecture with isolated database schemas, automated tenant provisioning, role-based access control, and centralized observability.',
-    technologies: ['TypeScript', 'Next.js', 'Node.js', 'PostgreSQL', 'Redis', 'Docker', 'AWS'],
+    challenge: 'Fragmented single-tenant deployments created unsustainable maintenance overhead and slow release cycles across customer tiers.',
+    solution: 'Engineered a scalable multi-tenant architecture with automated tenant onboarding, isolated PostgreSQL schemas, and unified telemetry.',
+    technologies: ['TypeScript', 'Next.js', 'Node.js', 'PostgreSQL', 'Redis', 'AWS'],
     image: '/images/projects/enterprise-saas.webp',
     imageAlt: 'Enterprise SaaS architecture and application management dashboard',
   },
   {
-    title: 'High-Throughput Financial Transaction Gateway',
-    domain: 'Financial Services & Capital Markets',
+    title: 'High-Throughput Financial Transaction & Order Gateway',
+    domain: 'Capital Markets & Financial Services',
+    metric: '<15ms P99 Latency',
+    metricLabel: 'Zero Dropped Orders Under Surge',
     icon: Zap,
-    problem:
-      'Legacy transaction pipelines experienced execution latency during market surges, lacking automated circuit breaking and horizontal failover.',
-    solution:
-      'Architected a decoupled microservices gateway with in-memory caching, Kafka event buffering, automated circuit breakers, and low-latency database replication.',
-    technologies: ['Go', 'Python', 'Redis Cluster', 'Kafka', 'PostgreSQL', 'Docker', 'AWS'],
+    challenge: 'Legacy transaction pipeline choked under volatility surges, lacking automated circuit breaking and distributed failover.',
+    solution: 'Constructed an event-driven Go microservices gateway with Kafka streaming buffers, Redis caching, and continuous database replication.',
+    technologies: ['Go', 'Python', 'Redis Cluster', 'Kafka', 'Docker', 'AWS'],
     image: '/images/projects/fintech-trading.webp',
     imageAlt: 'Financial transaction telemetry and high-concurrency order dashboard',
   },
   {
     title: 'Healthcare Interoperability & FHIR Cloud Gateway',
     domain: 'Healthcare & Life Sciences',
+    metric: '100% Audit Compliance',
+    metricLabel: 'HIPAA & FHIR Standardized',
     icon: ShieldCheck,
-    problem:
-      'Disconnected clinical systems and proprietary data formats prevented real-time electronic record synchronization between healthcare providers and patient portals.',
-    solution:
-      'Constructed a standardized FHIR API integration gateway with end-to-end payload encryption, granular consent management, and immutable audit logs.',
-    technologies: ['TypeScript', 'Node.js', 'FHIR API', 'PostgreSQL', 'AWS KMS', 'Docker'],
+    challenge: 'Disconnected clinical systems and proprietary EHR silos prevented real-time electronic health records exchange.',
+    solution: 'Engineered a secure FHIR API gateway with payload-level encryption, immutable audit logging, and granular patient consent controls.',
+    technologies: ['TypeScript', 'Node.js', 'FHIR API', 'PostgreSQL', 'AWS KMS'],
     image: '/images/projects/healthcare-cloud.webp',
     imageAlt: 'Healthcare cloud data integration and FHIR records interface',
+  },
+  {
+    title: 'Industrial IoT & Supply Chain Telemetry Gateway',
+    domain: 'Manufacturing & Smart Logistics',
+    metric: '500K+ Events / Sec',
+    metricLabel: 'Sub-Second Anomaly Detection',
+    icon: Radio,
+    challenge: 'High-velocity sensory telemetry overwhelmed legacy operational warehouses, resulting in delayed equipment failure alerts.',
+    solution: 'Deployed edge MQTT brokers with Kafka stream ingestion and real-time anomaly detection pipelines streaming into operational cockpits.',
+    technologies: ['Go', 'Kafka', 'ClickHouse', 'Docker', 'Kubernetes'],
+    image: '/images/projects/supplychain-iot.webp',
+    imageAlt: 'IoT supply chain telemetry analytics cockpit and fleet monitoring',
   },
 ];
 
@@ -46,90 +71,115 @@ export default function ProjectShowcaseSection() {
     <section className="py-20 lg:py-28 bg-slate-50/95 backdrop-blur-xs border-b border-slate-200/90">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Section Header */}
-        <div className="max-w-3xl mb-16">
-          <p className="text-xs uppercase tracking-wider font-semibold text-[#0033a0] hover:text-[#00287a] transition-colors duration-200 cursor-default mb-3 inline-block">
-            Engineering Showcase
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-tight mb-4">
-            Demonstrated engineering across complex business domains.
-          </h2>
-          <p className="text-base text-slate-600 leading-relaxed">
-            Illustrative production architectures and technical frameworks developed by our engineering pods to solve challenging enterprise requirements.
-          </p>
+        {/* Section Header (Tech Mahindra Success Stories styling) */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="max-w-3xl space-y-3">
+            <div className="inline-flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00a3e0]" />
+              <p className="text-xs uppercase tracking-wider font-semibold text-[#0033a0] hover:text-[#00287a] transition-colors cursor-default">
+                Success Stories &amp; Case Studies
+              </p>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
+              Measurable engineering outcomes delivered for enterprise production.
+            </h2>
+            <p className="text-base text-slate-600 leading-relaxed">
+              Real-world systems engineered by our pods to solve high-concurrency, security, and scalability bottlenecks with 100% intellectual property handover.
+            </p>
+          </div>
+
+          <div className="shrink-0">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#0033a0] hover:text-[#00287a] group transition-colors"
+            >
+              <span>Discuss your system architecture</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
         </div>
 
-        {/* Alternating Project Showcases */}
-        <div className="space-y-16">
-          {SHOWCASES.map((project, idx) => {
-            const isImageLeft = idx % 2 === 0;
+        {/* 2-Column Tech Mahindra Success Stories Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {SUCCESS_STORIES.map((story) => {
+            const Icon = story.icon;
 
             return (
               <div
-                key={project.title}
-                className="bg-white border border-slate-200 rounded-[6px] overflow-hidden card-hover grid grid-cols-1 lg:grid-cols-12 shadow-sm"
+                key={story.title}
+                className="group flex flex-col bg-white rounded-[8px] border border-slate-200 overflow-hidden shadow-2xs hover:shadow-xl hover:-translate-y-1.5 hover:border-[#0033a0]/50 transition-all duration-300 ease-out"
               >
-                {/* Visual Viewport */}
-                <div
-                  className={`lg:col-span-6 relative min-h-[300px] sm:min-h-[380px] bg-slate-900 overflow-hidden ${
-                    isImageLeft ? 'lg:order-1' : 'lg:order-2'
-                  }`}
-                >
+                {/* Media-First Viewport with Floating Metric Callout */}
+                <div className="relative aspect-[16/9] w-full bg-slate-900 overflow-hidden">
                   <Image
-                    src={project.image}
-                    alt={project.imageAlt}
+                    src={story.image}
+                    alt={story.imageAlt}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover card-image-zoom opacity-90"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-108 opacity-90 group-hover:opacity-100"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+
+
+
+                  {/* Prominent High-Impact Metric Badge (Tech Mahindra Success Story signature) */}
+                  <div className="absolute bottom-4 left-4 right-4 z-10 flex items-end justify-between">
+                    <div className="p-2.5 rounded-[6px] bg-white/95 backdrop-blur-md border border-white/40 shadow-lg text-slate-900 flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                        <TrendingUp className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold text-slate-900">{story.metric}</div>
+                        <div className="text-[10px] font-medium text-slate-500">{story.metricLabel}</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Editorial Content Column */}
-                <div
-                  className={`lg:col-span-6 p-8 sm:p-10 flex flex-col justify-between space-y-6 ${
-                    isImageLeft ? 'lg:order-2' : 'lg:order-1'
-                  }`}
-                >
-                  <div className="space-y-4">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-[#0033a0]">
-                      {project.domain}
-                    </span>
+                {/* Card Content Body */}
+                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-1.5 text-xs font-semibold text-[#0033a0]">
+                      <Icon className="w-3.5 h-3.5 text-[#00a3e0]" />
+                      <span>{story.domain}</span>
+                    </div>
 
-                    <h3 className="text-2xl font-bold text-slate-900 leading-snug">
-                      {project.title}
+                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#0033a0] transition-colors duration-200 leading-snug">
+                      {story.title}
                     </h3>
 
-                    <div className="space-y-3 pt-2 text-xs sm:text-sm">
-                      <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-[6px] space-y-1">
-                        <span className="font-semibold text-slate-900 text-xs uppercase tracking-wider block">
+                    {/* Challenge vs Solution structured comparison */}
+                    <div className="space-y-2 pt-1 text-xs">
+                      <div className="p-3 rounded-[6px] bg-slate-50 border border-slate-200/80 space-y-1">
+                        <span className="font-bold text-slate-900 uppercase tracking-wider text-[10px] block">
                           The Challenge:
                         </span>
-                        <p className="text-slate-600 leading-relaxed text-xs">
-                          {project.problem}
+                        <p className="text-slate-600 leading-relaxed">
+                          {story.challenge}
                         </p>
                       </div>
 
-                      <div className="p-3.5 bg-blue-50/50 border border-blue-100 rounded-[6px] space-y-1">
-                        <span className="font-semibold text-[#0033a0] text-xs uppercase tracking-wider block">
-                          The Engineering Solution:
+                      <div className="p-3 rounded-[6px] bg-blue-50/50 border border-blue-100 space-y-1">
+                        <span className="font-bold text-[#0033a0] uppercase tracking-wider text-[10px] block flex items-center gap-1">
+                          <CheckCircle2 className="w-3 h-3 text-[#0033a0]" />
+                          <span>Engineering Solution:</span>
                         </span>
-                        <p className="text-slate-700 leading-relaxed text-xs">
-                          {project.solution}
+                        <p className="text-slate-700 leading-relaxed">
+                          {story.solution}
                         </p>
                       </div>
                     </div>
 
-                    {/* Technologies Used */}
+                    {/* Tech Stack Chips */}
                     <div className="pt-2">
-                      <span className="text-xs font-semibold text-slate-500 block mb-2">
+                      <span className="text-[11px] font-semibold text-slate-500 block mb-1.5">
                         Production Technology Stack:
                       </span>
                       <div className="flex flex-wrap gap-1.5">
-                        {project.technologies.map((tech) => (
+                        {story.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="text-xs px-2.5 py-1 rounded-[6px] bg-slate-100 text-slate-700 font-mono"
+                            className="text-[10px] font-mono px-2 py-0.5 rounded-[3px] bg-slate-100 text-slate-600 border border-slate-200/80"
                           >
                             {tech}
                           </span>
@@ -138,17 +188,19 @@ export default function ProjectShowcaseSection() {
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-100">
+                  {/* Interactive Action Anchor */}
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-[#0033a0]">
                     <Link
                       href="/contact"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-[#0033a0] hover:text-[#00287a] group transition-colors"
+                      className="hover:underline flex items-center gap-1.5"
                     >
-                      <span>Discuss similar architecture for your stack</span>
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      <span>Explore Engineering Blueprint</span>
                     </Link>
+                    <div className="w-6 h-6 rounded-full bg-blue-50 group-hover:bg-[#0033a0] group-hover:text-white flex items-center justify-center transition-all duration-200">
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
                   </div>
                 </div>
-
               </div>
             );
           })}

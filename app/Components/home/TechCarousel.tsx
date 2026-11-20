@@ -19,7 +19,7 @@ const TECHNOLOGIES = [
 
 export default function TechCarousel() {
   return (
-    <div className="w-full border-t border-white/10 bg-[#000022]/95 backdrop-blur-md py-4 overflow-hidden relative select-none">
+    <div className="w-full border-t border-white/10 bg-[#000022]/95 backdrop-blur-md py-2.5 sm:py-3 overflow-hidden relative select-none">
       <div className="max-w-[1440px] mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4">
         
         {/* Static Header Label: Plain Text with Hover Transition */}

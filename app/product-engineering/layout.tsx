@@ -13,7 +13,7 @@ export const metadata: Metadata = {
       'Full-lifecycle product engineering: UX design systems, multi-tenant cloud backends, and rapid feature iteration.',
     url: 'https://improxtech.com/product-engineering',
     type: 'website',
-    images: ['/images/services/saas-architecture.webp'],
+    images: ['/images/backgrounds/product-engineering-bg.webp'],
   },
 };
 

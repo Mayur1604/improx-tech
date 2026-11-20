@@ -34,10 +34,10 @@ import { ServiceDetail } from '../data/servicesData';
 import EngineeringBlogSection from './EngineeringBlogSection';
 
 const categoryImageMap: Record<string, string> = {
-  'Application Services': '/images/services/custom-software.webp',
-  'Product Engineering': '/images/services/saas-architecture.webp',
-  'Technology Services': '/images/services/cloud-infrastructure.webp',
-  'AI & Business Intelligence': '/images/services/ai-intelligence.webp',
+  'Application Services': '/images/backgrounds/enterprise-application-services-bg.webp',
+  'Product Engineering': '/images/backgrounds/product-engineering-bg.webp',
+  'Technology Services': '/images/backgrounds/technology-services-bg.webp',
+  'AI & Business Intelligence': '/images/backgrounds/ai-business-intelligence-bg.webp',
 };
 
 const iconMap: Record<string, LucideIcon> = {

@@ -140,7 +140,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`h-full antialiased ${fontSans.variable}`}>
+    <html lang="en" className={`h-full antialiased scroll-smooth scroll-pt-20 ${fontSans.variable}`}>
       <head>
         <script
           type="application/ld+json"

@@ -372,7 +372,7 @@ export default function EngineeringCarouselSection() {
                 }`}
                 title={`View ${slide.title}`}
               >
-                {/* Mini Image Preview */}
+                {/* Mini Image Preview (Clean without overlays) */}
                 <div className="relative h-16 w-full rounded-[4px] overflow-hidden bg-slate-900 border border-slate-200/60">
                   <Image
                     src={slide.image}
@@ -383,13 +383,6 @@ export default function EngineeringCarouselSection() {
                       isActive ? 'scale-105 opacity-100' : 'opacity-80 group-hover:opacity-100 group-hover:scale-108'
                     }`}
                   />
-                  <div className="absolute top-1.5 right-1.5">
-                    <span className={`text-[10px] font-mono font-bold drop-shadow-md ${
-                      isActive ? 'text-[#00a3e0]' : 'text-white/80'
-                    }`}>
-                      0{idx + 1}
-                    </span>
-                  </div>
                 </div>
 
                 {/* Text Info */}

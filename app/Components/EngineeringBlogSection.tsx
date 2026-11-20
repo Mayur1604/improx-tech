@@ -121,22 +121,16 @@ export default function EngineeringBlogSection({
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#000033]/85 via-transparent to-transparent" />
-              <div className="absolute top-4 left-4">
-                <span className="text-[#00a3e0] text-xs font-semibold uppercase tracking-wider drop-shadow-md">
-                  Featured
-                </span>
-              </div>
-              <div className="absolute bottom-4 left-4 right-4 text-white text-xs">
-                <span className="text-[#00a3e0] font-semibold uppercase tracking-wider text-[11px]">Category:</span>
-                <span className="ml-1 font-medium">{featuredPost.category}</span>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#000033]/40 via-transparent to-transparent" />
             </div>
 
             {/* Right Editorial Column */}
             <div className="lg:col-span-6 p-8 lg:p-10 flex flex-col justify-between space-y-6">
               <div className="space-y-4">
-                <div className="flex items-center gap-4 text-xs text-slate-500 font-medium">
+                <div className="flex items-center gap-3 text-xs text-slate-500 font-medium">
+                  <span className="font-mono text-[11px] font-semibold px-2.5 py-0.5 rounded-[4px] bg-blue-50 text-[#0033a0] border border-blue-100">
+                    {featuredPost.category}
+                  </span>
                   <span className="inline-flex items-center gap-1">
                     <Calendar className="w-3.5 h-3.5 text-slate-400" />
                     <span>{featuredPost.date}</span>

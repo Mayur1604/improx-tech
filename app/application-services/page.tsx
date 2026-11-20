@@ -14,7 +14,7 @@ export const metadata: Metadata = {
       'Custom web platforms, enterprise systems, and high-concurrency API engineering with complete source code ownership.',
     url: 'https://improxtech.com/application-services',
     type: 'website',
-    images: ['/images/services/custom-software.webp'],
+    images: ['/images/backgrounds/enterprise-application-services-bg.webp'],
   },
 };
 

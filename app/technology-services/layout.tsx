@@ -13,7 +13,7 @@ export const metadata: Metadata = {
       'Enterprise cloud migration, Kubernetes containerization, and Terraform Infrastructure as Code.',
     url: 'https://improxtech.com/technology-services',
     type: 'website',
-    images: ['/images/services/cloud-infrastructure.webp'],
+    images: ['/images/backgrounds/technology-services-bg.webp'],
   },
 };
 

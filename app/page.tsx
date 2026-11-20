@@ -7,7 +7,6 @@ import CapabilitiesSection from './Components/home/CapabilitiesSection';
 import EngineeringCarouselSection from './Components/home/EngineeringCarouselSection';
 import ArchitecturePodsSection from './Components/home/ArchitecturePodsSection';
 import EngineeringProcessSection from './Components/home/EngineeringProcessSection';
-import ProjectShowcaseSection from './Components/home/ProjectShowcaseSection';
 import IndustriesSection from './Components/home/IndustriesSection';
 import DeliveryGovernanceSection from './Components/home/DeliveryGovernanceSection';
 import WhyChooseSection from './Components/home/WhyChooseSection';
@@ -135,42 +134,37 @@ export default function Home() {
           <EngineeringProcessSection />
         </Reveal>
 
-        {/* 7. Selected Projects / Case Studies Showcase */}
-        <Reveal delayMs={40}>
-          <ProjectShowcaseSection />
-        </Reveal>
-
-        {/* 8. Industries We Serve */}
+        {/* 7. Industries We Serve */}
         <Reveal delayMs={40}>
           <IndustriesSection />
         </Reveal>
 
-        {/* 9. Delivery Model and Governance */}
+        {/* 8. Delivery Model and Governance */}
         <Reveal delayMs={40}>
           <DeliveryGovernanceSection />
         </Reveal>
 
-        {/* 10. Why Choose Improx Tech / Security Approach */}
+        {/* 9. Why Choose Improx Tech / Security Approach */}
         <Reveal delayMs={40}>
           <WhyChooseSection />
         </Reveal>
 
-        {/* 11. Engineering Commitments & Quality Standards */}
+        {/* 10. Engineering Commitments & Quality Standards */}
         <Reveal delayMs={40}>
           <EngineeringStandardsSection />
         </Reveal>
 
-        {/* 12. Engineering Insights & Blogs */}
+        {/* 11. Engineering Insights & Blogs */}
         <Reveal delayMs={40}>
           <InsightsSection />
         </Reveal>
 
-        {/* 13. Frequently Asked Questions (FAQ) */}
+        {/* 14. Frequently Asked Questions (FAQ) */}
         <Reveal delayMs={40}>
           <FaqSection />
         </Reveal>
 
-        {/* 14. Final CTA */}
+        {/* 15. Final CTA */}
         <Reveal delayMs={40}>
           <FinalCtaSection />
         </Reveal>

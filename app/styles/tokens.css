@@ -35,6 +35,8 @@ html {
   font-size: var(--font-body-size);
   color: var(--brand-primary);
   background-color: #ffffff;
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
 }
 
 body {

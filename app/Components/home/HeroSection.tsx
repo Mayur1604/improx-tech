@@ -23,35 +23,30 @@ export default function HeroSection() {
         <div className="absolute top-0 left-0 w-96 h-96 bg-[#0033a0]/20 rounded-full blur-3xl pointer-events-none" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 sm:py-28 lg:py-36">
-        <div className="max-w-3xl space-y-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-14 sm:py-16 lg:py-20">
+        <div className="max-w-3xl space-y-4 sm:space-y-5">
           
           {/* Section Kicker: Plain Text with Hover Transition (no box, no blue dot) */}
-          <div>
-            <p className="text-xs uppercase tracking-wider font-semibold text-[#00a3e0] hover:text-white transition-colors duration-200 cursor-default inline-block">
-              Software Engineering &amp; Cloud Solutions
-            </p>
-          </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.15]">
             Software Engineering Built for Production Realities.
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl font-normal">
+          <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl font-normal">
             We build custom web platforms, modernize cloud architectures, and engineer high-throughput data systems. Work directly with senior engineers in your GitHub repositories with two-week sprint demos and complete source code ownership from day one.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 pt-4">
+          <div className="flex flex-wrap items-center gap-3.5 pt-2 sm:pt-3">
             <Link
               href="/contact"
-              className="bg-[#0033a0] hover:bg-[#00287a] text-white font-medium px-8 py-4 rounded-[6px] text-sm transition-all inline-flex items-center gap-2 group ring-2 ring-[#0033a0]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#00a3e0] btn-interactive shadow-lg"
+              className="bg-[#0033a0] hover:bg-[#00287a] text-white font-medium px-6 py-3 rounded-[6px] text-sm transition-all inline-flex items-center gap-2 group ring-2 ring-[#0033a0]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#00a3e0] btn-interactive shadow-lg"
             >
               <span>Talk to Our Team</span>
               <ArrowRight className="w-4 h-4 btn-arrow transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="#capabilities"
-              className="bg-white/10 hover:bg-white/15 text-white font-medium px-8 py-4 rounded-[6px] border border-white/20 text-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white backdrop-blur-xs"
+              className="bg-white/10 hover:bg-white/15 text-white font-medium px-6 py-3 rounded-[6px] border border-white/20 text-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white backdrop-blur-xs"
             >
               Explore Our Services
             </Link>

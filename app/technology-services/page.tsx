@@ -51,66 +51,59 @@ export default function TechnologyServicesPage() {
   return (
     <div className="bg-white text-gray-900 min-h-screen selection:bg-[#0033a0] selection:text-white">
       
-      {/* ================= LIGHT EDITORIAL SUBPAGE HEADER ================= */}
-      <section className="bg-slate-50 border-b border-slate-200 py-12 lg:py-16">
-        <div className="max-w-[1440px] mx-auto px-6">
-          <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 mb-6">
-            <Link href="/" className="hover:text-gray-900 transition-colors">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-            <span className="text-[#0033a0] font-medium">Technology Services</span>
+      {/* ================= FULL-BLEED SVG HERO HEADER ================= */}
+      <section className="relative border-b border-slate-700 py-16 lg:py-24 overflow-hidden bg-[#000033]">
+        {/* Full-bleed SVG background */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/backgrounds/technology-services-bg.webp"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#000033]/95 via-[#000033]/75 to-[#000033]/30" />
+        </div>
+
+        <div className="relative z-10 max-w-[1440px] mx-auto px-6">
+          <nav className="flex items-center gap-2 text-xs sm:text-sm text-white/60 mb-8">
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-white/40" />
+            <span className="text-[#00a3e0] font-medium">Technology Services</span>
           </nav>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-7 space-y-5">
-              <p className="text-xs font-bold uppercase tracking-wider text-[#0033a0] hover:text-[#00287a] transition-colors duration-200 cursor-default inline-block">
-                Cloud Modernization &amp; Infrastructure Architecture
-              </p>
+          <div className="max-w-3xl space-y-5">
+            <p className="text-xs font-bold uppercase tracking-wider text-[#00a3e0] inline-block">
+              Cloud Modernization &amp; Infrastructure Architecture
+            </p>
 
-              <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#000033] leading-tight">
-                Enterprise Technology Services
-              </h1>
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              Enterprise Technology Services
+            </h1>
 
-              <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-medium">
-                Accelerate cloud modernization across AWS and Azure, automate DevSecOps delivery pipelines, architect resilient data lakes, and secure infrastructure with zero-trust protocols.
-              </p>
+            <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-medium">
+              Accelerate cloud modernization across AWS and Azure, automate DevSecOps delivery pipelines, architect resilient data lakes, and secure infrastructure with zero-trust protocols.
+            </p>
 
-              <p className="text-sm text-slate-600 leading-relaxed max-w-2xl">
-                We help enterprises modernize legacy hardware, eliminate technical debt, optimize multi-cloud spend through FinOps, and ensure 24/7 high-availability across global operations.
-              </p>
+            <p className="text-sm text-slate-300 leading-relaxed max-w-2xl">
+              We help enterprises modernize legacy hardware, eliminate technical debt, optimize multi-cloud spend through FinOps, and ensure 24/7 high-availability across global operations.
+            </p>
 
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <Link
-                  href="/contact"
-                  className="bg-[#0033a0] hover:bg-[#00287a] text-white font-semibold px-8 py-3.5 rounded-[6px] text-sm transition-all shadow-md inline-flex items-center gap-2"
-                >
-                  <span>Schedule Cloud Consultation</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/ai-bi"
-                  className="bg-white hover:bg-slate-100 text-gray-800 font-semibold px-6 py-3.5 rounded-[6px] border border-slate-300 text-sm transition-all"
-                >
-                  <span>Explore AI &amp; BI</span>
-                </Link>
-              </div>
-            </div>
-
-            <div className="group lg:col-span-5 relative h-64 sm:h-80 w-full rounded-[6px] overflow-hidden shadow-sm hover:shadow-md border border-slate-300 hover:border-[#0033a0] bg-slate-900 transition-all duration-300">
-              <Image
-                src="/images/services/cloud-infrastructure.webp"
-                alt="Technology Services"
-                fill
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#000033]/90 via-[#000033]/20 to-transparent" />
-              <div className="absolute bottom-4 left-6 right-6">
-                <span className="text-xs font-bold text-[#00a3e0] uppercase tracking-wider drop-shadow-md block">
-                  CLOUD &amp; DEVSECOPS
-                </span>
-                <div className="text-sm font-bold text-white mt-1 drop-shadow-md">Multi-Region Kubernetes, Terraform IaC &amp; FinOps</div>
-              </div>
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <Link
+                href="/contact"
+                className="bg-[#0033a0] hover:bg-[#00287a] text-white font-semibold px-8 py-3.5 rounded-[6px] text-sm transition-all shadow-md inline-flex items-center gap-2"
+              >
+                <span>Schedule Cloud Consultation</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/ai-bi"
+                className="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-[6px] border border-white/30 text-sm transition-all"
+              >
+                <span>Explore AI &amp; BI</span>
+              </Link>
             </div>
           </div>
         </div>

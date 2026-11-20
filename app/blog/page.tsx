@@ -224,17 +224,14 @@ export default function BlogPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-3 left-3">
-                    <span className="text-[#00a3e0] text-xs font-bold uppercase tracking-wider drop-shadow-md">
-                      {article.category}
-                    </span>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
                 </div>
 
                 <div className="p-6 space-y-3">
                   <div className="flex items-center justify-between text-xs text-gray-500 font-medium">
-                    <span>{article.date}</span>
+                    <span className="font-mono text-[11px] font-semibold text-[#0033a0] uppercase tracking-wider">
+                      {article.category}
+                    </span>
                     <span>{article.readTime}</span>
                   </div>
 

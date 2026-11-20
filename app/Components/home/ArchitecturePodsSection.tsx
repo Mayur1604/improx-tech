@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Cloud, Server, Database, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Cloud, Server, Database } from 'lucide-react';
 
 const CAPABILITY_GROUPS = [
   {
@@ -11,6 +11,8 @@ const CAPABILITY_GROUPS = [
     title: 'Cloud Architecture & Infrastructure Reliability',
     description: 'We design fault-tolerant cloud environments that scale horizontally without manual intervention.',
     focusBadge: 'AWS / Azure / GCP',
+    image: '/images/services/cloud-infrastructure.webp',
+    imageAlt: 'Cloud architecture, Kubernetes orchestration, and infrastructure automation',
     details: [
       'Multi-region AWS, Azure, and Google Cloud setups',
       'Kubernetes orchestration and containerization with Docker',
@@ -22,6 +24,8 @@ const CAPABILITY_GROUPS = [
     title: 'Modern Web & Distributed Microservices',
     description: 'Decoupled application architectures built with clear boundary separation and high throughput.',
     focusBadge: 'TypeScript / Go / Next.js',
+    image: '/images/services/enterprise-apps.webp',
+    imageAlt: 'Modern web applications, distributed microservices, and reactive UI architecture',
     details: [
       'Type-safe Node.js, TypeScript, Go, and Python services',
       'Reactive user interfaces built with React and Next.js',
@@ -33,6 +37,8 @@ const CAPABILITY_GROUPS = [
     title: 'Data Systems & Analytical Pipelines',
     description: 'Structured data modeling and high-speed data pipelines that support reliable reporting.',
     focusBadge: 'PostgreSQL / Redis / Kafka',
+    image: '/images/services/ai-intelligence.webp',
+    imageAlt: 'High-throughput data extraction, real-time ingestion, and analytical pipelines',
     details: [
       'Transactional PostgreSQL and MySQL schema design',
       'In-memory caching and session state management with Redis',
@@ -65,7 +71,7 @@ export default function ArchitecturePodsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           
           {/* Left Column: Interactive Pod Cards */}
-          <div className="lg:col-span-7 flex flex-col justify-between gap-5">
+          <div className="lg:col-span-7 flex flex-col justify-between gap-4 sm:gap-5">
             {CAPABILITY_GROUPS.map((group, idx) => {
               const Icon = group.icon;
               const isActive = activePod === idx;
@@ -73,28 +79,36 @@ export default function ArchitecturePodsSection() {
               return (
                 <div
                   key={group.title}
+                  role="button"
+                  tabIndex={0}
                   onClick={() => setActivePod(idx)}
                   onMouseEnter={() => setActivePod(idx)}
-                  className={`group bg-white p-6 sm:p-7 rounded-[6px] border transition-all duration-300 cursor-pointer space-y-3 relative flex-1 flex flex-col justify-between ${
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setActivePod(idx);
+                    }
+                  }}
+                  className={`group relative bg-white p-6 sm:p-7 rounded-[8px] border transition-all duration-300 cursor-pointer space-y-3.5 flex-1 flex flex-col justify-between overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0033a0] ${
                     isActive
-                      ? 'border-[#0033a0] shadow-md ring-1 ring-[#0033a0]/20 -translate-y-0.5'
-                      : 'border-slate-200 hover:border-[#0033a0]/60 hover:shadow-sm hover:-translate-y-0.5'
+                      ? 'border-[#0033a0] border-l-[5px] border-l-[#0033a0] shadow-md -translate-y-0.5'
+                      : 'border-slate-200 border-l-[5px] border-l-transparent hover:border-slate-300 hover:border-l-[#0033a0]/40 hover:shadow-sm hover:-translate-y-0.5'
                   }`}
                 >
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center justify-between gap-3 flex-wrap sm:flex-nowrap">
                       <div className="flex items-center gap-3">
                         <div
-                          className={`w-9 h-9 rounded-[6px] border flex items-center justify-center transition-all duration-300 ${
+                          className={`w-10 h-10 rounded-[6px] border flex items-center justify-center transition-all duration-300 ${
                             isActive
-                              ? 'bg-[#0033a0] text-white border-[#0033a0]'
+                              ? 'bg-[#0033a0] text-white border-[#0033a0] shadow-sm'
                               : 'bg-slate-50 border-slate-200 text-[#0033a0] group-hover:bg-[#0033a0] group-hover:text-white group-hover:border-[#0033a0]'
                           }`}
                         >
-                          <Icon className="w-5 h-5 transition-transform group-hover:scale-110" />
+                          <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
                         </div>
                         <h3
-                          className={`text-base sm:text-lg font-bold transition-colors ${
+                          className={`text-base sm:text-lg font-bold transition-colors duration-200 ${
                             isActive ? 'text-[#0033a0]' : 'text-slate-900 group-hover:text-[#0033a0]'
                           }`}
                         >
@@ -103,7 +117,7 @@ export default function ArchitecturePodsSection() {
                       </div>
 
                       <span
-                        className={`text-[11px] font-mono font-medium px-2 py-0.5 rounded-[4px] border transition-colors shrink-0 ${
+                        className={`text-[11px] font-mono font-medium px-2.5 py-1 rounded-[4px] border transition-colors shrink-0 ${
                           isActive
                             ? 'bg-blue-50 text-[#0033a0] border-blue-200'
                             : 'bg-slate-50 text-slate-500 border-slate-200 group-hover:border-blue-200 group-hover:text-[#0033a0]'
@@ -118,7 +132,7 @@ export default function ArchitecturePodsSection() {
                     </p>
                   </div>
 
-                  <ul className="pt-2 border-t border-slate-100 space-y-1.5 text-xs text-slate-700">
+                  <ul className="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-700">
                     {group.details.map((detail) => (
                       <li key={detail} className="flex items-center gap-2">
                         <span
@@ -137,31 +151,38 @@ export default function ArchitecturePodsSection() {
             })}
           </div>
 
-          {/* Right Column: Interactive Image Box + Direct Communication Card (Flush bottom alignment) */}
+          {/* Right Column: Dynamic Image Box + Direct Communication Card */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-5 h-full">
             
-            {/* Clean Visual Box with Hover Zoom & Atmosphere */}
-            <div className="group relative flex-1 min-h-[300px] w-full rounded-[6px] overflow-hidden border border-slate-200 hover:border-[#0033a0] shadow-sm hover:shadow-lg transition-all duration-500 cursor-pointer">
-              <Image
-                src="/images/services/cloud-infrastructure.webp"
-                alt="Cloud architecture, network topology, and server pods"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent group-hover:opacity-80 transition-opacity" />
-              
-              {/* Interactive Indicator Text */}
-              <div className="absolute top-4 right-4">
-                <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#00a3e0] drop-shadow-md">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#00a3e0]" />
-                  <span>Pod {activePod + 1} Selected</span>
-                </div>
-              </div>
+            {/* Clean Visual Viewport with Dynamic Image Crossfade (No Eyebrows) */}
+            <div className="group relative flex-1 min-h-[320px] lg:min-h-[380px] w-full rounded-[8px] overflow-hidden border border-slate-200 hover:border-[#0033a0]/70 shadow-xs hover:shadow-xl transition-all duration-500 bg-slate-950">
+              {CAPABILITY_GROUPS.map((pod, idx) => {
+                const isCurrent = activePod === idx;
+                return (
+                  <div
+                    key={pod.title}
+                    className={`absolute inset-0 transition-all duration-700 ease-out ${
+                      isCurrent
+                        ? 'opacity-100 scale-100 z-10'
+                        : 'opacity-0 scale-105 pointer-events-none z-0'
+                    }`}
+                  >
+                    <Image
+                      src={pod.image}
+                      alt={pod.imageAlt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+                      priority={idx === 0}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent group-hover:opacity-80 transition-opacity duration-300" />
+                  </div>
+                );
+              })}
             </div>
 
-            {/* Bottom Card with Hover Lift & Link Slide — Aligned perfectly with card 3 on the left */}
-            <div className="group p-6 sm:p-7 bg-white rounded-[6px] border border-slate-200 hover:border-[#0033a0] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 space-y-3">
+            {/* Bottom Card with Hover Lift & Link Slide */}
+            <div className="group p-6 sm:p-7 bg-white rounded-[8px] border border-slate-200 hover:border-[#0033a0] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 space-y-3">
               <h4 className="text-sm font-bold text-slate-900 group-hover:text-[#0033a0] transition-colors">
                 Direct Engineer-to-Engineer Communication
               </h4>

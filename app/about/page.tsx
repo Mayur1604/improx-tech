@@ -13,6 +13,8 @@ import {
   Code2
 } from 'lucide-react';
 import EngineeringBlogSection from '../Components/EngineeringBlogSection';
+import Reveal from '../Components/Reveal';
+import NumberCounter from '../Components/NumberCounter';
 import { company } from '../data/company';
 
 export const metadata: Metadata = {
@@ -73,43 +75,60 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       
-      {/* Editorial Subpage Header */}
-      <section className="bg-slate-50 border-b border-slate-200 py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <nav className="flex items-center gap-2 text-xs sm:text-sm text-slate-500 mb-6">
-            <Link href="/" className="hover:text-slate-900 transition-colors">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-[#0033a0] font-medium">About Improx Tech</span>
+      {/* ================= FULL-BLEED WEBP HERO HEADER ================= */}
+      <section className="relative border-b border-slate-700 py-16 lg:py-24 overflow-hidden bg-[#000033]">
+        {/* Full-bleed WebP background */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/backgrounds/about-us-bg.webp"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#000033]/95 via-[#000033]/80 to-[#000033]/35" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <nav className="flex items-center gap-2 text-xs sm:text-sm text-white/60 mb-8">
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-white/40" />
+            <span className="text-[#00a3e0] font-medium">About Improx Tech</span>
           </nav>
 
-          <div className="max-w-3xl space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-wider text-[#0033a0]">
+          <Reveal className="max-w-3xl space-y-4">
+            <p className="text-xs font-bold uppercase tracking-wider text-[#00a3e0]">
               Corporate Overview
             </p>
 
-            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
               Engineering software with clarity, discipline, and full client ownership.
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-medium">
               Improx Tech is a technology consulting and software engineering firm founded in {company.foundingYear}. We work with growing businesses and enterprise teams to design custom applications, modernize cloud infrastructure, and maintain reliable production systems.
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t border-slate-200 text-xs">
-              <div className="bg-white p-4 rounded-[6px] border border-slate-200">
-                <div className="text-2xl font-bold text-[#0033a0]">{company.foundingYear}</div>
-                <div className="text-slate-500 mt-1 font-medium">Founding Year</div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t border-white/20 text-xs">
+              <div className="bg-white/10 backdrop-blur-md p-4 rounded-[6px] border border-white/20">
+                <div className="text-2xl font-bold text-[#00a3e0]">
+                  <NumberCounter target={company.foundingYear} startFrom={1995} />
+                </div>
+                <div className="text-slate-300 mt-1 font-medium">Founding Year</div>
               </div>
-              <div className="bg-white p-4 rounded-[6px] border border-slate-200">
-                <div className="text-2xl font-bold text-slate-900">Dual Hub</div>
-                <div className="text-slate-500 mt-1 font-medium">Delaware, USA &amp; Pune, India</div>
+              <div className="bg-white/10 backdrop-blur-md p-4 rounded-[6px] border border-white/20">
+                <div className="text-2xl font-bold text-white">Dual Hub</div>
+                <div className="text-slate-300 mt-1 font-medium">Delaware, USA &amp; Pune, India</div>
               </div>
-              <div className="bg-white p-4 rounded-[6px] border border-slate-200 col-span-2 sm:col-span-1">
-                <div className="text-2xl font-bold text-[#0033a0]">100%</div>
-                <div className="text-slate-500 mt-1 font-medium">Client Source Code Ownership</div>
+              <div className="bg-white/10 backdrop-blur-md p-4 rounded-[6px] border border-white/20 col-span-2 sm:col-span-1">
+                <div className="text-2xl font-bold text-[#00a3e0]">
+                  <NumberCounter target={100} suffix="%" />
+                </div>
+                <div className="text-slate-300 mt-1 font-medium">Client Source Code Ownership</div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -118,7 +137,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
-            <div className="lg:col-span-6 space-y-6">
+            <Reveal className="lg:col-span-6 space-y-6" delayMs={50}>
               <p className="text-xs uppercase tracking-wider text-[#0033a0] font-semibold">
                 Our Approach
               </p>
@@ -146,9 +165,9 @@ export default function AboutPage() {
                   <span><strong>Direct Communication:</strong> Direct technical collaboration without unnecessary layers.</span>
                 </div>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="lg:col-span-6">
+            <Reveal className="lg:col-span-6" delayMs={200}>
               <div className="bg-slate-50 rounded-[6px] border border-slate-200 p-8 space-y-6">
                 <h3 className="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">
                   Dual-Hub Engineering Collaboration
@@ -180,7 +199,7 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
 
           </div>
         </div>
@@ -189,7 +208,7 @@ export default function AboutPage() {
       {/* Engineering Principles */}
       <section className="py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-2xl mb-14">
+          <Reveal className="max-w-2xl mb-14">
             <p className="text-xs font-semibold tracking-wider uppercase text-[#0033a0]">Principles</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-3">
               How we approach technology.
@@ -197,48 +216,56 @@ export default function AboutPage() {
             <p className="text-slate-600 text-sm sm:text-base">
               Standard practices we maintain across every software engagement.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-[6px] bg-white border border-slate-200 space-y-3 card-hover">
-              <div className="w-10 h-10 rounded-[6px] bg-slate-50 border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                <Lock className="w-5 h-5" />
+            <Reveal delayMs={100}>
+              <div className="p-6 rounded-[6px] bg-white border border-slate-200 space-y-3 card-hover h-full">
+                <div className="w-10 h-10 rounded-[6px] bg-slate-50 border border-slate-200 text-[#0033a0] flex items-center justify-center">
+                  <Lock className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-slate-900 text-base">Unconditional Ownership</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  All source code, infrastructure declarations, and test suites are authored for your repository from the first commit.
+                </p>
               </div>
-              <h3 className="font-bold text-slate-900 text-base">Unconditional Ownership</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                All source code, infrastructure declarations, and test suites are authored for your repository from the first commit.
-              </p>
-            </div>
+            </Reveal>
 
-            <div className="p-6 rounded-[6px] bg-white border border-slate-200 space-y-3 card-hover">
-              <div className="w-10 h-10 rounded-[6px] bg-slate-50 border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                <Code2 className="w-5 h-5" />
+            <Reveal delayMs={200}>
+              <div className="p-6 rounded-[6px] bg-white border border-slate-200 space-y-3 card-hover h-full">
+                <div className="w-10 h-10 rounded-[6px] bg-slate-50 border border-slate-200 text-[#0033a0] flex items-center justify-center">
+                  <Code2 className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-slate-900 text-base">Clean, Decoupled Code</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  We prefer well-defined modular architectures and type safety that your internal developers can comfortably maintain and extend.
+                </p>
               </div>
-              <h3 className="font-bold text-slate-900 text-base">Clean, Decoupled Code</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                We prefer well-defined modular architectures and type safety that your internal developers can comfortably maintain and extend.
-              </p>
-            </div>
+            </Reveal>
 
-            <div className="p-6 rounded-[6px] bg-white border border-slate-200 space-y-3 card-hover">
-              <div className="w-10 h-10 rounded-[6px] bg-slate-50 border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                <Users className="w-5 h-5" />
+            <Reveal delayMs={300}>
+              <div className="p-6 rounded-[6px] bg-white border border-slate-200 space-y-3 card-hover h-full">
+                <div className="w-10 h-10 rounded-[6px] bg-slate-50 border border-slate-200 text-[#0033a0] flex items-center justify-center">
+                  <Users className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-slate-900 text-base">Focused Teams</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Engineers stay dedicated to your project context rather than constantly rotating between disconnected accounts.
+                </p>
               </div>
-              <h3 className="font-bold text-slate-900 text-base">Focused Teams</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Engineers stay dedicated to your project context rather than constantly rotating between disconnected accounts.
-              </p>
-            </div>
+            </Reveal>
 
-            <div className="p-6 rounded-[6px] bg-white border border-slate-200 space-y-3 card-hover">
-              <div className="w-10 h-10 rounded-[6px] bg-slate-50 border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                <Server className="w-5 h-5" />
+            <Reveal delayMs={400}>
+              <div className="p-6 rounded-[6px] bg-white border border-slate-200 space-y-3 card-hover h-full">
+                <div className="w-10 h-10 rounded-[6px] bg-slate-50 border border-slate-200 text-[#0033a0] flex items-center justify-center">
+                  <Server className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-slate-900 text-base">Cloud Discipline</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Infrastructure defined in code with automated linting, reproducible deployments, and conservative operational costs.
+                </p>
               </div>
-              <h3 className="font-bold text-slate-900 text-base">Cloud Discipline</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Infrastructure defined in code with automated linting, reproducible deployments, and conservative operational costs.
-              </p>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -246,7 +273,7 @@ export default function AboutPage() {
       {/* Defensible Security & Governance */}
       <section className="py-20 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-2xl mb-14">
+          <Reveal className="max-w-2xl mb-14">
             <p className="text-xs font-semibold tracking-wider uppercase text-[#0033a0]">Security &amp; Hygiene</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-3">
               Standard engineering security practices.
@@ -254,38 +281,44 @@ export default function AboutPage() {
             <p className="text-slate-600 text-sm sm:text-base">
               Security is integrated directly into daily development workflows rather than deferred to an afterthought audit.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="border border-slate-200 rounded-[6px] p-6 bg-slate-50 space-y-3 card-hover">
-              <div className="w-9 h-9 rounded-[6px] bg-white border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                <ShieldCheck className="w-5 h-5" />
+            <Reveal delayMs={100}>
+              <div className="border border-slate-200 rounded-[6px] p-6 bg-slate-50 space-y-3 card-hover h-full">
+                <div className="w-9 h-9 rounded-[6px] bg-white border border-slate-200 text-[#0033a0] flex items-center justify-center">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900">Secure Development Lifecycle</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Automated static analysis, dependency scanning in CI pipelines, and peer code reviews for all pull requests.
+                </p>
               </div>
-              <h3 className="text-base font-bold text-slate-900">Secure Development Lifecycle</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Automated static analysis, dependency scanning in CI pipelines, and peer code reviews for all pull requests.
-              </p>
-            </div>
+            </Reveal>
 
-            <div className="border border-slate-200 rounded-[6px] p-6 bg-slate-50 space-y-3 card-hover">
-              <div className="w-9 h-9 rounded-[6px] bg-white border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                <Lock className="w-5 h-5" />
+            <Reveal delayMs={200}>
+              <div className="border border-slate-200 rounded-[6px] p-6 bg-slate-50 space-y-3 card-hover h-full">
+                <div className="w-9 h-9 rounded-[6px] bg-white border border-slate-200 text-[#0033a0] flex items-center justify-center">
+                  <Lock className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900">Access Reviews &amp; Isolation</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Principle of least privilege, short-lived developer credentials, encrypted environment secrets, and isolated staging environments.
+                </p>
               </div>
-              <h3 className="text-base font-bold text-slate-900">Access Reviews &amp; Isolation</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Principle of least privilege, short-lived developer credentials, encrypted environment secrets, and isolated staging environments.
-              </p>
-            </div>
+            </Reveal>
 
-            <div className="border border-slate-200 rounded-[6px] p-6 bg-slate-50 space-y-3 card-hover">
-              <div className="w-9 h-9 rounded-[6px] bg-white border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                <Server className="w-5 h-5" />
+            <Reveal delayMs={300}>
+              <div className="border border-slate-200 rounded-[6px] p-6 bg-slate-50 space-y-3 card-hover h-full">
+                <div className="w-9 h-9 rounded-[6px] bg-white border border-slate-200 text-[#0033a0] flex items-center justify-center">
+                  <Server className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900">Data Protection in Transit &amp; at Rest</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Standard TLS encryption for external and inter-service communications, with encrypted storage volumes and managed keys.
+                </p>
               </div>
-              <h3 className="text-base font-bold text-slate-900">Data Protection in Transit &amp; at Rest</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Standard TLS encryption for external and inter-service communications, with encrypted storage volumes and managed keys.
-              </p>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -293,7 +326,7 @@ export default function AboutPage() {
       {/* Offices & Locations with Neutral Abstract SVG Maps */}
       <section className="py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-2xl mb-14">
+          <Reveal className="max-w-2xl mb-14">
             <p className="text-xs font-semibold tracking-wider uppercase text-[#0033a0]">Locations</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-3">
               Our delivery hubs.
@@ -301,94 +334,98 @@ export default function AboutPage() {
             <p className="text-slate-600 text-sm sm:text-base">
               Dual-hub presence providing business governance in Delaware and engineering velocity in Pune.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Delaware Hub */}
-            <div className="group rounded-[6px] bg-white border border-slate-200 overflow-hidden card-hover flex flex-col justify-between">
-              {/* Image & Gradient Header */}
-              <div className="relative h-52 w-full bg-[#000033] flex items-center justify-center p-6 text-white overflow-hidden">
-                <Image
-                  src="/images/about/delaware-hq.webp"
-                  alt="Delaware Corporate Headquarters"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover opacity-60 transition-transform duration-700 ease-out group-hover:scale-108 group-hover:opacity-75"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#000033] via-[#000033]/60 to-transparent" />
+            <Reveal delayMs={150}>
+              <div className="group rounded-[6px] bg-white border border-slate-200 overflow-hidden card-hover flex flex-col justify-between h-full">
+                {/* Image & Gradient Header */}
+                <div className="relative h-52 w-full bg-[#000033] flex items-center justify-center p-6 text-white overflow-hidden">
+                  <Image
+                    src="/images/about/delaware-hq.webp"
+                    alt="Delaware Corporate Headquarters"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover opacity-60 transition-transform duration-700 ease-out group-hover:scale-108 group-hover:opacity-75"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#000033] via-[#000033]/60 to-transparent" />
 
-                <div className="relative z-10 text-center">
-                  <p className="inline-flex items-center gap-1.5 text-xs font-mono text-[#00a3e0] mb-2">
-                    <MapPin className="w-3.5 h-3.5" />
-                    <span>38.7745° N, 75.1393° W</span>
+                  <div className="relative z-10 text-center">
+                    <p className="inline-flex items-center gap-1.5 text-xs font-mono text-[#00a3e0] mb-2">
+                      <MapPin className="w-3.5 h-3.5" />
+                      <span>38.7745° N, 75.1393° W</span>
+                    </p>
+                    <h3 className="text-lg font-bold text-white group-hover:text-[#00a3e0] transition-colors">Delaware, United States</h3>
+                    <p className="text-xs text-slate-300">Corporate &amp; Account Governance</p>
+                  </div>
+                </div>
+
+                <div className="p-6 space-y-3">
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    <strong>{company.name}</strong><br />
+                    <a
+                      href={company.addresses.us.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#0033a0] hover:underline transition-colors block"
+                    >
+                      {company.addresses.us.street}<br />
+                      {company.addresses.us.city}, {company.addresses.us.region} {company.addresses.us.postalCode}, {company.addresses.us.country}
+                    </a>
                   </p>
-                  <h3 className="text-lg font-bold text-white group-hover:text-[#00a3e0] transition-colors">Delaware, United States</h3>
-                  <p className="text-xs text-slate-300">Corporate &amp; Account Governance</p>
+                  <div className="pt-3 border-t border-slate-100 text-xs text-slate-600 flex flex-wrap gap-4">
+                    {company.formattedPhone && <div>Phone: <strong className="text-slate-900">{company.formattedPhone}</strong></div>}
+                    {company.email && <div>Email: <strong className="text-slate-900">{company.email}</strong></div>}
+                  </div>
                 </div>
               </div>
-
-              <div className="p-6 space-y-3">
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                  <strong>{company.name}</strong><br />
-                  <a
-                    href={company.addresses.us.mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#0033a0] hover:underline transition-colors block"
-                  >
-                    {company.addresses.us.street}<br />
-                    {company.addresses.us.city}, {company.addresses.us.region} {company.addresses.us.postalCode}, {company.addresses.us.country}
-                  </a>
-                </p>
-                <div className="pt-3 border-t border-slate-100 text-xs text-slate-600 flex flex-wrap gap-4">
-                  {company.formattedPhone && <div>Phone: <strong className="text-slate-900">{company.formattedPhone}</strong></div>}
-                  {company.email && <div>Email: <strong className="text-slate-900">{company.email}</strong></div>}
-                </div>
-              </div>
-            </div>
+            </Reveal>
 
             {/* Pune Hub */}
-            <div className="group rounded-[6px] bg-white border border-slate-200 overflow-hidden card-hover flex flex-col justify-between">
-              {/* Image & Gradient Header */}
-              <div className="relative h-52 w-full bg-[#000033] flex items-center justify-center p-6 text-white overflow-hidden">
-                <Image
-                  src="/images/about/pune-techcenter.webp"
-                  alt="Pune Technology Center"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover opacity-60 transition-transform duration-700 ease-out group-hover:scale-108 group-hover:opacity-75"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#000033] via-[#000033]/60 to-transparent" />
+            <Reveal delayMs={300}>
+              <div className="group rounded-[6px] bg-white border border-slate-200 overflow-hidden card-hover flex flex-col justify-between h-full">
+                {/* Image & Gradient Header */}
+                <div className="relative h-52 w-full bg-[#000033] flex items-center justify-center p-6 text-white overflow-hidden">
+                  <Image
+                    src="/images/about/pune-techcenter.webp"
+                    alt="Pune Technology Center"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover opacity-60 transition-transform duration-700 ease-out group-hover:scale-108 group-hover:opacity-75"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#000033] via-[#000033]/60 to-transparent" />
 
-                <div className="relative z-10 text-center">
-                  <p className="inline-flex items-center gap-1.5 text-xs font-mono text-[#00a3e0] mb-2">
-                    <MapPin className="w-3.5 h-3.5" />
-                    <span>18.5590° N, 73.7868° E</span>
+                  <div className="relative z-10 text-center">
+                    <p className="inline-flex items-center gap-1.5 text-xs font-mono text-[#00a3e0] mb-2">
+                      <MapPin className="w-3.5 h-3.5" />
+                      <span>18.5590° N, 73.7868° E</span>
+                    </p>
+                    <h3 className="text-lg font-bold text-white group-hover:text-[#00a3e0] transition-colors">Pune, India</h3>
+                    <p className="text-xs text-slate-300">Engineering &amp; Technology Delivery</p>
+                  </div>
+                </div>
+
+                <div className="p-6 space-y-3">
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    <strong>{company.name} Delivery Center</strong><br />
+                    <a
+                      href={company.addresses.india.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#0033a0] hover:underline transition-colors block"
+                    >
+                      {company.addresses.india.street}<br />
+                      {company.addresses.india.city}, {company.addresses.india.region} {company.addresses.india.postalCode}, {company.addresses.india.country}
+                    </a>
                   </p>
-                  <h3 className="text-lg font-bold text-white group-hover:text-[#00a3e0] transition-colors">Pune, India</h3>
-                  <p className="text-xs text-slate-300">Engineering &amp; Technology Delivery</p>
+                  <div className="pt-3 border-t border-slate-100 text-xs text-slate-600 flex flex-wrap gap-4">
+                    {company.email && <div>Inquiries: <strong className="text-slate-900">{company.email}</strong></div>}
+                    <div>Founding: <strong className="text-slate-900">{company.foundingYear}</strong></div>
+                  </div>
                 </div>
               </div>
-
-              <div className="p-6 space-y-3">
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                  <strong>{company.name} Delivery Center</strong><br />
-                  <a
-                    href={company.addresses.india.mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#0033a0] hover:underline transition-colors block"
-                  >
-                    {company.addresses.india.street}<br />
-                    {company.addresses.india.city}, {company.addresses.india.region} {company.addresses.india.postalCode}, {company.addresses.india.country}
-                  </a>
-                </p>
-                <div className="pt-3 border-t border-slate-100 text-xs text-slate-600 flex flex-wrap gap-4">
-                  {company.email && <div>Inquiries: <strong className="text-slate-900">{company.email}</strong></div>}
-                  <div>Founding: <strong className="text-slate-900">{company.foundingYear}</strong></div>
-                </div>
-              </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -401,7 +438,7 @@ export default function AboutPage() {
 
       {/* Final CTA */}
       <section className="bg-[#000033] text-white py-20 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-6 text-center space-y-6">
+        <Reveal className="max-w-7xl mx-auto px-6 text-center space-y-6">
           <p className="text-xs font-semibold uppercase tracking-wider text-[#00a3e0]">
             Get In Touch
           </p>
@@ -420,7 +457,7 @@ export default function AboutPage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-        </div>
+        </Reveal>
       </section>
 
     </div>

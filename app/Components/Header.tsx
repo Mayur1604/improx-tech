@@ -8,44 +8,12 @@ import {
   ChevronDown,
   Menu,
   X,
-  Mail,
   ArrowRight,
-  Code2,
-  Building2,
-  Layers,
-  Smartphone,
-  Globe,
-  Cloud,
-  Terminal,
-  GitMerge,
-  RefreshCw,
-  LifeBuoy,
-  Compass,
-  Palette,
-  Zap,
-  CheckSquare,
-  GitBranch,
-  Cpu,
-  CloudUpload,
-  ShieldCheck,
-  Database,
-  Lock,
-  Server,
-  Radio,
-  Sparkles,
-  BrainCircuit,
-  BarChart3,
-  MessageSquareCode,
-  PieChart,
-  LineChart,
-  LucideIcon,
 } from 'lucide-react';
-import { company } from '@/app/data/company';
 
 interface SubService {
   name: string;
   href: string;
-  icon: LucideIcon;
   desc: string;
 }
 
@@ -64,16 +32,16 @@ const NAV_ITEMS: NavCategory[] = [
     featuredTitle: 'Enterprise Application Scoping',
     featuredDesc: 'Bespoke custom software and SaaS platforms engineered with clean domain boundaries.',
     dropdown: [
-      { name: 'Custom Software Development', href: '/application-services/custom-software-development', icon: Code2, desc: 'Bespoke business platforms & workflow automation' },
-      { name: 'Enterprise Applications', href: '/application-services/enterprise-applications', icon: Building2, desc: 'High-availability operational systems connecting ERPs' },
-      { name: 'SaaS Development', href: '/application-services/saas-development', icon: Layers, desc: 'Multi-tenant cloud platforms with isolated schemas' },
-      { name: 'Web Applications', href: '/application-services/web-applications', icon: Globe, desc: 'Fast, responsive web applications with Next.js & React' },
-      { name: 'Mobile App Development', href: '/application-services/mobile-app-development', icon: Smartphone, desc: 'Cross-platform iOS and Android apps with React Native' },
-      { name: 'Cloud Applications', href: '/application-services/cloud-applications', icon: Cloud, desc: 'Cloud-native microservices and container deployments' },
-      { name: 'API Development', href: '/application-services/api-development', icon: Terminal, desc: 'High-throughput REST and GraphQL API gateways' },
-      { name: 'System Integration', href: '/application-services/system-integration', icon: GitMerge, desc: 'Data orchestration across ERPs, CRMs, and payment tools' },
-      { name: 'Legacy Modernization', href: '/application-services/legacy-modernization', icon: RefreshCw, desc: 'Strangler-fig migration decomposing legacy monoliths' },
-      { name: 'Maintenance & Support', href: '/application-services/maintenance-support', icon: LifeBuoy, desc: 'Continuous SLA patching, audits, and performance tuning' },
+      { name: 'Custom Software Development', href: '/application-services/custom-software-development', desc: 'Bespoke business platforms & workflow automation' },
+      { name: 'Enterprise Applications', href: '/application-services/enterprise-applications', desc: 'High-availability operational systems connecting ERPs' },
+      { name: 'SaaS Development', href: '/application-services/saas-development', desc: 'Multi-tenant cloud platforms with isolated schemas' },
+      { name: 'Web Applications', href: '/application-services/web-applications', desc: 'Fast, responsive web applications with Next.js & React' },
+      { name: 'Mobile App Development', href: '/application-services/mobile-app-development', desc: 'Cross-platform iOS and Android apps with React Native' },
+      { name: 'Cloud Applications', href: '/application-services/cloud-applications', desc: 'Cloud-native microservices and container deployments' },
+      { name: 'API Development', href: '/application-services/api-development', desc: 'High-throughput REST and GraphQL API gateways' },
+      { name: 'System Integration', href: '/application-services/system-integration', desc: 'Data orchestration across ERPs, CRMs, and payment tools' },
+      { name: 'Legacy Modernization', href: '/application-services/legacy-modernization', desc: 'Strangler-fig migration decomposing legacy monoliths' },
+      { name: 'Maintenance & Support', href: '/application-services/maintenance-support', desc: 'Continuous SLA patching, audits, and performance tuning' },
     ],
   },
   {
@@ -82,12 +50,12 @@ const NAV_ITEMS: NavCategory[] = [
     featuredTitle: 'Sprint Delivery Velocity',
     featuredDesc: 'From validated UX prototypes to scalable market-ready production codebases.',
     dropdown: [
-      { name: 'Product Strategy', href: '/product-engineering/product-strategy', icon: Compass, desc: 'Technical roadmapping, MVP scoping, and architecture' },
-      { name: 'UI/UX Design', href: '/product-engineering/ui-ux-design', icon: Palette, desc: 'Enterprise design systems and responsive user journeys' },
-      { name: 'Rapid Prototyping', href: '/product-engineering/rapid-prototyping', icon: Zap, desc: 'Working proof-of-concept builds with rapid feedback' },
-      { name: 'QA & Testing', href: '/product-engineering/qa-testing', icon: CheckSquare, desc: 'Automated unit, integration, stress, and regression suites' },
-      { name: 'DevOps & CI/CD', href: '/product-engineering/devops-cicd', icon: GitBranch, desc: 'Automated build, test, and release deployment pipelines' },
-      { name: 'Opensource Engineering', href: '/product-engineering/opensource-engineering', icon: Cpu, desc: 'Open-source frameworks and community-backed tools' },
+      { name: 'Product Strategy', href: '/product-engineering/product-strategy', desc: 'Technical roadmapping, MVP scoping, and architecture' },
+      { name: 'UI/UX Design', href: '/product-engineering/ui-ux-design', desc: 'Enterprise design systems and responsive user journeys' },
+      { name: 'Rapid Prototyping', href: '/product-engineering/rapid-prototyping', desc: 'Working proof-of-concept builds with rapid feedback' },
+      { name: 'QA & Testing', href: '/product-engineering/qa-testing', desc: 'Automated unit, integration, stress, and regression suites' },
+      { name: 'DevOps & CI/CD', href: '/product-engineering/devops-cicd', desc: 'Automated build, test, and release deployment pipelines' },
+      { name: 'Opensource Engineering', href: '/product-engineering/opensource-engineering', desc: 'Open-source frameworks and community-backed tools' },
     ],
   },
   {
@@ -96,12 +64,12 @@ const NAV_ITEMS: NavCategory[] = [
     featuredTitle: 'Cloud & SRE Operations',
     featuredDesc: 'Terraform infrastructure-as-code, multi-cloud migrations, and continuous monitoring.',
     dropdown: [
-      { name: 'Cloud Migration', href: '/technology-services/cloud-migration', icon: CloudUpload, desc: 'Workload discovery, refactoring, and cloud cutover' },
-      { name: 'DevSecOps', href: '/technology-services/devsecops', icon: ShieldCheck, desc: 'Security-integrated CI/CD pipelines and vulnerability scans' },
-      { name: 'Data Engineering', href: '/technology-services/data-engineering', icon: Database, desc: 'Data warehouses, ETL pipelines, and streaming lakes' },
-      { name: 'Cyber Security', href: '/technology-services/cyber-security', icon: Lock, desc: 'Role-based access, encryption, and security audits' },
-      { name: 'Infrastructure Mgmt', href: '/technology-services/infrastructure-mgmt', icon: Server, desc: 'Multi-cloud Kubernetes cluster management and monitoring' },
-      { name: 'IoT Solutions', href: '/technology-services/iot-solutions', icon: Radio, desc: 'Edge device telemetry, MQTT brokers, and IoT gateways' },
+      { name: 'Cloud Migration', href: '/technology-services/cloud-migration', desc: 'Workload discovery, refactoring, and cloud cutover' },
+      { name: 'DevSecOps', href: '/technology-services/devsecops', desc: 'Security-integrated CI/CD pipelines and vulnerability scans' },
+      { name: 'Data Engineering', href: '/technology-services/data-engineering', desc: 'Data warehouses, ETL pipelines, and streaming lakes' },
+      { name: 'Cyber Security', href: '/technology-services/cyber-security', desc: 'Role-based access, encryption, and security audits' },
+      { name: 'Infrastructure Mgmt', href: '/technology-services/infrastructure-mgmt', desc: 'Multi-cloud Kubernetes cluster management and monitoring' },
+      { name: 'IoT Solutions', href: '/technology-services/iot-solutions', desc: 'Edge device telemetry, MQTT brokers, and IoT gateways' },
     ],
   },
   {
@@ -110,15 +78,16 @@ const NAV_ITEMS: NavCategory[] = [
     featuredTitle: 'Enterprise Machine Intelligence',
     featuredDesc: 'Deterministic LLM guardrails, executive analytics cockpits, and real-time pipelines.',
     dropdown: [
-      { name: 'Generative AI', href: '/ai-bi/generative-ai', icon: Sparkles, desc: 'Enterprise SLM integration and semantic search' },
-      { name: 'Machine Learning', href: '/ai-bi/machine-learning', icon: BrainCircuit, desc: 'Predictive modeling, classification, and scoring engines' },
-      { name: 'Business Intelligence', href: '/ai-bi/business-intelligence', icon: BarChart3, desc: 'Executive reporting cockpits and self-service analytics' },
-      { name: 'NLP & Automation', href: '/ai-bi/nlp-automation', icon: MessageSquareCode, desc: 'Natural language classification and document extraction' },
-      { name: 'Data Visualization', href: '/ai-bi/data-visualization', icon: PieChart, desc: 'Interactive operational dashboards and metric tracking' },
-      { name: 'Predictive Analysis', href: '/ai-bi/predictive-analysis', icon: LineChart, desc: 'Time-series forecasting, churn prediction, and anomaly detection' },
+      { name: 'Generative AI', href: '/ai-bi/generative-ai', desc: 'Enterprise SLM integration and semantic search' },
+      { name: 'Machine Learning', href: '/ai-bi/machine-learning', desc: 'Predictive modeling, classification, and scoring engines' },
+      { name: 'Business Intelligence', href: '/ai-bi/business-intelligence', desc: 'Executive reporting cockpits and self-service analytics' },
+      { name: 'NLP & Automation', href: '/ai-bi/nlp-automation', desc: 'Natural language classification and document extraction' },
+      { name: 'Data Visualization', href: '/ai-bi/data-visualization', desc: 'Interactive operational dashboards and metric tracking' },
+      { name: 'Predictive Analysis', href: '/ai-bi/predictive-analysis', desc: 'Time-series forecasting, churn prediction, and anomaly detection' },
     ],
   },
   { title: 'About', href: '/about' },
+  { title: 'Careers', href: '/careers' },
   { title: 'Blog', href: '/blog' },
 ];
 
@@ -198,29 +167,6 @@ export default function Header() {
 
   return (
     <header ref={headerRef} className="sticky top-0 z-50 transition-all duration-300">
-      
-      {/* Top Contact & Location Bar with live dual-hub status */}
-      <div className="bg-[#000033] text-white text-xs py-2 px-6 border-b border-white/10 select-none">
-        <div className="max-w-[1440px] mx-auto flex items-center justify-between flex-wrap gap-4">
-          <div className="flex items-center gap-6 text-xs text-slate-300">
-            {company.email && (
-              <a
-                href={`mailto:${company.email}`}
-                className="flex items-center gap-1.5 hover:text-white transition-colors group"
-                title="Engineering Inquiries"
-              >
-                <Mail className="w-3.5 h-3.5 text-[#00a3e0] group-hover:scale-110 transition-transform" />
-                <span>{company.email}</span>
-              </a>
-            )}
-          </div>
-
-          <div className="hidden sm:flex items-center gap-3 text-[11px] text-slate-300">
-            <span>Delaware, USA &bull; Pune, India</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navigation Bar with dynamic scroll elevation & glassmorphism */}
       <div
         className={`border-b transition-all duration-300 ${
@@ -275,7 +221,7 @@ export default function Header() {
                     <Link
                       href={item.href}
                       onClick={closeAllMenus}
-                      className={`relative flex items-center gap-1.5 py-1 transition-colors ${
+                      className={`group relative flex items-center gap-1.5 py-1.5 transition-colors ${
                         active
                           ? 'text-[#0033a0] font-semibold'
                           : 'hover:text-[#0033a0] text-slate-700'
@@ -285,15 +231,20 @@ export default function Header() {
                       {hasDropdown && (
                         <ChevronDown
                           className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${
-                            hoveredCategory === item.title ? 'rotate-180 text-[#0033a0]' : ''
+                            hoveredCategory === item.title ? 'rotate-180 text-[#0033a0]' : 'group-hover:text-[#0033a0]'
                           }`}
                         />
                       )}
                       
-                      {/* Active Route Indicator underline */}
-                      {active && (
-                        <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-[#0033a0] rounded-full" />
-                      )}
+                      {/* Smooth animated underline: active stays full, hover smoothly expands from left */}
+                      <span
+                        aria-hidden="true"
+                        className={`absolute -bottom-1.5 left-0 h-0.5 bg-[#0033a0] rounded-full transition-all duration-300 ease-out origin-left ${
+                          active
+                            ? 'w-full opacity-100'
+                            : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
+                        }`}
+                      />
                     </Link>
 
                     {/* Interactive Mega-Dropdown Menu */}
@@ -311,7 +262,6 @@ export default function Header() {
                             }`}
                           >
                             {item.dropdown.map((sub) => {
-                              const SubIcon = sub.icon;
                               const isSubActive = pathname === sub.href;
 
                               return (
@@ -325,15 +275,6 @@ export default function Header() {
                                       : 'border-transparent hover:bg-slate-50 hover:border-slate-200'
                                   }`}
                                 >
-                                  <div
-                                    className={`w-8 h-8 rounded-[4px] border flex items-center justify-center shrink-0 transition-colors ${
-                                      isSubActive
-                                        ? 'bg-[#0033a0] text-white border-[#0033a0]'
-                                        : 'bg-slate-50 border-slate-200 text-[#0033a0] group-hover/sub:bg-[#0033a0] group-hover/sub:text-white group-hover/sub:border-[#0033a0]'
-                                    }`}
-                                  >
-                                    <SubIcon className="w-4 h-4" />
-                                  </div>
                                   <div className="space-y-0.5">
                                     <div
                                       className={`text-xs font-bold leading-snug transition-colors ${
@@ -456,7 +397,6 @@ export default function Header() {
                       {item.dropdown && activeMobileDropdown === item.title && (
                         <ul className="pl-3 pb-2 pt-2 grid grid-cols-1 gap-1.5 border-l-2 border-[#0033a0]/30 ml-2 mt-1">
                           {item.dropdown.map((sub) => {
-                            const SubIcon = sub.icon;
                             return (
                               <li key={sub.name}>
                                 <Link
@@ -464,7 +404,6 @@ export default function Header() {
                                   className="flex items-center gap-2 text-xs text-slate-600 hover:text-[#0033a0] py-1.5 px-2 rounded-[4px] hover:bg-slate-50 transition-colors"
                                   onClick={closeAllMenus}
                                 >
-                                  <SubIcon className="w-3.5 h-3.5 text-[#00a3e0]" />
                                   <span>{sub.name}</span>
                                 </Link>
                               </li>

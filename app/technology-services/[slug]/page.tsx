@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'website',
       images: [
         {
-          url: '/images/services/cloud-infrastructure.webp',
+          url: '/images/backgrounds/technology-services-bg.svg',
           width: 1200,
           height: 630,
           alt: service.title,
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: service.title,
       description: service.tagline,
-      images: ['/images/services/cloud-infrastructure.webp'],
+      images: ['/images/backgrounds/technology-services-bg.svg'],
     },
   };
 }

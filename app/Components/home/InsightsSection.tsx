@@ -36,42 +36,39 @@ export default function InsightsSection() {
         {/* Editorial Layout: 1 Featured Lead Story + 2 Recent Articles */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
-          {/* Featured Article (Horizontal Split) */}
+          {/* Featured Article (Tech Mahindra Insights Featured Card) */}
           {featuredArticle && (
-            <div className="group lg:col-span-7 bg-slate-50 border border-slate-200 rounded-[6px] overflow-hidden card-hover flex flex-col justify-between">
-              <div className="relative h-64 sm:h-72 w-full bg-slate-900 overflow-hidden">
+            <div className="group lg:col-span-7 bg-white border border-slate-200 rounded-[8px] overflow-hidden shadow-2xs hover:shadow-xl hover:-translate-y-1.5 hover:border-[#0033a0]/50 transition-all duration-300 ease-out flex flex-col justify-between">
+              <div className="relative aspect-[16/9] w-full bg-slate-900 overflow-hidden">
                 <Image
                   src={featuredArticle.image}
                   alt={featuredArticle.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 55vw"
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-108 opacity-90 group-hover:opacity-100"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4">
-                  <span className="text-[#00a3e0] text-xs font-semibold uppercase tracking-wider drop-shadow-md">
-                    Featured
-                  </span>
-                </div>
-                <div className="absolute bottom-4 left-4 right-4 text-white text-xs flex items-center justify-between">
-                  <span className="text-[#00a3e0] font-semibold uppercase tracking-wider">
-                    {featuredArticle.category}
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-slate-300">
-                    <Clock className="w-3.5 h-3.5" />
-                    {featuredArticle.readTime}
-                  </span>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent" />
               </div>
 
               <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-4">
                 <div className="space-y-3">
-                  <div className="flex items-center gap-2 text-xs text-slate-500">
-                    <Calendar className="w-3.5 h-3.5" />
-                    <span>{featuredArticle.date}</span>
+                  <div className="flex items-center justify-between text-xs text-slate-500">
+                    <div className="flex items-center gap-2.5">
+                      <span className="font-mono text-[11px] font-semibold px-2.5 py-0.5 rounded-[4px] bg-blue-50 text-[#0033a0] border border-blue-100">
+                        {featuredArticle.category}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-slate-500">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>{featuredArticle.date}</span>
+                      </span>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-[11px] font-mono text-slate-500">
+                      <Clock className="w-3.5 h-3.5" />
+                      {featuredArticle.readTime}
+                    </span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug hover:text-[#0033a0] transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug group-hover:text-[#0033a0] transition-colors">
                     <Link href={`/blog/${featuredArticle.slug}`}>
                       {featuredArticle.title}
                     </Link>
@@ -82,11 +79,11 @@ export default function InsightsSection() {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-slate-200/60 flex items-center justify-between text-xs">
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
                   <span className="text-slate-500 font-medium">By {featuredArticle.author}</span>
                   <Link
                     href={`/blog/${featuredArticle.slug}`}
-                    className="font-semibold text-[#0033a0] inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
+                    className="font-semibold text-[#0033a0] inline-flex items-center gap-1.5 group-hover:translate-x-0.5 transition-transform"
                   >
                     <span>Read Article</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -96,25 +93,31 @@ export default function InsightsSection() {
             </div>
           )}
 
-          {/* 2 Recent Articles */}
+          {/* 2 Recent Articles (Tech Mahindra What's New / Insights Cards) */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             {recentArticles.map((article) => (
               <div
                 key={article.slug}
-                className="bg-white border border-slate-200 rounded-[6px] p-6 card-hover flex-1 flex flex-col justify-between space-y-4"
+                className="group relative bg-white border border-slate-200 rounded-[8px] p-6 sm:p-7 shadow-2xs hover:shadow-xl hover:-translate-y-1.5 hover:border-[#0033a0]/50 transition-all duration-300 ease-out flex-1 flex flex-col justify-between space-y-4 overflow-hidden"
               >
-                <div className="space-y-2">
+                {/* Accent top highlight */}
+                <div 
+                  aria-hidden="true"
+                  className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0033a0] to-[#00a3e0] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+
+                <div className="space-y-2.5">
                   <div className="flex items-center justify-between text-xs text-slate-500">
-                    <span className="font-semibold text-[#0033a0]">
+                    <span className="font-mono text-[11px] font-semibold px-2 py-0.5 rounded-[4px] bg-blue-50 text-[#0033a0] border border-blue-100">
                       {article.category}
                     </span>
-                    <span className="inline-flex items-center gap-1">
+                    <span className="inline-flex items-center gap-1 text-[11px] font-mono text-slate-500">
                       <Clock className="w-3.5 h-3.5" />
                       {article.readTime}
                     </span>
                   </div>
 
-                  <h4 className="text-base sm:text-lg font-bold text-slate-900 leading-snug hover:text-[#0033a0] transition-colors">
+                  <h4 className="text-base sm:text-lg font-bold text-slate-900 leading-snug group-hover:text-[#0033a0] transition-colors">
                     <Link href={`/blog/${article.slug}`}>
                       {article.title}
                     </Link>
@@ -129,7 +132,7 @@ export default function InsightsSection() {
                   <span>{article.date}</span>
                   <Link
                     href={`/blog/${article.slug}`}
-                    className="font-semibold text-[#0033a0] inline-flex items-center gap-1"
+                    className="font-semibold text-[#0033a0] inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
                   >
                     <span>Read Analysis</span>
                     <ArrowRight className="w-3.5 h-3.5" />
