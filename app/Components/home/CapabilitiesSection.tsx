@@ -150,7 +150,7 @@ export default function CapabilitiesSection() {
             <Link
               key={capability.name}
               href={capability.href}
-              className="group relative h-[460px] sm:h-[480px] bg-slate-900 rounded-[10px] border border-slate-200 overflow-hidden shadow-xs hover:shadow-2xl transition-all duration-500 ease-out flex flex-col justify-end"
+              className="group relative h-[460px] sm:h-[480px] bg-slate-900 rounded-none border border-slate-200 overflow-hidden shadow-xs hover:shadow-2xl transition-all duration-500 ease-out flex flex-col justify-end"
             >
               {/* 1. Full-Bleed Background Visual with subtle zoom on hover */}
               <div className="absolute inset-0 z-0">
@@ -177,11 +177,10 @@ export default function CapabilitiesSection() {
                 </div>
               </div>
 
-              {/* 3. The Sliding White Panel (HCLTech Ecosystem Resources style: slides up onto the image on hover) */}
-              <div className="absolute inset-x-0 bottom-0 z-20 bg-white p-6 sm:p-7 rounded-t-[16px] shadow-2xl transition-transform duration-500 ease-out transform translate-y-full group-hover:translate-y-0 min-h-[78%] flex flex-col justify-between">
+              {/* 3. The Sliding White Panel (Clean sharp edges, no curvyness) */}
+              <div className="absolute inset-x-0 bottom-0 z-20 bg-white p-6 sm:p-7 rounded-none shadow-2xl transition-transform duration-500 ease-out transform translate-y-full group-hover:translate-y-0 min-h-[78%] flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="w-2 h-2 rounded-full bg-[#00a3e0]" />
                   </div>
 
                   <h3 className="text-xl font-bold text-slate-900 leading-snug group-hover:text-[#0033a0] transition-colors">
@@ -197,7 +196,7 @@ export default function CapabilitiesSection() {
                     {capability.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-[4px] bg-slate-100 text-slate-700 border border-slate-200/80"
+                        className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-none bg-slate-100 text-slate-700 border border-slate-200/80"
                       >
                         {tech}
                       </span>
