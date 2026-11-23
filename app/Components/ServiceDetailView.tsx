@@ -33,11 +33,40 @@ import {
 import { ServiceDetail } from '../data/servicesData';
 import EngineeringBlogSection from './EngineeringBlogSection';
 
+const serviceSlugImageMap: Record<string, string> = {
+  // 1. Custom Software Development
+  'custom-software-development': '/images/services/custom-software-development.svg',
+
+  // 2. Enterprise Application Development
+  'enterprise-applications': '/images/services/enterprise-application-development.svg',
+
+  // 3. SaaS Platform Development
+  'saas-development': '/images/services/saas-platform-development.svg',
+
+  // 4. Cloud Application & DevSecOps
+  'cloud-applications': '/images/services/cloud-application-devsecops.svg',
+  'devsecops': '/images/services/cloud-application-devsecops.svg',
+  'cloud-migration': '/images/services/cloud-application-devsecops.svg',
+
+  // 5. High-Throughput API Development
+  'api-development': '/images/services/high-throughput-api-development.svg',
+
+  // 6. AI & Data Integration Systems
+  'data-engineering': '/images/services/ai-data-integration-systems.svg',
+  'system-integration': '/images/services/ai-data-integration-systems.svg',
+  'generative-ai': '/images/services/ai-data-integration-systems.svg',
+  'machine-learning': '/images/services/ai-data-integration-systems.svg',
+  'business-intelligence': '/images/services/ai-data-integration-systems.svg',
+  'nlp-automation': '/images/services/ai-data-integration-systems.svg',
+  'data-visualization': '/images/services/ai-data-integration-systems.svg',
+  'predictive-analysis': '/images/services/ai-data-integration-systems.svg',
+};
+
 const categoryImageMap: Record<string, string> = {
-  'Application Services': '/images/backgrounds/enterprise-application-services-bg.webp',
-  'Product Engineering': '/images/backgrounds/product-engineering-bg.webp',
-  'Technology Services': '/images/backgrounds/technology-services-bg.webp',
-  'AI & Business Intelligence': '/images/backgrounds/ai-business-intelligence-bg.webp',
+  'Application Services': '/images/backgrounds/enterprise-application-services-bg.svg',
+  'Product Engineering': '/images/backgrounds/product-engineering-bg.svg',
+  'Technology Services': '/images/backgrounds/technology-services-bg.svg',
+  'AI & Business Intelligence': '/images/backgrounds/ai-business-intelligence-bg.svg',
 };
 
 const iconMap: Record<string, LucideIcon> = {
@@ -67,6 +96,7 @@ interface ServiceDetailViewProps {
 export default function ServiceDetailView({ service, siblingServices }: ServiceDetailViewProps) {
   const IconComponent = iconMap[service.iconName] || Code2;
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const heroImage = serviceSlugImageMap[service.slug] || categoryImageMap[service.category] || '/images/backgrounds/enterprise-application-services-bg.webp';
 
   const faqs = [
     {
@@ -90,35 +120,49 @@ export default function ServiceDetailView({ service, siblingServices }: ServiceD
   return (
     <div className="bg-white text-gray-900 min-h-screen selection:bg-[#0033a0] selection:text-white">
       
-      {/* ================= LIGHT EDITORIAL SUBPAGE HEADER ================= */}
-      <section className="bg-slate-50 border-b border-slate-200 py-12 lg:py-16">
-        <div className="max-w-[1440px] mx-auto px-6">
+      {/* ================= FULL-BLEED HERO HEADER ================= */}
+      <section className="relative border-b border-slate-700 py-16 lg:py-24 overflow-hidden bg-[#000033]">
+        {/* Full-bleed background */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={heroImage}
+            alt={service.title}
+            fill
+            sizes="100vw"
+            className="object-cover object-right"
+            priority
+            unoptimized
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#000033]/95 via-[#000033]/80 to-[#000033]/40" />
+        </div>
+
+        <div className="relative z-10 max-w-[1440px] mx-auto px-6">
           {/* Breadcrumb Navigation */}
-          <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 mb-6 flex-wrap">
-            <Link href="/" className="hover:text-gray-900 transition-colors">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-            <Link href={service.categoryHref} className="hover:text-gray-900 transition-colors">
+          <nav className="flex items-center gap-2 text-xs sm:text-sm text-white/60 mb-8 flex-wrap">
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-white/40" />
+            <Link href={service.categoryHref} className="hover:text-white transition-colors">
               {service.category}
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-            <span className="text-[#0033a0] font-medium">{service.title}</span>
+            <ChevronRight className="w-3.5 h-3.5 text-white/40" />
+            <span className="text-[#00a3e0] font-medium">{service.title}</span>
           </nav>
 
           <div className="max-w-4xl space-y-5">
-            <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0033a0] hover:text-[#00287a] transition-colors duration-200 cursor-default">
+            <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#00a3e0] cursor-default">
               <IconComponent className="w-3.5 h-3.5" />
               <span>{service.category} Practice</span>
             </p>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#000033] leading-tight">
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
               {service.title}
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-200 font-medium leading-relaxed">
               {service.tagline}
             </p>
 
-            <p className="text-sm text-slate-600 leading-relaxed max-w-3xl">
+            <p className="text-sm text-slate-300 leading-relaxed max-w-3xl">
               {service.description}
             </p>
 
@@ -132,9 +176,9 @@ export default function ServiceDetailView({ service, siblingServices }: ServiceD
               </Link>
               <Link
                 href={service.categoryHref}
-                className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-gray-800 font-semibold px-6 py-3.5 rounded-[6px] border border-slate-300 text-sm transition-all"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-[6px] border border-white/30 text-sm transition-all backdrop-blur-sm"
               >
-                <ArrowLeft className="w-4 h-4 text-gray-500" />
+                <ArrowLeft className="w-4 h-4 text-white/80" />
                 <span>All {service.category} Disciplines</span>
               </Link>
             </div>
@@ -165,30 +209,6 @@ export default function ServiceDetailView({ service, siblingServices }: ServiceD
           {/* Main Narrative Column */}
           <div className="lg:col-span-8 space-y-14">
             
-            {/* Discipline Hero Visual (Sharp-Edged) */}
-            <div className="group relative h-64 sm:h-80 w-full rounded-[6px] overflow-hidden shadow-sm hover:shadow-md bg-slate-900 border border-slate-300 hover:border-[#0033a0] transition-all duration-300">
-              <Image
-                src={categoryImageMap[service.category] || '/images/services/custom-software.webp'}
-                alt={service.title}
-                fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-104"
-                sizes="(max-width: 1024px) 100vw, 65vw"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#000033]/90 via-[#000033]/30 to-transparent" />
-              <div className="absolute bottom-5 left-6 right-6 flex flex-wrap items-center justify-between gap-2">
-                <div>
-                  <span className="text-xs font-mono text-[#00a3e0] uppercase font-bold tracking-wider">
-                    {service.category} ARCHITECTURE POD
-                  </span>
-                  <div className="text-xl font-bold text-white mt-0.5">{service.title} Engineering</div>
-                </div>
-                <span className="text-slate-200 text-xs font-mono drop-shadow-md">
-                  Delaware &amp; Pune Delivery
-                </span>
-              </div>
-            </div>
-
             {/* Architecture & Delivery Approach */}
             <div className="space-y-4">
               <div className="inline-block px-2.5 py-1 bg-blue-50 border border-blue-200 text-[11px] font-bold text-[#0033a0] uppercase tracking-wider">

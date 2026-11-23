@@ -1,114 +1,234 @@
 'use client';
 
 import { useState } from 'react';
-import { Search, Compass, Code, Rocket } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
+import Link from 'next/link';
 
 const STAGES = [
   {
     step: '01',
     name: 'Discover',
-    icon: Search,
-    summary: 'Understand business requirements and technical challenges.',
-    details: 'We audit your technical specifications, current bottlenecks, security constraints, and operational goals to produce an actionable scoping document.',
+    deliverable: 'Technical Audit & Scope Blueprint',
+    summary: 'We audit your technical specifications, current bottlenecks, security constraints, and operational goals to produce an actionable scoping document.',
+    points: [
+      'Architecture & legacy systems audit',
+      'Security & regulatory compliance review',
+      'Resource sizing & velocity roadmap',
+    ],
   },
   {
     step: '02',
     name: 'Architect',
-    icon: Compass,
-    summary: 'Plan the architecture, technology stack and infrastructure.',
-    details: 'We model data entities, design clean API contracts, select appropriate cloud providers, and establish development sprint milestones.',
+    deliverable: 'API Contracts & Cloud Topology',
+    summary: 'We model data entities, design clean API contracts, select appropriate cloud providers, and establish development sprint milestones.',
+    points: [
+      'Relational data models & schema design',
+      'Decoupled microservices topology',
+      'Terraform IaC infrastructure templates',
+    ],
   },
   {
     step: '03',
     name: 'Develop',
-    icon: Code,
-    summary: 'Build, test and integrate software solutions.',
-    details: 'Two-week sprint cadences with automated unit testing, static linting, continuous integration, and demo reviews of working software increments.',
+    deliverable: '2-Week Sprint Working Increments',
+    summary: 'Two-week sprint cadences with automated unit testing, static linting, continuous integration, and demo reviews of working software increments.',
+    points: [
+      'Daily asynchronous standups in EST',
+      'Automated SAST scans & Playwright tests',
+      'Direct Slack/Teams integration with pods',
+    ],
   },
   {
     step: '04',
     name: 'Deploy & Improve',
-    icon: Rocket,
-    summary: 'Deploy applications and continuously improve them.',
-    details: 'Zero-downtime release orchestration, infrastructure observability, performance tuning, and structured knowledge transfer to your team.',
+    deliverable: 'Zero-Downtime Release & SRE',
+    summary: 'Zero-downtime release orchestration, infrastructure observability, performance tuning, and structured knowledge transfer to your team.',
+    points: [
+      'Canary & blue/green zero-downtime releases',
+      'Distributed OpenTelemetry tracing',
+      '24/7 SLO tracking & incident runbooks',
+    ],
   },
 ];
 
 export default function EngineeringProcessSection() {
-  const [activeStage, setActiveStage] = useState(0);
+  const [activeStep, setActiveStep] = useState<number>(0);
 
   return (
-    <section className="py-20 lg:py-24 bg-white/95 backdrop-blur-xs border-b border-slate-200/90">
+    <section className="py-14 lg:py-16 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Section Header */}
-        <div className="max-w-2xl mb-16">
-          <p className="text-xs font-semibold uppercase tracking-wider text-[#0033a0] hover:text-[#00287a] transition-colors duration-200 cursor-default mb-2 inline-block">
-            Engineering Process
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-tight mb-4">
-            A disciplined development lifecycle from concept to production.
-          </h2>
-          <p className="text-base text-slate-600 leading-relaxed">
-            Our structured engineering process ensures clear scope, predictable delivery cadences, and robust software quality at every step.
-          </p>
+        {/* Section Header: Hallmark Head-Split */}
+        <div className="mb-12 pb-6 border-b border-slate-200/80">
+          <div className="flex items-center justify-between gap-4 mb-3 flex-wrap">
+            <div className="flex items-center gap-2.5 text-xs font-mono text-[#0033a0] tracking-wider">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0033a0]" />
+              <span>DELIVERY LIFECYCLE // 04 DISCIPLINES</span>
+            </div>
+
+            <div className="text-[11px] font-mono text-slate-600 bg-slate-50 border border-slate-200/80 px-2.5 py-1 rounded-[3px]">
+              CURRENT: <strong className="text-[#000033]">PHASE {STAGES[activeStep].step} — {STAGES[activeStep].name}</strong>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
+            <div className="lg:col-span-7">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#000033] leading-tight">
+                A disciplined development lifecycle from concept to production.
+              </h2>
+            </div>
+            <div className="lg:col-span-5">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Our structured engineering process ensures clear scope, predictable delivery cadences, and robust software quality at every step without proprietary vendor lock-in.
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* Process Bar: Horizontal on Desktop, Vertical on Mobile */}
+        {/* Interactive Architectural Pipeline (Zero Cards) */}
         <div className="relative">
           
-          {/* Thin Connecting Line on Desktop */}
-          <div className="hidden lg:block absolute top-6 left-0 right-0 h-0.5 bg-slate-200 z-0" />
+          {/* Base Inactive Track Line */}
+          <div className="hidden lg:block absolute top-[7px] left-0 right-0 h-[2px] bg-slate-200 z-0" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+          {/* Dynamic Active Progress Track Line */}
+          <div
+            className="hidden lg:block absolute top-[7px] left-0 h-[2px] bg-[#0033a0] transition-all duration-500 ease-out z-0"
+            style={{ width: `${(activeStep / (STAGES.length - 1)) * 100}%` }}
+          />
+
+          {/* 4 Architectural Columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 relative z-10">
             {STAGES.map((stage, idx) => {
-              const Icon = stage.icon;
-              const isActive = activeStage === idx;
+              const isActive = activeStep === idx;
+              const isPast = idx < activeStep;
 
               return (
                 <div
                   key={stage.step}
-                  onMouseEnter={() => setActiveStage(idx)}
-                  onFocus={() => setActiveStage(idx)}
+                  role="button"
                   tabIndex={0}
-                  className={`cursor-pointer transition-all duration-200 rounded-[6px] p-5 text-left border ${
-                    isActive
-                      ? 'bg-slate-50 border-[#0033a0] shadow-xs'
-                      : 'bg-white border-transparent hover:border-slate-300'
+                  onClick={() => setActiveStep(idx)}
+                  onMouseEnter={() => setActiveStep(idx)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setActiveStep(idx);
+                    }
+                  }}
+                  className={`group flex flex-col justify-between text-left cursor-pointer transition-all duration-200 focus:outline-none ${
+                    isActive ? 'opacity-100' : 'opacity-70 hover:opacity-100'
                   }`}
                 >
-                  {/* Step Number & Node Icon */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <div
-                      className={`w-12 h-12 rounded-[6px] flex items-center justify-center transition-colors ${
-                        isActive
-                          ? 'bg-[#0033a0] text-white'
-                          : 'bg-slate-100 text-slate-700'
+                  
+                  {/* Interactive Node & Step Marker */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div
+                        className={`w-4 h-4 rounded-full border-2 transition-all duration-300 flex items-center justify-center shrink-0 ${
+                          isActive
+                            ? 'bg-[#0033a0] border-white ring-4 ring-[#0033a0]/25 scale-110 shadow-xs'
+                            : isPast
+                            ? 'bg-[#000033] border-white ring-1 ring-slate-300'
+                            : 'bg-white border-slate-300 group-hover:border-[#0033a0]'
+                        }`}
+                      >
+                        {isPast && <Check className="w-2.5 h-2.5 text-white" />}
+                        {isActive && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
+                      </div>
+
+                      <span
+                        className={`font-mono text-xs font-bold tracking-wider transition-colors ${
+                          isActive ? 'text-[#0033a0]' : 'text-slate-600 group-hover:text-slate-900'
+                        }`}
+                      >
+                        PHASE {stage.step}
+                      </span>
+                    </div>
+
+                    <h3
+                      className={`text-lg sm:text-xl font-bold mb-2 transition-colors ${
+                        isActive ? 'text-[#000033]' : 'text-slate-800 group-hover:text-[#000033]'
                       }`}
                     >
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <span className="text-xs font-mono font-bold text-slate-400">
-                      STAGE {stage.step}
-                    </span>
+                      {stage.name}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                      {stage.summary}
+                    </p>
                   </div>
 
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">
-                    {stage.name}
-                  </h3>
+                  {/* Technical Deliverable & Checkpoints */}
+                  <div
+                    className={`space-y-3 pt-3.5 border-t transition-colors ${
+                      isActive ? 'border-[#0033a0]/30' : 'border-slate-100'
+                    }`}
+                  >
+                    <ul className="space-y-1.5 text-xs text-slate-600">
+                      {stage.points.map((pt) => (
+                        <li key={pt} className="flex items-start gap-2">
+                          <span
+                            className={`w-1 h-1 rounded-full mt-1.5 shrink-0 transition-colors ${
+                              isActive ? 'bg-[#0033a0]' : 'bg-slate-300 group-hover:bg-slate-400'
+                            }`}
+                          />
+                          <span className={isActive ? 'text-slate-900 font-medium' : 'text-slate-600'}>
+                            {pt}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
 
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
-                    {stage.summary}
-                  </p>
+                    <div
+                      className={`pt-2.5 border-t transition-colors ${
+                        isActive ? 'border-[#0033a0]/20' : 'border-slate-200/70'
+                      }`}
+                    >
+                      <span className="block text-[10px] font-mono text-slate-600 uppercase tracking-wider">
+                        Key Deliverable
+                      </span>
+                      <span
+                        className={`block text-xs font-semibold mt-0.5 transition-colors ${
+                          isActive ? 'text-[#0033a0]' : 'text-slate-800'
+                        }`}
+                      >
+                        {stage.deliverable}
+                      </span>
+                    </div>
+                  </div>
 
-                  <p className="text-xs text-slate-500 leading-relaxed border-t border-slate-200/60 pt-3">
-                    {stage.details}
-                  </p>
                 </div>
               );
             })}
           </div>
 
+        </div>
+
+        {/* Bottom Architectural Cadence Strip */}
+        <div className="mt-12 pt-5 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-4 text-xs">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-slate-600">
+            <span className="inline-flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <strong className="text-slate-900 font-semibold">Governance:</strong> Delaware US Law &amp; Full IP Assignment
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+              <strong className="text-slate-900 font-semibold">Cadence:</strong> 2-Week Production Sprint Cycles
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
+              <strong className="text-slate-900 font-semibold">Delivery:</strong> Delaware Solutions Architecture + Pune Pod Velocity
+            </span>
+          </div>
+
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-1.5 font-semibold text-[#0033a0] hover:text-[#00287a] transition-colors"
+          >
+            <span>Schedule an architectural consultation</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
 
       </div>
