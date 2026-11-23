@@ -88,15 +88,6 @@ export default function EngineeringProcessSection() {
         {/* Interactive Architectural Pipeline (Zero Cards) */}
         <div className="relative">
           
-          {/* Base Inactive Track Line */}
-          <div className="hidden lg:block absolute top-[7px] left-0 right-0 h-[2px] bg-slate-200 z-0" />
-
-          {/* Dynamic Active Progress Track Line */}
-          <div
-            className="hidden lg:block absolute top-[7px] left-0 h-[2px] bg-[#0033a0] transition-all duration-500 ease-out z-0"
-            style={{ width: `${(activeStep / (STAGES.length - 1)) * 100}%` }}
-          />
-
           {/* 4 Architectural Columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 relative z-10">
             {STAGES.map((stage, idx) => {
@@ -123,9 +114,34 @@ export default function EngineeringProcessSection() {
                   
                   {/* Interactive Node & Step Marker */}
                   <div>
-                    <div className="flex items-center gap-3 mb-4">
+                    {/* Phase Header Text Above */}
+                    <div className="mb-2">
+                      <span
+                        className={`font-mono text-xs font-bold tracking-wider uppercase transition-colors ${
+                          isActive ? 'text-[#0033a0]' : 'text-slate-600 group-hover:text-slate-900'
+                        }`}
+                      >
+                        PHASE {stage.step}
+                      </span>
+                    </div>
+
+                    {/* Circle Node with Perfectly Centered Connector Line Below Phase Text */}
+                    <div className="relative flex items-center mb-4">
+                      {/* Inter-node connector line (centered on the circle's vertical midpoint) */}
+                      {idx < STAGES.length - 1 && (
+                        <div 
+                          className="hidden lg:block absolute left-[8px] w-[calc(100%+2rem)] top-1/2 -translate-y-1/2 h-[2px] bg-slate-200 z-0 pointer-events-none"
+                        >
+                          <div
+                            className="h-full bg-[#0033a0] transition-all duration-500 ease-out"
+                            style={{ width: idx < activeStep ? '100%' : '0%' }}
+                          />
+                        </div>
+                      )}
+
+                      {/* Circle Node */}
                       <div
-                        className={`w-4 h-4 rounded-full border-2 transition-all duration-300 flex items-center justify-center shrink-0 ${
+                        className={`w-4 h-4 rounded-full border-2 transition-all duration-300 flex items-center justify-center shrink-0 relative z-10 ${
                           isActive
                             ? 'bg-[#0033a0] border-white ring-4 ring-[#0033a0]/25 scale-110 shadow-xs'
                             : isPast
@@ -136,16 +152,9 @@ export default function EngineeringProcessSection() {
                         {isPast && <Check className="w-2.5 h-2.5 text-white" />}
                         {isActive && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
                       </div>
-
-                      <span
-                        className={`font-mono text-xs font-bold tracking-wider transition-colors ${
-                          isActive ? 'text-[#0033a0]' : 'text-slate-600 group-hover:text-slate-900'
-                        }`}
-                      >
-                        PHASE {stage.step}
-                      </span>
                     </div>
 
+                    {/* Stage Name & Summary Below Circle & Line */}
                     <h3
                       className={`text-lg sm:text-xl font-bold mb-2 transition-colors ${
                         isActive ? 'text-[#000033]' : 'text-slate-800 group-hover:text-[#000033]'

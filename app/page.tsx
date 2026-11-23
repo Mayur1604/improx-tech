@@ -8,7 +8,6 @@ import EngineeringCarouselSection from './Components/home/EngineeringCarouselSec
 import ArchitecturePodsSection from './Components/home/ArchitecturePodsSection';
 import EngineeringProcessSection from './Components/home/EngineeringProcessSection';
 import IndustriesSection from './Components/home/IndustriesSection';
-import DeliveryGovernanceSection from './Components/home/DeliveryGovernanceSection';
 import WhyChooseSection from './Components/home/WhyChooseSection';
 import EngineeringStandardsSection from './Components/home/EngineeringStandardsSection';
 import InsightsSection from './Components/home/InsightsSection';
@@ -139,12 +138,7 @@ export default function Home() {
           <IndustriesSection />
         </Reveal>
 
-        {/* 8. Delivery Model and Governance */}
-        <Reveal delayMs={40}>
-          <DeliveryGovernanceSection />
-        </Reveal>
-
-        {/* 9. Why Choose Improx Tech / Security Approach */}
+        {/* 8. Why Choose Improx Tech / Security Approach */}
         <Reveal delayMs={40}>
           <WhyChooseSection />
         </Reveal>
