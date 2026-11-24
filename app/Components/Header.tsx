@@ -23,6 +23,7 @@ interface NavCategory {
   featuredTitle?: string;
   featuredDesc?: string;
   dropdown?: SubService[];
+  dropdownPosition?: 'left' | 'center' | 'right';
 }
 
 const NAV_ITEMS: NavCategory[] = [
@@ -31,6 +32,7 @@ const NAV_ITEMS: NavCategory[] = [
     href: '/application-services',
     featuredTitle: 'Enterprise Application Scoping',
     featuredDesc: 'Bespoke custom software and SaaS platforms engineered with clean domain boundaries.',
+    dropdownPosition: 'left',
     dropdown: [
       { name: 'Custom Software Development', href: '/application-services/custom-software-development', desc: 'Bespoke business platforms & workflow automation' },
       { name: 'Enterprise Applications', href: '/application-services/enterprise-applications', desc: 'High-availability operational systems connecting ERPs' },
@@ -49,6 +51,7 @@ const NAV_ITEMS: NavCategory[] = [
     href: '/product-engineering',
     featuredTitle: 'Sprint Delivery Velocity',
     featuredDesc: 'From validated UX prototypes to scalable market-ready production codebases.',
+    dropdownPosition: 'center',
     dropdown: [
       { name: 'Product Strategy', href: '/product-engineering/product-strategy', desc: 'Technical roadmapping, MVP scoping, and architecture' },
       { name: 'UI/UX Design', href: '/product-engineering/ui-ux-design', desc: 'Enterprise design systems and responsive user journeys' },
@@ -63,6 +66,7 @@ const NAV_ITEMS: NavCategory[] = [
     href: '/technology-services',
     featuredTitle: 'Cloud & SRE Operations',
     featuredDesc: 'Terraform infrastructure-as-code, multi-cloud migrations, and continuous monitoring.',
+    dropdownPosition: 'center',
     dropdown: [
       { name: 'Cloud Migration', href: '/technology-services/cloud-migration', desc: 'Workload discovery, refactoring, and cloud cutover' },
       { name: 'DevSecOps', href: '/technology-services/devsecops', desc: 'Security-integrated CI/CD pipelines and vulnerability scans' },
@@ -77,6 +81,7 @@ const NAV_ITEMS: NavCategory[] = [
     href: '/ai-bi',
     featuredTitle: 'Enterprise Machine Intelligence',
     featuredDesc: 'Deterministic LLM guardrails, executive analytics cockpits, and real-time pipelines.',
+    dropdownPosition: 'right',
     dropdown: [
       { name: 'Generative AI', href: '/ai-bi/generative-ai', desc: 'Enterprise SLM integration and semantic search' },
       { name: 'Machine Learning', href: '/ai-bi/machine-learning', desc: 'Predictive modeling, classification, and scoring engines' },
@@ -249,9 +254,17 @@ export default function Header() {
 
                     {/* Interactive Mega-Dropdown Menu */}
                     {hasDropdown && item.dropdown && hoveredCategory === item.title && (
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50 animate-fadeIn">
+                      <div
+                        className={`absolute top-full pt-2 z-50 animate-fadeIn ${
+                          item.dropdownPosition === 'left'
+                            ? 'left-0 translate-x-0'
+                            : item.dropdownPosition === 'right'
+                            ? 'right-0 left-auto translate-x-0'
+                            : 'left-1/2 -translate-x-1/2'
+                        }`}
+                      >
                         <div
-                          className={`bg-white border border-slate-200 rounded-[6px] shadow-2xl p-6 grid grid-cols-12 gap-6 ${
+                          className={`bg-white border border-slate-200 rounded-[6px] shadow-2xl p-6 grid grid-cols-12 gap-6 max-w-[calc(100vw-2rem)] ${
                             item.dropdown.length > 6 ? 'w-[780px] lg:w-[860px]' : 'w-[680px] lg:w-[760px]'
                           }`}
                         >

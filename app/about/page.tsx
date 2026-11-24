@@ -13,6 +13,7 @@ import {
   Code2
 } from 'lucide-react';
 import EngineeringBlogSection from '../Components/EngineeringBlogSection';
+import FaqSection from '../Components/home/FaqSection';
 import Reveal from '../Components/Reveal';
 import NumberCounter from '../Components/NumberCounter';
 import { company } from '../data/company';
@@ -68,11 +69,62 @@ export default function AboutPage() {
     ],
   };
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What services does Improx Tech provide?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Improx Tech provides custom software engineering across four primary practices: Application Services (custom web platforms, high-throughput enterprise systems, SaaS), Product Engineering (from MVP architecture to scalable production systems), Cloud & Technology Services (cloud migration, Kubernetes DevOps, Infrastructure as Code), and AI & Business Intelligence (retrieval-augmented generation, data warehousing, and analytics pipelines).',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What types of software can your team develop?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We develop custom corporate platforms, multi-tenant SaaS products, internal operations tools, high-throughput financial and clinical transaction gateways, REST/GraphQL APIs, and enterprise cloud infrastructure. Every system is engineered from the ground up according to your domain requirements and technology constraints.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Which technologies do you work with?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Our primary engineering stack includes TypeScript, React, Next.js, Node.js, Python, and Go for application development; PostgreSQL, MySQL, and Redis for relational and in-memory data storage; and Docker, Kubernetes, and Terraform for cloud infrastructure across AWS, Microsoft Azure, and Google Cloud Platform.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How does your project development process work?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We work in structured two-week agile sprints. An engagement starts with a thorough technical discovery and architecture scoping session. Once scoped, a dedicated engineering pod is allocated. Progress is demonstrated through regular working software demos, open pull requests, and automated continuous integration deployments.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do you provide ongoing maintenance and support?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. In addition to initial development, we provide structured maintenance and support agreements covering system monitoring, vulnerability patching, dependency upgrades, database tuning, and feature extensions with defined response times.',
+        },
+      },
+    ],
+  };
+
   return (
     <div className="bg-white text-slate-900 min-h-screen">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       
       {/* ================= FULL-BLEED WEBP HERO HEADER ================= */}
@@ -435,6 +487,11 @@ export default function AboutPage() {
         title="Engineering Perspectives"
         subtitle="Technical articles on architecture, cloud infrastructure, and software delivery written by our engineering team."
       />
+
+      {/* Frequently Asked Questions */}
+      <Reveal delayMs={40}>
+        <FaqSection />
+      </Reveal>
 
       {/* Final CTA */}
       <section className="bg-[#000033] text-white py-20 border-t border-slate-800">

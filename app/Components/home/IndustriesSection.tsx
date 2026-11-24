@@ -14,8 +14,8 @@ const INDUSTRIES = [
     title: 'Architecting HIPAA-compliant EHR gateways & real-time clinical data platforms.',
     description:
       'We engineer secure health-tech architectures that eliminate data fragmentation between legacy EHR systems, laboratory information managers, and patient care applications.',
-    image: '/images/projects/healthcare-cloud.webp',
-    imageAlt: 'Healthcare cloud data architecture and clinical telemetry interface',
+    image: '/images/projects/healthcare-clinical-systems.jpg',
+    imageAlt: 'Healthcare clinical systems and real-time medical data workstation',
     href: '/application-services/custom-software-development',
     interventions: [
       {
@@ -45,7 +45,7 @@ const INDUSTRIES = [
     title: 'High-throughput trading engines, automated reconciliation & payment systems.',
     description:
       'From sub-millisecond transaction gateways to multi-currency reconciliation ledgers, we build resilient financial infrastructure designed for high-concurrency enterprise scale.',
-    image: '/images/projects/fintech-trading.webp',
+    image: '/images/projects/banking-financial-services.jpg',
     imageAlt: 'Financial trading cockpit and real-time market data dashboard',
     href: '/application-services/enterprise-applications',
     interventions: [
@@ -76,7 +76,7 @@ const INDUSTRIES = [
     title: 'Smart factory IoT telemetry, inventory optimization & ERP integration hubs.',
     description:
       'We connect physical shop-floor machinery, automated warehouse sensors, and global enterprise ERPs into unified real-time operational command centers.',
-    image: '/images/projects/supplychain-iot.webp',
+    image: '/images/projects/manufacturing-supply-chain.jpg',
     imageAlt: 'Smart factory sensor telemetry and supply chain dispatch cockpit',
     href: '/technology-services/data-engineering',
     interventions: [
@@ -107,7 +107,7 @@ const INDUSTRIES = [
     title: 'Multi-tenant SaaS architectures, metered billing & distributed microservices.',
     description:
       'We partner with tech enterprises and venture-backed SaaS platforms to architect multi-tenant data isolation, self-serve tenant provisioning, and global edge delivery.',
-    image: '/images/projects/enterprise-saas.webp',
+    image: '/images/projects/enterprise-technology-saas.jpg',
     imageAlt: 'Multi-tenant cloud platform architecture and subscription analytics console',
     href: '/application-services/saas-development',
     interventions: [

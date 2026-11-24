@@ -11,8 +11,8 @@ const CAPABILITY_GROUPS = [
     title: 'Cloud Architecture & Infrastructure Reliability',
     description: 'Fault-tolerant cloud environments that scale horizontally without manual intervention.',
     focusBadge: 'AWS / Azure / GCP',
-    image: '/images/services/cloud-infrastructure.webp',
-    imageAlt: 'Cloud architecture and infrastructure automation workbench',
+    image: '/images/services/cloud-architecture-infrastructure.jpg',
+    imageAlt: 'Multi-cloud infrastructure topology and Kubernetes orchestration workstation',
     details: [
       'Multi-region AWS, Azure, & GCP',
       'Kubernetes & Docker orchestration',
@@ -24,8 +24,8 @@ const CAPABILITY_GROUPS = [
     title: 'Modern Web & Distributed Microservices',
     description: 'Decoupled application architectures built with clear boundary separation and high throughput.',
     focusBadge: 'TypeScript / Go / Next.js',
-    image: '/images/services/enterprise-apps.webp',
-    imageAlt: 'Modern web applications and distributed microservices dashboard',
+    image: '/images/services/modern-microservices.jpeg',
+    imageAlt: 'Modern web platforms and distributed microservices architecture studio',
     details: [
       'Type-safe Node, Go, & Python',
       'Reactive React & Next.js SSR',
@@ -37,8 +37,8 @@ const CAPABILITY_GROUPS = [
     title: 'Data Systems & Analytical Pipelines',
     description: 'Structured data modeling and high-speed data pipelines that support reliable reporting.',
     focusBadge: 'PostgreSQL / Redis / Kafka',
-    image: '/images/services/ai-intelligence.webp',
-    imageAlt: 'Data extraction, real-time ingestion, and analytical pipelines',
+    image: '/images/services/modern-architecture-data-pipelines.jpeg',
+    imageAlt: 'Enterprise data pipelines, PostgreSQL schemas, and real-time Kafka telemetry',
     details: [
       'PostgreSQL & MySQL schema design',
       'In-memory caching with Redis',

@@ -2,77 +2,124 @@ import { CheckCircle2, ShieldCheck, Lock, Code2, Users, Wrench } from 'lucide-re
 
 const STRENGTHS = [
   {
-    icon: Code2,
+    number: '01',
+    category: 'DOMAIN LOGIC',
     title: 'Business-Focused Engineering',
     description: 'We prioritize clean domain logic that directly solves operational bottlenecks rather than over-engineering unnecessary complexity.',
+    standard: 'Domain-Driven Design (DDD)',
+    icon: Code2,
   },
   {
-    icon: CheckCircle2,
+    number: '02',
+    category: 'SYSTEM DESIGN',
     title: 'Scalable Software Architecture',
     description: 'Modular codebases with clear dependency injection and type contracts designed to evolve gracefully alongside your organization.',
+    standard: 'Decoupled Systems & Clean APIs',
+    icon: CheckCircle2,
   },
   {
-    icon: ShieldCheck,
+    number: '03',
+    category: 'CODE INTEGRITY',
     title: 'Quality-Focused Development',
     description: 'Automated unit test coverage, static linting, end-to-end integration checks, and mandatory peer code reviews before merge.',
+    standard: '85%+ Automated Branch Coverage',
+    icon: ShieldCheck,
   },
   {
-    icon: Lock,
+    number: '04',
+    category: 'COMPLIANCE & SEC',
     title: 'Secure Development Lifecycle',
     description: 'Standard TLS encryption in transit and at rest, principle of least privilege, automated dependency auditing, and encrypted secret management.',
+    standard: 'SOC 2 & ISO 27001 Aligned',
+    icon: Lock,
   },
   {
-    icon: Users,
+    number: '05',
+    category: 'TALENT MODEL',
     title: 'Dedicated Engineering Pods',
     description: 'Engineers who remain with your project context, building deep institutional knowledge rather than rotating constantly across accounts.',
+    standard: 'Zero Context-Switch Churn',
+    icon: Users,
   },
   {
-    icon: Wrench,
+    number: '06',
+    category: 'SITE RELIABILITY',
     title: 'Long-Term Technical Support',
     description: 'Post-launch observability, database tuning, infrastructure patching, and continuous iterative enhancements.',
+    standard: 'Production SRE & Runbooks',
+    icon: Wrench,
   },
 ];
 
 export default function WhyChooseSection() {
   return (
-    <section className="py-20 lg:py-24 bg-white/95 backdrop-blur-xs border-b border-slate-200/90">
+    <section className="py-20 lg:py-28 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Section Header */}
-        <div className="max-w-2xl mb-16">
-          <p className="text-xs font-semibold uppercase tracking-wider text-[#0033a0] hover:text-[#00287a] transition-colors duration-200 cursor-default mb-2 inline-block">
-            Why Choose Improx Tech
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-tight mb-4">
-            Engineering discipline built on transparency and craft.
-          </h2>
-          <p className="text-base text-slate-600 leading-relaxed">
-            We focus on software quality, honest scoping, and long-term maintainability so that our clients can build with confidence.
-          </p>
+        {/* Hallmark Head-Split Header */}
+        <div className="mb-14 pb-8 border-b border-slate-200/90">
+          <div className="flex items-center gap-2.5 text-xs font-mono text-[#0033a0] tracking-wider mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0033a0]" />
+            <span>ENGINEERING PRINCIPLES {'//'} 06 COMMITMENTS</span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+            <div className="lg:col-span-7">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.14]">
+                Engineering discipline built on transparency and craft.
+              </h2>
+            </div>
+            <div className="lg:col-span-5">
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                We focus on software quality, honest scoping, and long-term maintainability so that engineering leaders can build with confidence without vendor lock-in.
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* 6 Core Strengths Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {STRENGTHS.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.title}
-                className="bg-white border border-slate-200 rounded-[6px] p-7 shadow-xs hover:-translate-y-1 hover:border-[#0033a0]/50 hover:shadow-md transition-all duration-200 space-y-3 group"
-              >
-                <div className="w-10 h-10 rounded-[6px] bg-slate-50 border border-slate-200 flex items-center justify-center text-[#0033a0] group-hover:bg-[#0033a0] group-hover:text-white transition-colors duration-200">
-                  <Icon className="w-5 h-5" />
-                </div>
-                <h3 className="text-base font-bold text-slate-900 group-hover:text-[#0033a0] transition-colors">
+        {/* Hallmark Horizontal Architectural Record (Strict Zero-Card Structure) */}
+        <ol className="divide-y divide-slate-200 border-t-2 border-slate-900 border-b border-slate-200 list-none p-0 m-0">
+          {STRENGTHS.map((item) => (
+            <li
+              key={item.title}
+              className="py-8 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-baseline group hover:bg-slate-50/60 transition-colors duration-200 px-4 sm:px-6 -mx-4 sm:-mx-6"
+            >
+              {/* 1. Large Monospace Index */}
+              <div className="lg:col-span-2 flex items-baseline gap-3">
+                <span className="font-mono text-3xl sm:text-4xl lg:text-5xl font-light text-slate-300 group-hover:text-[#0033a0] transition-colors duration-200 leading-none">
+                  {item.number}
+                </span>
+                <span className="text-[10px] font-mono font-semibold uppercase tracking-widest text-[#00a3e0] lg:hidden">
+                  {item.category}
+                </span>
+              </div>
+
+              {/* 2. Strength Title & Category Kicker */}
+              <div className="lg:col-span-4 space-y-1.5">
+                <span className="hidden lg:block text-[10px] font-mono font-semibold uppercase tracking-widest text-[#00a3e0]">
+                  {item.category}
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight group-hover:text-[#0033a0] transition-colors duration-200">
                   {item.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              </div>
+
+              {/* 3. Deep Architectural Narrative & Verified Standard */}
+              <div className="lg:col-span-6 space-y-3">
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
                   {item.description}
                 </p>
+                <div className="flex items-center gap-2 pt-1 text-xs font-mono text-slate-500">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00a3e0]" />
+                  <span className="uppercase text-[11px] font-medium text-slate-400">Standard:</span>
+                  <span className="font-semibold text-slate-800 group-hover:text-[#0033a0] transition-colors">
+                    {item.standard}
+                  </span>
+                </div>
               </div>
-            );
-          })}
-        </div>
+            </li>
+          ))}
+        </ol>
 
       </div>
     </section>

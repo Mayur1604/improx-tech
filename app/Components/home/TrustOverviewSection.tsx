@@ -153,7 +153,7 @@ export default function TrustOverviewSection() {
             <div className="pt-2">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2.5 rounded-full border border-slate-900/80 px-6 py-2.5 text-xs sm:text-sm font-medium text-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-200 group"
+                className="inline-flex items-center gap-2.5 rounded-full border border-slate-900/80 px-6 py-2.5 text-xs sm:text-sm font-medium text-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 group"
               >
                 <span>About Improx</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
