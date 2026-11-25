@@ -4,27 +4,16 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
-  Cloud, 
-  ShieldCheck, 
-  Layers, 
-  Building2, 
-  Cpu, 
   ArrowRight, 
+  ArrowUpRight,
   ChevronRight,
-  CheckCircle2,
-  HelpCircle,
-  ChevronDown
+  ChevronDown,
+  Clock,
+  ShieldCheck,
+  Users
 } from 'lucide-react';
 import { technologyServicesList } from '../data/servicesData';
 import EngineeringBlogSection from '../Components/EngineeringBlogSection';
-
-const iconMap = {
-  Cloud,
-  ShieldCheck,
-  Layers,
-  Building2,
-  Cpu,
-};
 
 export default function TechnologyServicesPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -132,60 +121,78 @@ export default function TechnologyServicesPage() {
       </section>
 
 
-      {/* ================= 6 TECHNOLOGY DISCIPLINES (SHARP CARDS) ================= */}
-      <section className="py-20 lg:py-28 bg-[#f8fafd] border-b border-slate-200">
+      {/* ================= 6 TECHNOLOGY DISCIPLINES (EDITORIAL MINIMALIST ROWS) ================= */}
+      <section className="py-20 lg:py-28 bg-white border-b border-slate-200">
         <div className="max-w-[1440px] mx-auto px-6">
-          <div className="max-w-3xl mb-16">
-            <span className="text-xs font-bold tracking-wider uppercase text-[#0033a0]">
-              Capabilities Matrix
+          <div className="max-w-3xl mb-14 sm:mb-16">
+            <span className="text-xs font-mono font-bold tracking-wider uppercase text-[#0033a0] block mb-3">
+              Practice Catalog {'//'} 06 Disciplines
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#000033] mt-2">
-              Our 6 Technology Disciplines
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
+              Technology &amp; cloud <span className="underline decoration-[#0033a0] decoration-2 underline-offset-8">disciplines</span>.
             </h2>
-            <p className="text-gray-600 text-base mt-2">
-              Select any discipline to review specialized technical toolchains, architecture blueprints, and service level agreements.
+            <p className="text-base sm:text-lg text-slate-600 mt-4 leading-relaxed font-normal">
+              Select any discipline below to review specialized technical toolchains, architecture blueprints, and service level agreements.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {technologyServicesList.map((service) => {
-              const Icon = iconMap[service.iconName as keyof typeof iconMap] || Cloud;
+          <div className="divide-y divide-slate-200 border-t border-b border-slate-200">
+            {technologyServicesList.map((service, idx) => {
               return (
-                <div 
+                <Link
                   key={service.slug}
-                  className="bg-white rounded-[6px] border border-slate-300 p-7 flex flex-col justify-between hover:border-[#0033a0] hover:shadow-md transition-all"
+                  href={`/technology-services/${service.slug}`}
+                  className="group block py-8 sm:py-10 transition-colors hover:bg-slate-50/70 px-4 sm:px-6 -mx-4 sm:-mx-6 rounded-lg"
                 >
-                  <div>
-                    <div className="w-12 h-12 rounded-[6px] bg-[#000033] text-[#00a3e0] flex items-center justify-center mb-6">
-                      <Icon className="w-6 h-6" />
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+                    <div className="flex-1">
+                      {/* Index + Title */}
+                      <div className="flex items-baseline gap-3 mb-3">
+                        <span className="text-xs font-mono font-semibold text-[#0033a0] tracking-wider shrink-0">
+                          {String(idx + 1).padStart(2, '0')}
+                        </span>
+                        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 group-hover:text-[#0033a0] transition-colors leading-tight">
+                          {service.title}
+                        </h3>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-sm text-slate-600 max-w-3xl leading-relaxed mb-5">
+                        {service.description}
+                      </p>
+
+                      {/* Pill Badges (Reference Style) */}
+                      <div className="flex flex-wrap gap-2 sm:gap-2.5 items-center">
+                        {service.keyCapabilities.slice(0, 4).map((cap) => (
+                          <span
+                            key={cap.title}
+                            className="inline-flex items-center rounded-full border border-slate-300 bg-white px-4 py-1.5 text-xs sm:text-[13px] font-medium text-slate-800 transition-all group-hover:border-slate-500 shadow-2xs"
+                          >
+                            {cap.title}
+                          </span>
+                        ))}
+                        {service.technologies && service.technologies.slice(0, 3).map((tech) => (
+                          <span
+                            key={tech}
+                            className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50/70 px-3.5 py-1 text-xs font-mono font-medium text-[#0033a0]"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-[#000033] mb-2">
-                      {service.title}
-                    </h3>
-
-                    <p className="text-xs text-gray-600 leading-relaxed mb-6">
-                      {service.description}
-                    </p>
-
-                    <div className="space-y-2 mb-6 pt-4 border-t border-slate-100">
-                      {service.keyCapabilities.slice(0, 3).map((cap) => (
-                        <div key={cap.title} className="text-xs text-gray-700 flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0033a0] shrink-0 mt-0.5" />
-                          <span>{cap.title}</span>
-                        </div>
-                      ))}
+                    {/* Right Arrow / Action button */}
+                    <div className="shrink-0 flex items-center gap-3 pt-2 lg:pt-4 self-end lg:self-center">
+                      <span className="text-xs font-semibold text-slate-500 group-hover:text-[#0033a0] transition-colors hidden sm:inline">
+                        View Architecture
+                      </span>
+                      <div className="w-10 h-10 rounded-full border border-slate-300 group-hover:border-[#0033a0] group-hover:bg-[#0033a0] text-slate-700 group-hover:text-white flex items-center justify-center transition-all duration-200 shadow-2xs group-hover:scale-105">
+                        <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </div>
                     </div>
                   </div>
-
-                  <Link
-                    href={`/technology-services/${service.slug}`}
-                    className="inline-flex items-center justify-between w-full py-3 px-4 rounded-[6px] bg-[#f8fafd] hover:bg-[#0033a0] text-gray-800 hover:text-white text-xs font-semibold transition-all mt-auto border border-slate-200 group"
-                  >
-                    <span>View Architecture Blueprint</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </div>
+                </Link>
               );
             })}
           </div>
@@ -238,46 +245,113 @@ export default function TechnologyServicesPage() {
 
 
       {/* ================= FREQUENTLY ASKED QUESTIONS ================= */}
-      <section className="py-20 bg-[#f8fafd] border-b border-slate-200">
+      <section className="py-20 lg:py-28 bg-[#f8fafd] border-b border-slate-200">
         <div className="max-w-[1440px] mx-auto px-6">
-          <div className="max-w-3xl mb-12">
-            <span className="text-xs font-bold tracking-wider uppercase text-[#0033a0]">
+          <div className="max-w-3xl mb-12 sm:mb-16">
+            <span className="text-xs font-mono font-bold tracking-wider uppercase text-[#0033a0] block mb-2">
               Cloud Architecture FAQ
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#000033] mt-2">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#000033] tracking-tight">
               Frequently Asked Technical Questions
             </h2>
-            <p className="text-gray-600 text-sm sm:text-base mt-2">
+            <p className="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
               Key operational, security, and migration questions answered by our principal cloud architects.
             </p>
           </div>
 
-          <div className="max-w-4xl space-y-3">
-            {cloudFaqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div 
-                  key={idx}
-                  className="border border-slate-300 rounded-[6px] bg-white overflow-hidden shadow-2xs"
-                >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-[#000033] hover:text-[#0033a0] transition-colors"
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            {/* Left Column: Interactive Technical Inquiries Accordion */}
+            <div className="lg:col-span-7 xl:col-span-8 space-y-3.5">
+              {cloudFaqs.map((faq, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div 
+                    key={idx}
+                    className={`border rounded-xl transition-all duration-200 overflow-hidden ${
+                      isOpen 
+                        ? 'bg-white border-[#0033a0]/40 shadow-sm' 
+                        : 'bg-white border-slate-200/90 hover:border-slate-300 shadow-2xs'
+                    }`}
                   >
-                    <span className="flex items-center gap-3">
-                      <HelpCircle className="w-5 h-5 text-[#0033a0] shrink-0" />
-                      <span>{faq.q}</span>
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : idx)}
+                      className="w-full p-5 sm:p-6 text-left flex items-start justify-between gap-4 font-bold text-sm sm:text-base text-slate-900 hover:text-[#0033a0] transition-colors"
+                      aria-expanded={isOpen}
+                    >
+                      <span className="flex items-start gap-3.5">
+                        <span className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-mono font-semibold transition-colors ${
+                          isOpen ? 'bg-[#0033a0] text-white' : 'bg-slate-100 text-slate-500'
+                        }`}>
+                          {String(idx + 1).padStart(2, '0')}
+                        </span>
+                        <span className="leading-snug pt-0.5">{faq.q}</span>
+                      </span>
+                      <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 shrink-0 mt-1.5 ${isOpen ? 'rotate-180 text-[#0033a0]' : ''}`} />
+                    </button>
+                    {isOpen && (
+                      <div className="px-5 sm:px-6 pb-6 pt-0 text-xs sm:text-sm text-slate-600 leading-relaxed pl-14 sm:pl-16">
+                        {faq.a}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Right Column: Direct Engineering Scoping & Inquiry Card */}
+            <div className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-28">
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0033a0] via-[#00a3e0] to-[#000033]" />
+
+                <div className="space-y-6">
+                  <div>
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-blue-50 text-[#0033a0] border border-blue-100 mb-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0033a0] animate-pulse" />
+                      Cloud Architecture Desk
                     </span>
-                    <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
-                  </button>
-                  {isOpen && (
-                    <div className="p-6 pt-0 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
-                      {faq.a}
+                    <h3 className="text-xl font-bold text-slate-900 tracking-tight leading-snug">
+                      Have a cloud or migration inquiry?
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                      Consult directly with certified AWS &amp; Azure enterprise architects for workload discovery, migration sizing, and FinOps audits.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3 pt-2 border-t border-slate-100">
+                    <div className="flex items-start gap-2.5 text-xs text-slate-700">
+                      <Clock className="w-4 h-4 text-[#0033a0] shrink-0 mt-0.5" />
+                      <span><strong>Fast Response:</strong> Architecture review within 24 business hours.</span>
                     </div>
-                  )}
+                    <div className="flex items-start gap-2.5 text-xs text-slate-700">
+                      <ShieldCheck className="w-4 h-4 text-[#0033a0] shrink-0 mt-0.5" />
+                      <span><strong>Cloud Compliance:</strong> SOC 2, HIPAA &amp; ISO 27001 landing zones.</span>
+                    </div>
+                    <div className="flex items-start gap-2.5 text-xs text-slate-700">
+                      <Users className="w-4 h-4 text-[#0033a0] shrink-0 mt-0.5" />
+                      <span><strong>Direct Leads:</strong> Work with principal cloud architects directly.</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 pt-3 border-t border-slate-100">
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center justify-center w-full bg-[#0033a0] hover:bg-[#00287a] text-white text-xs font-semibold py-3 px-4 rounded-lg transition-all shadow-xs hover:shadow group"
+                    >
+                      <span>Schedule Cloud Consultation</span>
+                      <ArrowRight className="w-3.5 h-3.5 ml-2 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                    <div className="text-center">
+                      <a
+                        href="mailto:contact@improxtech.com"
+                        className="text-[11px] font-mono text-slate-500 hover:text-[#0033a0] transition-colors"
+                      >
+                        or email contact@improxtech.com
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              );
-            })}
+              </div>
+            </div>
           </div>
         </div>
       </section>

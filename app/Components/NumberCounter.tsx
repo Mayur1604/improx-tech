@@ -9,6 +9,7 @@ interface NumberCounterProps {
   suffix?: string;
   startFrom?: number;
   decimals?: number;
+  useGrouping?: boolean;
   className?: string;
 }
 
@@ -19,6 +20,7 @@ export default function NumberCounter({
   suffix = '',
   startFrom,
   decimals = 0,
+  useGrouping,
   className = '',
 }: NumberCounterProps) {
   const [value, setValue] = useState<number>(() => {
@@ -91,9 +93,15 @@ export default function NumberCounter({
     };
   }, [target, durationMs, startFrom, hasAnimated]);
 
+  const shouldGroup = useGrouping !== undefined
+    ? useGrouping
+    : !(target >= 1900 && target <= 2100 && decimals === 0);
+
   const formattedValue = decimals > 0 
     ? value.toFixed(decimals) 
-    : Math.round(value).toLocaleString();
+    : shouldGroup 
+      ? Math.round(value).toLocaleString() 
+      : String(Math.round(value));
 
   return (
     <span ref={elementRef} className={`tabular-nums inline-block ${className}`}>

@@ -2,18 +2,17 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, Copy, Check } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 interface StandardPillar {
   id: string;
   tabLabel: string;
   badge: string;
-  specId: string;
+  headerTitle: string;
   title: string;
   description: string;
   deliverables: string[];
-  specRows: { label: string; value: string; isMono?: boolean }[];
-  checksum: string;
+  specRows: { label: string; value: string; isHighlight?: boolean }[];
   actionText: string;
 }
 
@@ -21,8 +20,8 @@ const STANDARDS: StandardPillar[] = [
   {
     id: 'ip-sovereignty',
     tabLabel: '01 / IP Sovereignty',
-    badge: 'DELAWARE TITLE 8',
-    specId: 'SPECIFICATION-ID: #GOV-01',
+    badge: '100% IP OWNERSHIP',
+    headerTitle: 'Client Legal Protection',
     title: '100% Client Source Code & IP Sovereignty',
     description: 'Every commit, schema definition, and cloud deployment template is assigned contractually to your company from day one under Delaware law.',
     deliverables: [
@@ -33,18 +32,17 @@ const STANDARDS: StandardPillar[] = [
     specRows: [
       { label: 'Legal Jurisdiction', value: 'State of Delaware, USA (Title 8, Sec. 101)' },
       { label: 'Repository Ownership', value: 'Client-Owned Corporate GitHub Remote' },
-      { label: 'Runtime Licensing Fee', value: '$0.00 (Pure Open-Source Standards)' },
+      { label: 'Runtime Licensing Fee', value: '$0.00 (Zero Recurring Fees)' },
       { label: 'Codebase Portability', value: '100% Sovereign (Transferable Anytime)' },
-      { label: 'Verification Digest', value: 'sha256:8f4a1c99b82142e88a38d9f109be374c4019', isMono: true },
+      { label: 'IP Assignment', value: 'Full Written Assignment on Every Commit', isHighlight: true },
     ],
-    checksum: 'sha256:8f4a1c99b82142e88a38d9f109be374c4019',
-    actionText: 'Review Sample Delaware IP Assignment Rider',
+    actionText: 'Review Sample Delaware IP Rider',
   },
   {
     id: 'cicd-automation',
     tabLabel: '02 / CI/CD Automation',
-    badge: 'MANDATORY GATEKEEPER',
-    specId: 'SPECIFICATION-ID: #GOV-02',
+    badge: 'AUTOMATED GATES',
+    headerTitle: 'Code Quality & CI Standards',
     title: 'Audited Peer Reviews & Static Linting CI',
     description: 'All code enters production through audited pull requests with automated test coverage, security dependency scans, and clean linting checks.',
     deliverables: [
@@ -53,20 +51,19 @@ const STANDARDS: StandardPillar[] = [
       'Mandatory peer review signed off by senior pod leads',
     ],
     specRows: [
-      { label: 'Static Analysis', value: 'ESLint Strict + TS 5.4 Check (0 Errors)' },
+      { label: 'Static Analysis', value: 'ESLint Strict + TS Check (0 Errors)' },
       { label: 'Security Vulnerability Gate', value: 'Trivy + Snyk Scans (0 High/Critical CVEs)' },
       { label: 'Automated Test Standard', value: '85%+ Enforced Branch Test Coverage' },
       { label: 'Branch Protection', value: 'Dual Peer Sign-off Required Before Merge' },
-      { label: 'Verification Digest', value: 'sha256:d41d8cd98f00b204e9800998ecf8427e192a', isMono: true },
+      { label: 'Deployment Safety', value: 'Automated Rollback & Canary Releases', isHighlight: true },
     ],
-    checksum: 'sha256:d41d8cd98f00b204e9800998ecf8427e192a',
-    actionText: 'Inspect CI/CD Quality Gate Pipeline Specs',
+    actionText: 'Inspect CI/CD Pipeline Specs',
   },
   {
     id: 'pod-access',
     tabLabel: '03 / Direct Pod Access',
     badge: 'DIRECT ACCESS',
-    specId: 'SPECIFICATION-ID: #GOV-03',
+    headerTitle: 'Engineering Pod Workflow',
     title: 'Direct Technical Access Without Account Layers',
     description: 'Collaborate directly with the senior engineers writing your software through shared Slack/Teams channels, bi-weekly sprint demos, and open backlog planning.',
     deliverables: [
@@ -77,18 +74,17 @@ const STANDARDS: StandardPillar[] = [
     specRows: [
       { label: 'Sprint Cycle', value: '14-Day Iterative Cadence with Working Demos' },
       { label: 'Communication Channel', value: 'Direct Shared Slack / Teams (Engineers Only)' },
-      { label: 'Account Manager Overhead', value: '0 Hours (No Intermediary Game of Telephone)' },
+      { label: 'Account Manager Overhead', value: '0 Hours (Direct Technical Access)' },
       { label: 'PR Review SLA', value: '< 4 Hours on Client Repository Pull Requests' },
-      { label: 'Verification Digest', value: 'sha256:2b9e14a1c5d8e7b301f2984180d1e2f7596a', isMono: true },
+      { label: 'Sprint Reviews', value: 'Bi-Weekly Live Runnable Demos', isHighlight: true },
     ],
-    checksum: 'sha256:2b9e14a1c5d8e7b301f2984180d1e2f7596a',
-    actionText: 'Review Engineering Pod Staffing Model',
+    actionText: 'Review Pod Staffing Model',
   },
   {
     id: 'open-standards',
     tabLabel: '04 / Open Standards',
     badge: 'OPEN STANDARDS',
-    specId: 'SPECIFICATION-ID: #GOV-04',
+    headerTitle: 'Enterprise Technology Stack',
     title: 'Open-Source & Cloud-Native Reliability',
     description: 'We build with open, modern standards (TypeScript, Next.js, Go, Docker, standard SQL) so any competent engineer can maintain and scale your platform.',
     deliverables: [
@@ -101,26 +97,16 @@ const STANDARDS: StandardPillar[] = [
       { label: 'Database & In-Memory', value: 'PostgreSQL 16 (Standard SQL) & Redis' },
       { label: 'Containerization', value: 'OCI Docker & Kubernetes Helm Orchestration' },
       { label: 'Cloud Portability', value: '100% Agnostic (AWS, GCP, Azure, Bare Metal)' },
-      { label: 'Verification Digest', value: 'sha256:7f83b1657ff1fc53b92dc18148a1d65dfc2d', isMono: true },
+      { label: 'Vendor Lock-In', value: 'Zero (100% Open Standards)', isHighlight: true },
     ],
-    checksum: 'sha256:7f83b1657ff1fc53b92dc18148a1d65dfc2d',
-    actionText: 'Review Stack Architecture Manifest & Runbooks',
+    actionText: 'Review Stack Architecture Manifest',
   },
 ];
 
 export default function EngineeringStandardsSection() {
   const [activeIdx, setActiveIdx] = useState<number>(0);
-  const [copied, setCopied] = useState<boolean>(false);
 
   const activeStandard = STANDARDS[activeIdx];
-
-  const handleCopyChecksum = () => {
-    if (typeof window !== 'undefined' && navigator?.clipboard) {
-      navigator.clipboard.writeText(activeStandard.checksum);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
 
   return (
     <section className="py-20 lg:py-28 bg-[#fafaf9] text-slate-900 border-b border-slate-200/90 relative overflow-hidden">
@@ -215,13 +201,13 @@ export default function EngineeringStandardsSection() {
 
           </div>
 
-          {/* Right Column: Apple / Stripe Enterprise Specification Sheet */}
+          {/* Right Column: Apple / Stripe Enterprise Commitment Sheet */}
           <div className="lg:col-span-6 bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-xs space-y-5">
             
-            {/* Spec Sheet Header */}
+            {/* Commitment Sheet Header */}
             <div className="flex items-center justify-between pb-4 border-b border-slate-100 flex-wrap gap-2">
-              <span className="text-xs font-mono text-slate-500 font-medium">
-                {activeStandard.specId}
+              <span className="text-xs font-mono text-slate-700 font-semibold uppercase tracking-wider">
+                {activeStandard.headerTitle}
               </span>
               <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-[#0033a0] border border-blue-200/70 font-mono text-[11px] font-semibold">
                 {activeStandard.badge}
@@ -233,13 +219,13 @@ export default function EngineeringStandardsSection() {
               {activeStandard.specRows.map((row, rIdx) => (
                 <div 
                   key={rIdx} 
-                  className={`flex flex-col sm:flex-row sm:items-center justify-between gap-1 py-1.5 ${
+                  className={`flex flex-col sm:flex-row sm:items-center justify-between gap-1 py-2 ${
                     rIdx < activeStandard.specRows.length - 1 ? 'border-b border-slate-100' : ''
                   }`}
                 >
                   <span className="text-slate-500 font-normal shrink-0">{row.label}:</span>
-                  <span className={`text-slate-900 font-medium text-right ${
-                    row.isMono ? 'font-mono text-xs text-[#0033a0] truncate max-w-[240px]' : ''
+                  <span className={`text-right font-medium ${
+                    row.isHighlight ? 'text-[#0033a0] font-semibold' : 'text-slate-900'
                   }`}>
                     {row.value}
                   </span>
@@ -251,30 +237,16 @@ export default function EngineeringStandardsSection() {
             <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-colors duration-150"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-[#0033a0] text-white text-xs font-semibold transition-all duration-200 shadow-xs group/cta"
               >
                 <span>{activeStandard.actionText}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/cta:translate-x-0.5" />
               </Link>
 
-              <button
-                type="button"
-                onClick={handleCopyChecksum}
-                title="Copy Verification Checksum"
-                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-mono font-medium transition-colors"
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    <span className="text-emerald-700">Checksum Copied</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5 text-slate-500" />
-                    <span>Copy SHA-256</span>
-                  </>
-                )}
-              </button>
+              <div className="flex items-center justify-center sm:justify-start gap-1.5 text-xs text-slate-500 font-medium">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Legally Enforced Commitment</span>
+              </div>
             </div>
 
           </div>

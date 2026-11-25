@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/blogs/agentic-ai.webp',
+        url: '/images/blogs/agentic-workflows-automation.jpg',
         width: 1200,
         height: 630,
         alt: 'Improx Tech Insights & Research',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: 'Improx Tech Engineering Research & Technical Blog',
     description:
       'Architecture patterns, guardrails for agentic AI, and distributed systems lessons from active production client deployments.',
-    images: ['/images/blogs/agentic-ai.webp'],
+    images: ['/images/blogs/agentic-workflows-automation.jpg'],
   },
 };
 

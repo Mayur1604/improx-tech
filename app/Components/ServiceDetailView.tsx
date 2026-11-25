@@ -46,7 +46,7 @@ const serviceSlugImageMap: Record<string, string> = {
   // 4. Cloud Application & DevSecOps
   'cloud-applications': '/images/services/cloud-application-devsecops.svg',
   'devsecops': '/images/services/cloud-application-devsecops.svg',
-  'cloud-migration': '/images/services/cloud-application-devsecops.svg',
+  'cloud-migration': '/images/services/cloud-migration.webp',
 
   // 5. High-Throughput API Development
   'api-development': '/images/services/high-throughput-api-development.svg',

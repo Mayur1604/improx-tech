@@ -2,21 +2,20 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
-  MapPin, 
-  Users, 
   ChevronRight,
   ArrowRight, 
-  CheckCircle2, 
-  Lock, 
-  Server,
+  CheckCircle2,
   ShieldCheck,
-  Code2
+  GitBranch,
+  Terminal
 } from 'lucide-react';
 import EngineeringBlogSection from '../Components/EngineeringBlogSection';
 import FaqSection from '../Components/home/FaqSection';
 import Reveal from '../Components/Reveal';
 import NumberCounter from '../Components/NumberCounter';
 import { company } from '../data/company';
+import EngineeringCraftExplorer from '../Components/about/EngineeringCraftExplorer';
+import DeliveryHubExplorer from '../Components/about/DeliveryHubExplorer';
 
 export const metadata: Metadata = {
   title: 'About Us | Custom Software & Cloud Consultancy | Improx Tech',
@@ -165,13 +164,13 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t border-white/20 text-xs">
               <div className="bg-white/10 backdrop-blur-md p-4 rounded-[6px] border border-white/20">
                 <div className="text-2xl font-bold text-[#00a3e0]">
-                  <NumberCounter target={company.foundingYear} startFrom={1995} />
+                  <NumberCounter target={company.foundingYear} startFrom={1995} useGrouping={false} />
                 </div>
                 <div className="text-slate-300 mt-1 font-medium">Founding Year</div>
               </div>
               <div className="bg-white/10 backdrop-blur-md p-4 rounded-[6px] border border-white/20">
-                <div className="text-2xl font-bold text-white">Dual Hub</div>
-                <div className="text-slate-300 mt-1 font-medium">Delaware, USA &amp; Pune, India</div>
+                <div className="text-2xl font-bold text-white">14-Day</div>
+                <div className="text-slate-300 mt-1 font-medium">Sprint Cadence &amp; Demos</div>
               </div>
               <div className="bg-white/10 backdrop-blur-md p-4 rounded-[6px] border border-white/20 col-span-2 sm:col-span-1">
                 <div className="text-2xl font-bold text-[#00a3e0]">
@@ -220,33 +219,47 @@ export default function AboutPage() {
             </Reveal>
 
             <Reveal className="lg:col-span-6" delayMs={200}>
-              <div className="bg-slate-50 rounded-[6px] border border-slate-200 p-8 space-y-6">
-                <h3 className="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">
-                  Dual-Hub Engineering Collaboration
-                </h3>
+              <div className="bg-slate-50 rounded-2xl border border-slate-200 p-7 sm:p-8 space-y-6">
+                <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+                  <h3 className="text-sm font-bold text-slate-900 font-mono uppercase tracking-wider">
+                    Client Delivery Commitments
+                  </h3>
+                  <span className="text-[11px] font-mono text-[#0033a0] bg-blue-50 border border-blue-200/70 px-2.5 py-0.5 rounded-full font-semibold">
+                    STANDARD SLA
+                  </span>
+                </div>
 
                 <div className="space-y-4">
-                  <div className="p-4 rounded-[6px] bg-white border border-slate-200 space-y-1">
-                    <div className="text-xs font-semibold text-[#0033a0] uppercase tracking-wider">United States Operations</div>
-                    <div className="text-sm font-bold text-slate-900">Delaware Corporate Governance</div>
+                  <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-[#0033a0] uppercase tracking-wider">
+                      <Terminal className="w-3.5 h-3.5" />
+                      <span>01 / Direct Source Control</span>
+                    </div>
+                    <div className="text-sm font-bold text-slate-900">Client-Owned Git Remotes</div>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      Our Delaware office provides direct contract governance, US business hours alignment, and architectural strategy.
+                      Code is committed and pushed directly to your corporate GitHub or GitLab organization from sprint one.
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-[6px] bg-white border border-slate-200 space-y-1">
-                    <div className="text-xs font-semibold text-[#0033a0] uppercase tracking-wider">India Engineering Center</div>
-                    <div className="text-sm font-bold text-slate-900">Pune Technology Delivery Hub</div>
+                  <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-[#0033a0] uppercase tracking-wider">
+                      <GitBranch className="w-3.5 h-3.5" />
+                      <span>02 / Automated CI Quality</span>
+                    </div>
+                    <div className="text-sm font-bold text-slate-900">Strict Gatekeepers on Every PR</div>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      Our Pune engineering center delivers focused sprint execution, continuous integration, and disciplined code quality.
+                      Static TypeScript verification, unit test gates, container security scans, and peer code reviews before merge.
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-[6px] bg-white border border-slate-200 space-y-1">
-                    <div className="text-xs font-semibold text-[#0033a0] uppercase tracking-wider">Predictable Cadence</div>
-                    <div className="text-sm font-bold text-slate-900">Two-Week Sprint Checkpoints</div>
+                  <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-[#0033a0] uppercase tracking-wider">
+                      <ShieldCheck className="w-3.5 h-3.5" />
+                      <span>03 / Sprint Observability</span>
+                    </div>
+                    <div className="text-sm font-bold text-slate-900">14-Day Working Demos</div>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      Regular sprint reviews, automated test passes, and direct pull requests ensure steady, observable progress.
+                      Two-week cadences with working software demonstrated in dedicated staging environments, not slide decks.
                     </p>
                   </div>
                 </div>
@@ -257,228 +270,39 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Engineering Principles */}
-      <section className="py-20 bg-slate-50 border-b border-slate-200">
+      {/* ================= INTERACTIVE ENGINEERING STANDARDS SHOWCASE ================= */}
+      <section className="py-20 lg:py-28 bg-[#fafaf9] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
-          <Reveal className="max-w-2xl mb-14">
-            <p className="text-xs font-semibold tracking-wider uppercase text-[#0033a0]">Principles</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-3">
-              How we approach technology.
+          <Reveal className="max-w-2xl mb-12">
+            <p className="text-xs font-semibold tracking-wider uppercase text-[#0033a0]">
+              Engineering Discipline
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mt-2 mb-3 tracking-tight">
+              How we approach technology &amp; code craft.
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base">
-              Standard practices we maintain across every software engagement.
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Explore our core architectural practices, branch protection gates, and shift-left security protocols across four key engineering pillars.
             </p>
           </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Reveal delayMs={100}>
-              <div className="p-6 rounded-[6px] bg-white border border-slate-200 space-y-3 card-hover h-full">
-                <div className="w-10 h-10 rounded-[6px] bg-slate-50 border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                  <Lock className="w-5 h-5" />
-                </div>
-                <h3 className="font-bold text-slate-900 text-base">Unconditional Ownership</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  All source code, infrastructure declarations, and test suites are authored for your repository from the first commit.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delayMs={200}>
-              <div className="p-6 rounded-[6px] bg-white border border-slate-200 space-y-3 card-hover h-full">
-                <div className="w-10 h-10 rounded-[6px] bg-slate-50 border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                  <Code2 className="w-5 h-5" />
-                </div>
-                <h3 className="font-bold text-slate-900 text-base">Clean, Decoupled Code</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  We prefer well-defined modular architectures and type safety that your internal developers can comfortably maintain and extend.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delayMs={300}>
-              <div className="p-6 rounded-[6px] bg-white border border-slate-200 space-y-3 card-hover h-full">
-                <div className="w-10 h-10 rounded-[6px] bg-slate-50 border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                  <Users className="w-5 h-5" />
-                </div>
-                <h3 className="font-bold text-slate-900 text-base">Focused Teams</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Engineers stay dedicated to your project context rather than constantly rotating between disconnected accounts.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delayMs={400}>
-              <div className="p-6 rounded-[6px] bg-white border border-slate-200 space-y-3 card-hover h-full">
-                <div className="w-10 h-10 rounded-[6px] bg-slate-50 border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                  <Server className="w-5 h-5" />
-                </div>
-                <h3 className="font-bold text-slate-900 text-base">Cloud Discipline</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Infrastructure defined in code with automated linting, reproducible deployments, and conservative operational costs.
-                </p>
-              </div>
-            </Reveal>
-          </div>
+          <EngineeringCraftExplorer />
         </div>
       </section>
 
-      {/* Defensible Security & Governance */}
-      <section className="py-20 bg-white border-b border-slate-200">
+      {/* ================= GLOBAL DELIVERY HUBS (INTERACTIVE EXPLORER) ================= */}
+      <section className="py-20 lg:py-28 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
-          <Reveal className="max-w-2xl mb-14">
-            <p className="text-xs font-semibold tracking-wider uppercase text-[#0033a0]">Security &amp; Hygiene</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-3">
-              Standard engineering security practices.
+          <Reveal className="max-w-2xl mb-12">
+            <p className="text-xs font-semibold tracking-wider uppercase text-[#0033a0]">
+              Global Operations
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mt-2 mb-3 tracking-tight">
+              Dual-hub engineering delivery.
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base">
-              Security is integrated directly into daily development workflows rather than deferred to an afterthought audit.
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Delaware corporate governance paired with continuous engineering velocity in Pune. Switch between delivery centers to review local operations, time zones, and governance standards.
             </p>
           </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Reveal delayMs={100}>
-              <div className="border border-slate-200 rounded-[6px] p-6 bg-slate-50 space-y-3 card-hover h-full">
-                <div className="w-9 h-9 rounded-[6px] bg-white border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                  <ShieldCheck className="w-5 h-5" />
-                </div>
-                <h3 className="text-base font-bold text-slate-900">Secure Development Lifecycle</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Automated static analysis, dependency scanning in CI pipelines, and peer code reviews for all pull requests.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delayMs={200}>
-              <div className="border border-slate-200 rounded-[6px] p-6 bg-slate-50 space-y-3 card-hover h-full">
-                <div className="w-9 h-9 rounded-[6px] bg-white border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                  <Lock className="w-5 h-5" />
-                </div>
-                <h3 className="text-base font-bold text-slate-900">Access Reviews &amp; Isolation</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Principle of least privilege, short-lived developer credentials, encrypted environment secrets, and isolated staging environments.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delayMs={300}>
-              <div className="border border-slate-200 rounded-[6px] p-6 bg-slate-50 space-y-3 card-hover h-full">
-                <div className="w-9 h-9 rounded-[6px] bg-white border border-slate-200 text-[#0033a0] flex items-center justify-center">
-                  <Server className="w-5 h-5" />
-                </div>
-                <h3 className="text-base font-bold text-slate-900">Data Protection in Transit &amp; at Rest</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Standard TLS encryption for external and inter-service communications, with encrypted storage volumes and managed keys.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Offices & Locations with Neutral Abstract SVG Maps */}
-      <section className="py-20 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <Reveal className="max-w-2xl mb-14">
-            <p className="text-xs font-semibold tracking-wider uppercase text-[#0033a0]">Locations</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-3">
-              Our delivery hubs.
-            </h2>
-            <p className="text-slate-600 text-sm sm:text-base">
-              Dual-hub presence providing business governance in Delaware and engineering velocity in Pune.
-            </p>
-          </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Delaware Hub */}
-            <Reveal delayMs={150}>
-              <div className="group rounded-[6px] bg-white border border-slate-200 overflow-hidden card-hover flex flex-col justify-between h-full">
-                {/* Image & Gradient Header */}
-                <div className="relative h-52 w-full bg-[#000033] flex items-center justify-center p-6 text-white overflow-hidden">
-                  <Image
-                    src="/images/about/delaware-hq.webp"
-                    alt="Delaware Corporate Headquarters"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover opacity-60 transition-transform duration-700 ease-out group-hover:scale-108 group-hover:opacity-75"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#000033] via-[#000033]/60 to-transparent" />
-
-                  <div className="relative z-10 text-center">
-                    <p className="inline-flex items-center gap-1.5 text-xs font-mono text-[#00a3e0] mb-2">
-                      <MapPin className="w-3.5 h-3.5" />
-                      <span>38.7745° N, 75.1393° W</span>
-                    </p>
-                    <h3 className="text-lg font-bold text-white group-hover:text-[#00a3e0] transition-colors">Delaware, United States</h3>
-                    <p className="text-xs text-slate-300">Corporate &amp; Account Governance</p>
-                  </div>
-                </div>
-
-                <div className="p-6 space-y-3">
-                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                    <strong>{company.name}</strong><br />
-                    <a
-                      href={company.addresses.us.mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-[#0033a0] hover:underline transition-colors block"
-                    >
-                      {company.addresses.us.street}<br />
-                      {company.addresses.us.city}, {company.addresses.us.region} {company.addresses.us.postalCode}, {company.addresses.us.country}
-                    </a>
-                  </p>
-                  <div className="pt-3 border-t border-slate-100 text-xs text-slate-600 flex flex-wrap gap-4">
-                    {company.formattedPhone && <div>Phone: <strong className="text-slate-900">{company.formattedPhone}</strong></div>}
-                    {company.email && <div>Email: <strong className="text-slate-900">{company.email}</strong></div>}
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-
-            {/* Pune Hub */}
-            <Reveal delayMs={300}>
-              <div className="group rounded-[6px] bg-white border border-slate-200 overflow-hidden card-hover flex flex-col justify-between h-full">
-                {/* Image & Gradient Header */}
-                <div className="relative h-52 w-full bg-[#000033] flex items-center justify-center p-6 text-white overflow-hidden">
-                  <Image
-                    src="/images/about/pune-techcenter.webp"
-                    alt="Pune Technology Center"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover opacity-60 transition-transform duration-700 ease-out group-hover:scale-108 group-hover:opacity-75"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#000033] via-[#000033]/60 to-transparent" />
-
-                  <div className="relative z-10 text-center">
-                    <p className="inline-flex items-center gap-1.5 text-xs font-mono text-[#00a3e0] mb-2">
-                      <MapPin className="w-3.5 h-3.5" />
-                      <span>18.5590° N, 73.7868° E</span>
-                    </p>
-                    <h3 className="text-lg font-bold text-white group-hover:text-[#00a3e0] transition-colors">Pune, India</h3>
-                    <p className="text-xs text-slate-300">Engineering &amp; Technology Delivery</p>
-                  </div>
-                </div>
-
-                <div className="p-6 space-y-3">
-                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                    <strong>{company.name} Delivery Center</strong><br />
-                    <a
-                      href={company.addresses.india.mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-[#0033a0] hover:underline transition-colors block"
-                    >
-                      {company.addresses.india.street}<br />
-                      {company.addresses.india.city}, {company.addresses.india.region} {company.addresses.india.postalCode}, {company.addresses.india.country}
-                    </a>
-                  </p>
-                  <div className="pt-3 border-t border-slate-100 text-xs text-slate-600 flex flex-wrap gap-4">
-                    {company.email && <div>Inquiries: <strong className="text-slate-900">{company.email}</strong></div>}
-                    <div>Founding: <strong className="text-slate-900">{company.foundingYear}</strong></div>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
+          <DeliveryHubExplorer />
         </div>
       </section>
 
